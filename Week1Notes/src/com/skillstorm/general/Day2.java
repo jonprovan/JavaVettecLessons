@@ -152,13 +152,14 @@ public class Day2 {
 		// NOT a primitive type
 		String name = "Miles Mixon"; // strings use double quotes
 		char initial = 'M'; // characters use single quotes
-		
+		/*
 		// maybe we want user input
 		System.out.print("What is your name?: ");
 		
 		// to print something we use System.out
 		// to read something we use System.in
 		// we hand System.in to a Scanner
+		
 		Scanner in = new Scanner(System.in);
 		
 		String input = in.nextLine();
@@ -174,5 +175,32 @@ public class Day2 {
 		
 		// scanner does not close by default
 		in.close(); //cannot use it again after this
+		*/
+		
+		// this scanner looks at System.in for any input
+		Scanner in2 = new Scanner(System.in);
+		
+		System.out.print("Enter a message: ");
+		//String message = in2.next(); // reads the next token
+		String message = in2.nextLine(); // reads until the end of the line
+		
+		// scanner's next method does not read everything, it just reads until the
+		// next "delimiter" so a space or newline by default
+		System.out.println(message);
+		
+		// need to call the method more times to clear the message
+		//message = in2.next();
+		
+		//System.out.println(message);
+		
+		System.out.print("Enter a number: ");
+		
+		int inputInt = in2.nextInt();
+		
+		System.out.println(inputInt);
+		
+		System.out.print("Enter a decimal: ");
+		double inputDouble = in2.nextDouble();
+		System.out.println(inputDouble);
 	}
 }
