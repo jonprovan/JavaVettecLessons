@@ -170,5 +170,39 @@ public class Day3 {
 		
 		System.out.println(val1);
 		System.out.println(val1 + val3);
+		
+		// modulus: returns the remainder of division
+		// 8 / 3 = 2.67
+		// does not return the decimal remainder
+		// 3 goes into 8 twice, with 2 left over
+		// 8 - (3 * 2)
+		// 8 - 6 = 2
+		System.out.println(8 % 3); // prints 2
+		
+		// 4 goes into 13, 3 times with 1 left over
+		System.out.println(13 % 4); // print 1
+		
+		int someNumber = 16; //could be anything
+		
+		System.out.println(someNumber % 2); // even because this is 0
+		
+		System.out.println(someNumber % 3);
+		
+		// 16 / 4.5 = 3.555556
+		// 16 - (4.5 * 3)
+		// 16 - 13.5 = 2.5
+		System.out.println(someNumber % 4.5);
+		
+		System.out.println(2.0 / 3.0); // 0.66666
+		
+		System.out.println(2.0 % 3.0); // 2.0
+		
+		//int zero = 0;
+		
+		// Java cannot divide by 0
+		// check your numbers to make sure they arn't zero before dividing
+		//System.out.println(8 / 0);
+		
+		//System.out.println(8 / zero);
 	}
 }
