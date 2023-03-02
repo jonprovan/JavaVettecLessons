@@ -129,8 +129,8 @@ public class Day4 {
 		System.out.println(lastName.toUpperCase()); // prints in all upper case
 		
 		// M i l e s   M i x o  n
-		// 1 2 3 4 5 6 7 8 9 10 11 -> length
 		// 0 1 2 3 4 5 6 7 8 9  10 -> indexes
+		// 1 2 3 4 5 6 7 8 9 10 11 -> length
 		String fullName = firstName + " " + lastName;
 		
 		System.out.println(firstName.length()); // prints 5
@@ -140,5 +140,57 @@ public class Day4 {
 		int len = firstName.length();
 		
 		System.out.println(len);
+		
+		// substring
+		// can pick any index from 0 until the length of the string
+		// gets a substring from the first index (inclusive) given to the last index (exclusive) given
+		System.out.println(fullName.substring(1, 4)); // ile
+		System.out.println(fullName.substring(4, 9)); // s Mix
+		System.out.println(fullName.substring(8, 11)); // xon
+		
+		// goes from the given index to the end of the line
+		System.out.println(fullName.substring(8)); // xon
+		System.out.println(fullName.substring(1)); // iles Mixon
+		
+		fullName.substring(5, 8); // does nothing
+		// does not change the original
+		System.out.println(fullName);
+		
+		System.out.println(fullName.substring(6)); // Mixon
+		System.out.println(fullName.substring(6, 11)); // Mixon
+		
+		System.out.println(fullName.substring(0, 5)); // Miles
+		
+		// == : equality comparison
+		System.out.println(5 == 1 + 4);
+		
+		String name1 = "Dan Pickles";
+		String name2 = "Dan Pickles";
+		
+		System.out.println(name1 == name2); // does not always work for string comparisons 
+		System.out.println(name1.equals(name2)); // Should always use this for strings, this looks at the value
+		System.out.println(name1 == "Dan Pickles");
+		System.out.println("Dan Pickles" == "Dan Pickles");
+		System.out.println("Dan Pickles" == "Dan " + "Pickles");
+		System.out.println(name1 == "Dan " + "Pickles");
+		
+		System.out.println(new String("Dan Pickles") == "Dan Pickles"); // false
+		System.out.println(new String("Dan Pickles").equals("Dan Pickles")); // true
+		
+		System.out.println(new String("Dan Pickles") == new String("Dan Pickles")); // false
+		System.out.println(new String("Dan Pickles").equals(new String("Dan Pickles"))); // true
+		
+		// Take-away, ALWAYS use .equals for string comparisons
+		
+		String last = "MIxOn";
+		String last2 = "mIXoN";
+		
+		System.out.println(last.equals(last2)); // false
+		System.out.println(last.equalsIgnoreCase(last2)); // true
+		
+		String converted1 = last.toLowerCase();
+		String converted2 = last2.toLowerCase();
+	
+		System.out.println(converted1.equals(converted2)); 
 	}
 }
