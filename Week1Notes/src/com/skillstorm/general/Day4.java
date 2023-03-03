@@ -192,5 +192,35 @@ public class Day4 {
 		String converted2 = last2.toLowerCase();
 	
 		System.out.println(converted1.equals(converted2)); 
+		
+		double number = 123412.3446291;
+		
+		// %s = a string
+		// %c = a character
+		// %f = a decimal number
+		//		to format number of decimal places use %.#f
+		// %d = a whole number
+		// %e = scientific notation
+		// %t = time
+		// %n = newline
+		// %% = % character
+		System.out.printf("This is a value %.3f", number);
+		System.out.println("");
+		System.out.println(String.format("This is a value %.3f", number));
+		
+		System.out.printf("Name: %s, Last Name: %s, balance: $%.2f %n", firstName, lastName, number);
+		System.out.printf("Name: %s, Last Name: %s, balance: $%e %n", firstName, lastName, number);
+		System.out.printf("Name: %s, Last Name: %s, balance: $%e %n", firstName, lastName, number);
+		
+		// escape character
+		// an escape character lets you type reserved character
+		// \" = " character
+		// \n = newline
+		// \\ = \ character
+		// count as just one character
+		String sentence = "Some \"thing\" special";
+		System.out.println(sentence.substring(3, 8)); // e "th
+		
+		System.out.print("Some awesome sentence with a \"famous quote\" in the middle");
 	}
 }
