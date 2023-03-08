@@ -96,6 +96,82 @@ public class Day3 {
 		//System.out.println(myCars.length);
 		
 		System.out.println("First 3 = " + count3(nums));
+		
+		int[] numArray1 = { 1, 2, 3};
+		int[] numArray2 = numArray1;
+		
+		System.out.println("****** Number arrays ******");
+		System.out.println("NumArray1: ");
+		System.out.println(numArray1[0]);
+		System.out.println(numArray1[1]);
+		System.out.println(numArray1[2]);
+		
+		System.out.println("NumArray2: ");
+		System.out.println(numArray2[0]);
+		System.out.println(numArray2[1]);
+		System.out.println(numArray2[2]);
+		
+		// actually changes both
+		numArray1[1] = 5;
+		
+		System.out.println("NumArray1: ");
+		System.out.println(numArray1[0]);
+		System.out.println(numArray1[1]);
+		System.out.println(numArray1[2]);
+		
+		System.out.println("NumArray2: ");
+		System.out.println(numArray2[0]);
+		System.out.println(numArray2[1]);
+		System.out.println(numArray2[2]);
+		
+		System.out.println(numArray1);
+		System.out.println(numArray2);
+		
+		numArray1 = new int[3];
+		
+		System.out.println("NumArray1: ");
+		System.out.println(numArray1[0]);
+		System.out.println(numArray1[1]);
+		System.out.println(numArray1[2]);
+		
+		System.out.println("NumArray2: ");
+		System.out.println(numArray2[0]);
+		System.out.println(numArray2[1]);
+		System.out.println(numArray2[2]);
+		
+		System.out.println(numArray1);
+		System.out.println(numArray2);
+		
+		// one way to make a copy of an array
+		numArray1 = numArray2.clone();
+		
+		System.out.println("***** Clone ******");
+		System.out.println("NumArray1: ");
+		System.out.println(numArray1[0]);
+		System.out.println(numArray1[1]);
+		System.out.println(numArray1[2]);
+		
+		System.out.println("NumArray2: ");
+		System.out.println(numArray2[0]);
+		System.out.println(numArray2[1]);
+		System.out.println(numArray2[2]);
+		
+		numArray2[0] = 7;
+		
+		System.out.println("NumArray1: ");
+		System.out.println(numArray1[0]);
+		System.out.println(numArray1[1]);
+		System.out.println(numArray1[2]);
+		
+		System.out.println("NumArray2: ");
+		System.out.println(numArray2[0]);
+		System.out.println(numArray2[1]);
+		System.out.println(numArray2[2]);
+		
+		System.out.println(numArray1);
+		System.out.println(numArray2);
+		
+		//System.out.println(numArray1[5]);
 	}
 	
 	public static int count3(int[] nums) {
