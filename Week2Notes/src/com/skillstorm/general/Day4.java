@@ -67,7 +67,113 @@ public class Day4 {
 		--count;
 		System.out.println(count); // -1
 		
+		// can loop method calls
+		// count is currently -1, i want this to run 3 times
+		while (count < 2) {
+			System.out.println("\n***** Array Loop " + (count + 2) +" ******");
+			loopThroughArray();
+			count += 1; // dont forget to update your conditions
+		}
+		System.out.println();
 		
+		String[] cookies = { "Chocolate Chip", 
+							 "Oatmeal",
+							 "Peanut Butter", 
+							 "Sugar", 
+							 "Snickerdoodle",
+							 "M&M",
+							 "Oatmeal No-bake" };
+		loopStrings(cookies);
+		
+		System.out.println("\n****** Break Statement ******");
+		loopCookiesWithBreak(cookies);
+		
+		System.out.println("\n****** Continue Statement ******");
+		loopCookiesWithContinue(cookies);
+		
+		System.out.println("\n****** Without Continue Statement ******");
+		loopCookiesWithoutContinue(cookies);
+	}
+	
+	// same as the method loopCookiesWithContinue(String[])
+	public static void loopCookiesWithoutContinue(String[] cArray) {
+		int i = 0;
+		
+		System.out.println("Yesterday I ate: ");
+		while (i < cArray.length) {
+			if (cArray[i].length() < 8) {
+				String temp = cArray[i] + " cookies";
+				
+				System.out.println(temp);
+			}
+			
+			i++;
+		}
+	}
+	
+	public static void loopCookiesWithContinue(String[] cArray) {
+		int i = 0;
+		
+		System.out.println("Yesterday I ate: ");
+		while (i < cArray.length) {
+			if (cArray[i].length() > 8) {
+				i += 1;
+				continue; // skips this iteration
+			}
+			
+			String temp = cArray[i].concat(" cookie");
+			
+			System.out.println(temp);
+			i += 1;
+		}
+	}
+	
+	public static void loopCookiesWithBreak(String[] cArray) {
+		int i = 0; // local variable
+		
+		System.out.println("Yesterday I ate a: ");
+		while (i < cArray.length) {
+			if (cArray[i].equals("Peanut Butter")) {
+				break; // exits the loop
+			}
+			// temporary variable
+			// temp is scoped to my while loop
+			String temp = cArray[i] + " cookie"; 
+			
+			System.out.println(temp);
+			i += 1;
+		}
+		
+		System.out.println("After my loop");
+ 	}
+	
+	public static void loopStrings(String[] cArray) {
+		int i = 0; // local variable
+		
+		System.out.println("Yesterday I ate a: ");
+		while (i < cArray.length) {
+			// temporary variable
+			// temp is scoped to my while loop
+			String temp = cArray[i] + " cookie"; 
+			
+			System.out.println(temp);
+			i += 1;
+		}
+		
+		// temp does not exist outside the loop
+		// System.out.println(temp);
+ 	}
+	
+	public static void loopThroughArray() {
+		int[] nums = { 23, 7, 13, 4, 15, 67, 42, 72, 45, 81 };
+		int i = 0;
+		
+		// generalizes redundant steps
+		while (i < nums.length) {
+			System.out.println(nums[i]);
+			i += 2; // prints every other value
+			// above is the same as: i = i + 2;
+		}
 	}
 	
 	public static void integerOverflow() {
