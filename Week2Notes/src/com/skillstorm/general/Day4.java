@@ -93,6 +93,76 @@ public class Day4 {
 		
 		System.out.println("\n****** Without Continue Statement ******");
 		loopCookiesWithoutContinue(cookies);
+		
+		System.out.println("\n******* Post-fix ********");
+		postfixOperator();
+		
+		System.out.println("\n******* Pre-fix ********");
+		prefixOperator();
+	}
+	
+	public static void prefixOperator() {
+		// pre-fix operator is ++variable or --variable;
+		// pre-fix: the increment/ decrement happens before the variable is evaluated
+		int myNumber = 0;
+		
+		System.out.println(++myNumber);
+		// this operator always changes the value of the variable
+		// no matter where it occurs
+		//++myNumber;
+		System.out.println(++myNumber);
+		
+		System.out.println(myNumber);
+		
+		int[] myArray = { 10, 11, 12, 13, 14, 15 };
+		
+		myNumber = -1;
+		while (myNumber < myArray.length - 1) {
+			// this does increment myNumber, so this is not an infinite loop
+			// this throws an exception if im not careful
+			System.out.println(myArray[++myNumber]);
+		}
+		
+		myNumber = 0;
+		while (myNumber < myArray.length) {
+			// If the operation is outside of another method call, the 
+			// order of evaluation does not matter
+			System.out.println(myArray[myNumber]);
+			
+			++myNumber;
+		}
+	}
+	
+	public static void postfixOperator() {
+		// post-fix operator is variable++ or variable--
+		// post-fix: the increment/ decrement happens after the variable is evaluated
+		int myNumber = 0;
+		
+		System.out.println(myNumber++);
+		// this operator always changes the value of the variable
+		// no matter where it occurs
+		//myNumber++;
+		System.out.println(myNumber++);
+		
+		System.out.println(myNumber);
+		
+		int[] myArray = { 10, 11, 12, 13, 14, 15 };
+		
+		myNumber = 0;
+		while (myNumber < myArray.length) {
+			// this increments myNumber every time it runs
+			// increments it after it checks the value
+			System.out.println(myArray[myNumber++]);
+		}
+		
+		myNumber = 0;
+		while (myNumber < myArray.length) {
+			// If the operation is outside of another method call, the 
+			// order of evaluation does not matter
+			System.out.println(myArray[myNumber]);
+			
+			myNumber++;
+		}
 	}
 	
 	// same as the method loopCookiesWithContinue(String[])
