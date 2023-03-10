@@ -51,9 +51,122 @@ public class Day5 {
 		Scanner in = new Scanner(System.in);
 		//carPrompt(in);
 		
-		shorterCarPrompt(in);
+		//shorterCarPrompt(in);
+		
+		//icecream();
+		
+		foreachIceCream();
 		
 		in.close();
+	}
+	
+	public static void foreachIceCream() {
+		String[] flavors = { "Vanilla", 
+							 "Chocolate", 
+							 "Mint", 
+							 "Cookie Dough", 
+							 "Strawberry",
+							 "Rum Raisin",
+							 "Salted Caramel" };
+		
+		String[] toppings = { "M&Ms", 
+							  "Chocolate Chips",
+							  "Oreos",
+							  "Kit Kats",
+							  "Sprinkles",
+							  "Chocolate Syrup",
+							  "Caramel",
+							  "Strawberry",
+							  "Reese's",
+							  "Whipped Cream" };
+		
+		System.out.println("***** Ice Cream *****");
+		// no indexes, executes once for every value in the array
+		for (String flavor : flavors) {
+			for (String topping : toppings) {
+				String bowl = flavor + " and " + topping;
+				
+				System.out.println(bowl);
+			}
+		}
+	}
+		
+	public static void icecream() {
+		String[] flavors = { "Vanilla", 
+							 "Chocolate", 
+							 "Mint", 
+							 "Cookie Dough", 
+							 "Strawberry",
+							 "Rum Raisin",
+							 "Salted Caramel" };
+		
+		System.out.println("***** Ice Cream *****");
+//		for (int i = 0; i < flavors.length; i++) {
+//			System.out.println(flavors[i]);
+//		}
+		
+		// no difference in my output as above
+//		System.out.println("***** Ice Cream *****");
+//		for (int i = 0; i < flavors.length; ++i) {
+//			System.out.println(flavors[i]);
+//		}
+		
+		// everything, except the semi-colons and the () is optional in a 
+		// for loop
+		// i only exists inside the loop, that's why im able to re-use it here
+//		System.out.println("***** Ice Cream *****");
+//		for (int i = 0; i < flavors.length;) {
+//			System.out.println(flavors[i]);
+//			++i;
+//		}
+		
+//		int j = 0;
+//		System.out.println("***** Ice Cream *****");
+//		for (; j < flavors.length;) {
+//			System.out.println(flavors[j]);
+//			j++;
+//		}
+		
+//		int j = 0;
+//		System.out.println("***** Ice Cream *****");
+		// for (;;) is an infinite loop
+		// there is no condition to tell it when to stop, so it doesnt
+//		for (;;) {
+//			if (!(j < flavors.length)) {
+//				break;
+//			}
+//			System.out.println(flavors[j]);
+//			j++;
+//		}
+		
+		String[] toppings = { "M&Ms", 
+							  "Chocolate Chips",
+							  "Oreos",
+							  "Kit Kats",
+							  "Sprinkles",
+							  "Chocolate Syrup",
+							  "Caramel",
+							  "Strawberry",
+							  "Reese's",
+							  "Whipped Cream" };
+		
+		for (int i = 0; i < flavors.length; i++) {
+			//String bowl = flavors[i] + " and ";
+			
+			// can nest loops just like if statements
+			// will do all iterations of the inner loop, before circling
+			// back around to the outer loop
+			for (int j = 0; j < toppings.length; j++) {
+				String bowl = flavors[i] + " and " + toppings[j];
+//				if (j == 0) {
+//					bowl += toppings[j];
+//				} else {
+//					bowl += ", " + toppings[j];
+//				}
+				
+				System.out.println(bowl);
+			}
+		}
 	}
 	
 	public static void shorterCarPrompt(Scanner input) {
