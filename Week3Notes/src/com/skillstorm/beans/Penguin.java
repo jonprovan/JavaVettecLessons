@@ -30,4 +30,10 @@ public class Penguin extends Bird {
 				" is in the zone. It dances across the land at " + getTopSpeed() + 
 				" mph");
 	}
+	
+	@Override
+	public String toString() {
+		return "I am " + getName() + " and I have the happiest of feet. I can dance at "
+					+ getTopSpeed() + " mph.";
+	}
 }

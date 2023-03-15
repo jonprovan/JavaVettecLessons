@@ -162,9 +162,47 @@ public class Zoo {
 		// final variables cannot be changed
 		//baldilocks.wingspan = "12 feet";
 		
-		EmperorPenguin ceasar = new EmperorPenguin();
-		ceasar.setName("Ceasar");
+		EmperorPenguin ceasar = new EmperorPenguin("Ceasar", "Black", true, false, 282);
+		//ceasar.setName("Ceasar");
 		ceasar.dance(); // final on methods, does not stop inheritance
+		
+		// I can make an array of birds
+		// covariance
+		// through inheritance I can use a common parent class
+		// to generalize methods
+		Bird[] bords = new Bird[6];
+		bords[0] = ceasar; // an emperor penguin is a bird
+		bords[1] = baldilocks; // an bald eagle is a bird
+		bords[2] = micheal; // an penguin is a bird
+		bords[3] = larry; // an bird is a bird
+		bords[4] = steve; // an ostrich is a bird
+		bords[5] = tyrone; // an eagle is a bird
+		
+		viewBirds(bords);
+	}
+	
+	private void viewBirds(Bird[] birds) {
+		// can use any shared methods here, 
+		// java will look atthe underlying type and use that method
+		System.out.println("******* Bird Viewing ********");
+		for (int i = 0; i < birds.length; i++) {
+			System.out.println("******* " + birds[i].getName() + " ********");
+			// system.out.println just calls an object's toString() method
+			System.out.println(birds[i]);
+			birds[i].feed(20);
+			birds[i].flap(15);
+			birds[i].speak();
+			birds[i].migrate();
+			
+			if (birds[i] instanceof Penguin) {
+				// both of the below do the same thing
+				// casts the bird to a penguin and then uses a penguin specific method
+				((Penguin)birds[i]).dance();
+				((Penguin)birds[i]).slide(7);
+//				Penguin temp = (Penguin)birds[i];
+//				temp.dance();
+			}
+		}
 	}
 	
 	// this method is an instance method, it exists on an instance of a Zoo

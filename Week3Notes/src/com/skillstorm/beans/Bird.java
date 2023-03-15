@@ -1,5 +1,6 @@
 package com.skillstorm.beans;
 
+// every class we make extends Object
 public class Bird {
 	// You want to write D.R.Y. code
 	// Don't
@@ -83,5 +84,11 @@ public class Bird {
 	
 	public void setTopSpeed(double topSpeed) {
 		this.topSpeed = topSpeed;
+	}
+	
+	@Override
+	public String toString() {
+		// by default this method just returns the memory location
+		return "I am " + name + ", a " + color + " bird. I can travel at " + topSpeed + " mph.";
 	}
 }
