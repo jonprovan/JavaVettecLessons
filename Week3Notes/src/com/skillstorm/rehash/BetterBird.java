@@ -17,6 +17,11 @@ public class BetterBird extends BetterAnimal {
 	private double topSpeed;
 	private double wingspan;
 	
+	public BetterBird() {
+		// this is a no-args constructor. it takes no arguments
+		birdCount++;
+	}
+	
 	// because I defined this constructor I no longer have a default constructor
 	public BetterBird(String name, boolean fur, double weight, double speed, double wingspan) {
 		this.topSpeed = speed;
@@ -47,7 +52,8 @@ public class BetterBird extends BetterAnimal {
 	}
 	
 	// no setter, so the only way I can change the birdCount is by making a new bird
-	public int getBirdCount() {
+	// this is static so tied to the class
+	public static int getBirdCount() {
 		return birdCount;
 	}
 	
