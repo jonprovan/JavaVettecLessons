@@ -41,7 +41,10 @@ public class BetterBird extends BetterAnimal {
 		System.out.println(getName() + " ate " + amount + " lbs");
 	}
 	
-	public void flap(int times) {
+	// final methods are still inherited and work exactly the same way as
+	// non-final methods. 
+	// Except final methods cannot be overriden
+	public final void flap(int times) {
 		System.out.println(getName() + " flaped " + times + " times! It was glorious");
 	}
 	
