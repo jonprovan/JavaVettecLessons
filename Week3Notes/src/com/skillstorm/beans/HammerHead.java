@@ -1,9 +1,7 @@
 package com.skillstorm.beans;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // interfaces use the implements keyword
+// can implement as many interfaces as I want, they are just comma separated
 public class HammerHead implements Shark {
 	
 	private String name;

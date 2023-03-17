@@ -6,6 +6,9 @@ package com.skillstorm.beans;
 // everything that isnt static in an interface is abstract
 public interface Shark {
 
+	// any variable in an interface is public static final
+	String type = "Fish";
+	
 	// these methods are abstract
 	// they have no implementation
 	// but garanteed every Shark will have an implementation of these
