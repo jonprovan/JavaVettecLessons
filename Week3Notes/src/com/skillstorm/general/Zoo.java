@@ -196,7 +196,7 @@ public class Zoo {
 		
 		// this works because a BlackTip shark is a fish
 		Fish petFish = actualJimbo;
-		// cannot do that with HammerHeads or Goblin sbecause they do not implement
+		// cannot do that with HammerHeads or Goblins because they do not implement
 		// fish. 
 		System.out.println(petFish == actualJimbo);
 		System.out.println(actualJimbo == jimbo);
