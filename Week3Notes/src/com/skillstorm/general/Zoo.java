@@ -4,8 +4,10 @@ import com.skillstorm.beans.BaldEagle;
 import com.skillstorm.beans.Bird;
 import com.skillstorm.beans.Eagle;
 import com.skillstorm.beans.EmperorPenguin;
+import com.skillstorm.beans.HammerHead;
 import com.skillstorm.beans.Ostrich;
 import com.skillstorm.beans.Penguin;
+import com.skillstorm.beans.Shark;
 
 public class Zoo {
 
@@ -94,7 +96,8 @@ public class Zoo {
 		myAnimal.setFur(true);
 		System.out.println(myAnimal.hasFur());
 		
-		phillyZoo.birdExhibit();
+		//phillyZoo.birdExhibit();
+		phillyZoo.sharkExhibit();
 	}
 	
 	public static void buyTickets(int num) {
@@ -103,6 +106,41 @@ public class Zoo {
 		// format is a static method of the String class
 		// static methods are called with the class name, not the instance
 		System.out.println(String.format("That will be $%.2f", amount));
+	}
+	
+	public void sharkExhibit() {
+		// cannot do this
+		// cannot sue an interface to create and interface
+		// interfaces are abstract
+		//Shark mark = new Shark();
+		
+		System.out.println("****** Mark *******");
+		//you need something that implements it
+		// HammerHead is a shark, so it works
+		Shark mark = new HammerHead("Mark", 18, 700, 20, 35);
+		
+		// I have access to any of the methods defined in my interface
+		// every Shark will
+		mark.bite();
+		mark.swim(200);
+		mark.hunt();
+		
+		System.out.println("****** Final Form Mark ******");
+		// I do not have access to HammerHead specific things because 
+		// mark's type is Shark, so mark is a reference to a Shark
+		// it only gives you access to what it can gaurantee exists.
+		// it can only guarantee Shark methods based on the information it's given
+		HammerHead actualMark = (HammerHead)mark;
+		
+		actualMark.setName("True Mark");
+		System.out.println(actualMark.getBiteForce());
+		
+		actualMark.bite();
+		actualMark.swim(200);
+		actualMark.hunt();
+		mark.bite();
+		mark.swim(200);
+		mark.hunt();
 	}
 	
 	public void birdExhibit() {
