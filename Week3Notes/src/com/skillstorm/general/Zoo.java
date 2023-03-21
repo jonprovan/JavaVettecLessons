@@ -105,7 +105,8 @@ public class Zoo {
 		
 		//phillyZoo.birdExhibit();
 		//phillyZoo.sharkExhibit();
-		phillyZoo.rideBike();
+		//phillyZoo.rideBike();
+		phillyZoo.polymorphism();
 	}
 	
 	public static void buyTickets(int num) {
@@ -114,6 +115,73 @@ public class Zoo {
 		// format is a static method of the String class
 		// static methods are called with the class name, not the instance
 		System.out.println(String.format("That will be $%.2f", amount));
+	}
+	
+	// not zoo related. this is the 4th pillar of OOP
+	// polymorphism means many forms
+	// things like our overrides and our overloads
+	// things likes covariance
+	public void polymorphism() {
+		// both of these variables are vehicles and both have a drive method
+		Vehicle bike1 = new Sport("Suzuki", "Hayabusa", "Black", 180, "Medium", false);
+		Vehicle bike2 = new GrandTouring("Suzuki", "Boulevard C50T", "White", 110, "Small", false);
+		
+		// I have overriden vehicle's drive method, so each call prints a different thing
+		// the drive method has many forms (is polymorphic)
+		bike1.drive();
+		bike2.drive();
+		
+		Sport sportBike = (Sport) bike1;
+		sportBike.drive(4);
+		
+		GrandTouring touringBike = new GrandTouring("Suzuki", "Boulevard C50T", "Purple", 110, "Small", false);
+		
+		Vehicle[] myBikes = new Vehicle[4];
+		myBikes[0] = bike1;
+		myBikes[1] = bike2;
+		myBikes[2] = sportBike;
+		myBikes[3] = touringBike;
+		
+		System.out.println("***** Bike Comparisson *****");
+		for (int i = 0; i < myBikes.length; i++) {
+			// Java knows the types, it can check while running, but is not
+			// entirely sure until the code is run
+
+			// returns a true/ false
+			//System.out.println(myBikes[i] instanceof Motorcycle); // another way to check
+			
+			for (int j = myBikes.length - 1; j > -1; j--) {
+				// one way of checking a type
+				System.out.println("Index: " + i + " " + myBikes[i].getClass());
+				System.out.println("Index: " + j + " " + myBikes[j].getClass());
+				
+				// == for objects compares the memory location, which isnt always what we want
+				// .equals is better
+				// by default all of these look at memory locations
+				if (myBikes[i].equals(myBikes[j])) {
+					System.out.println("Same Bike");
+				} else {
+					System.out.println("Different Bike");
+				}
+				System.out.println();
+			}
+		}
+
+		// can compare our object to null
+		Motorcycle temp = null;
+		System.out.println(myBikes[1].equals(temp));
+
+		// cannot compare null to something
+		
+		// the order of a null object does matter,
+		// you cannot call methods on something that is null
+		System.out.println(temp.equals(myBikes[1]));
+		
+		// null is a valid value for non-primitives (objects), but it is
+		// not a valid value for use as far as calling methods or doing
+		// calculations
+		
+		// always do your null checks first
 	}
 	
 	public void rideBike() {

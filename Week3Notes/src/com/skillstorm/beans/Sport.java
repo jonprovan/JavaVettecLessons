@@ -15,6 +15,15 @@ public class Sport extends Motorcycle {
 	public void drive() {
 		System.out.println("Zoom Zoom!");
 	}
+	
+	// a different from of the same method
+	// this is an an overload, but also a part of polymorphism
+	public void drive(int num) {
+		for (int i = 0; i < num; i++) {
+			System.out.print("Vroom! ");
+		}
+		System.out.println();
+	}
 
 	@Override
 	public void park() {
