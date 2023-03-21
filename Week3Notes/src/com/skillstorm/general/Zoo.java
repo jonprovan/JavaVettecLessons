@@ -7,10 +7,14 @@ import com.skillstorm.beans.Eagle;
 import com.skillstorm.beans.EmperorPenguin;
 import com.skillstorm.beans.Fish;
 import com.skillstorm.beans.Goblin;
+import com.skillstorm.beans.GrandTouring;
 import com.skillstorm.beans.HammerHead;
+import com.skillstorm.beans.Motorcycle;
 import com.skillstorm.beans.Ostrich;
 import com.skillstorm.beans.Penguin;
 import com.skillstorm.beans.Shark;
+import com.skillstorm.beans.Sport;
+import com.skillstorm.beans.Vehicle;
 
 public class Zoo {
 
@@ -100,7 +104,8 @@ public class Zoo {
 		System.out.println(myAnimal.hasFur());
 		
 		//phillyZoo.birdExhibit();
-		phillyZoo.sharkExhibit();
+		//phillyZoo.sharkExhibit();
+		phillyZoo.rideBike();
 	}
 	
 	public static void buyTickets(int num) {
@@ -109,6 +114,35 @@ public class Zoo {
 		// format is a static method of the String class
 		// static methods are called with the class name, not the instance
 		System.out.println(String.format("That will be $%.2f", amount));
+	}
+	
+	public void rideBike() {
+		// abstract classes are just like interfaces
+		// they cannot be directly instantiated
+		//Vehicle myCar = new Vehicle();
+		Vehicle myBike = new GrandTouring("Ducati", "Monster", "Red", 190, "Small", false);
+		System.out.println(myBike);
+		// only have access to Vehicle methods and properties because
+		// the data type for myBike is Vehicle
+		myBike.drive();
+		myBike.park();
+		myBike.honk();
+		
+		Vehicle myOtherBike = new GrandTouring("Harley Davidson", "Tri-Glide Ultra", 
+				"Ultra Burnt Orange", 120, "Large", true);
+		System.out.println(myOtherBike);
+		myOtherBike.drive();
+		myOtherBike.park();
+		myOtherBike.honk();
+		
+		Motorcycle myThirdBike = new Sport("Triumph", "Daytona", "Blue", 194, "Medium", true);
+		System.out.println(myThirdBike);
+		// only have access to Motorcycle methods and properties because
+		// the data type for myBike is Motorcycle
+		myThirdBike.drive();
+		myThirdBike.park();
+		myThirdBike.honk();
+		
 	}
 	
 	public void sharkExhibit() {
