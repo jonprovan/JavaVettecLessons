@@ -2,6 +2,8 @@ package com.skillstorm.general;
 
 import java.util.Random;
 
+import com.skillstorm.beans.GrandTouring;
+import com.skillstorm.beans.Motorcycle;
 import com.skillstorm.beans.Sport;
 
 public class WeekFour {
@@ -44,7 +46,42 @@ public class WeekFour {
 		// dont do this, it will kill your program every time
 		//callMe();
 		
-		randomization();
+		//randomization();
+		
+		exceptions();
+	}
+	
+	public static void exceptions() {
+		// exceptions
+		// some unforseen thing happened, something Java does not know how to
+		// recover from. These happen at runtime/ compile time
+		// you can recover from exceptions, but you need to tell Java how
+		// exceptions you can recover from
+		// errors you cannot
+		int var = 0;
+		int result = 5/var; // ArithmeticException
+		
+		// exceptions give you a stack trace
+		// this lets you retrace your steps through the call stack
+		
+		int[] nums = { 2, 3, 5, 6 };
+		nums[5] = 7; // ArrayIndexOutOfBoundException
+		
+		Sport bike = null;
+		bike.setBrand("Ducati"); // NullPointerException
+		
+		Motorcycle bike2 = new Sport("Ducati", "Monster", "Red", 100, "Small", false);
+		// there is a chance any Motorcycle is a GrandTouring because GrandTourings are
+		// Motorcycles
+		GrandTouring bike3 = (GrandTouring)bike2; // ClassCastException
+		
+		// the above exceptions are a part of the java.lang package
+		// the above are all examples of runtime exceptions
+		// runtime exceptions are exceptions that happen when your code runs
+		
+		// every exception stops your code from completing properly
+		// as is, this line is never reached
+		System.out.println("Method finished");
 	}
 	
 	public static void randomization() {
