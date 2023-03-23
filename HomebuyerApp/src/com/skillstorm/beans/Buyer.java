@@ -73,7 +73,9 @@ public class Buyer {
 	
 	// users can view their homes, but cannot delete them
 	public Home[] getHomes() {
-		return this.homes;
+		return this.homes.clone();
+		// dont want to give users the actuall array, want to give them a copy of it
+		//return this.homes;
 	}
 	
 	@Override

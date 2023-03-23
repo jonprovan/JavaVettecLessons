@@ -23,7 +23,7 @@ public class HousingService {
 		int choice = 0;
 		do {
 			System.out.println("What state would you like to purchase a house in?");
-			System.out.println("1. Florida \n2.Texas \n3.New Jersey");
+			System.out.println("1. Florida \n2. Texas \n3. New Jersey");
 			choice = Integer.parseInt(in.nextLine().trim());
 			
 			if (choice < 1 || choice > 3) {

@@ -39,14 +39,34 @@ public class UserService {
 			}
 		} while(cont);
 		
+		// select the new user or existing user based on their choice
 		if (choice == 1) {
 			// new user
-			System.out.println("There are no new users");
-			return null; // objects can be null
+			return newUser(in); // objects can be null
 		} else {
 			// returning user
 			return existingUser(in);
 		}
+	}
+	
+	public Buyer newUser(Scanner in) {
+		System.out.println("I have just a few questions to ask you");
+		System.out.print("What is your name?: ");
+		String name = in.nextLine();
+		
+		System.out.print("What is your email?: ");
+		String email = in.nextLine();
+		
+		System.out.print("What is your phone number?: ");
+		String phoneNumber = in.nextLine();
+		System.out.println("Processing......");
+		
+		// I need to hand a buyer a name, email, and phoneNumber
+		// so i need to ask my user for those things
+		Buyer user = new Buyer(name, email, phoneNumber);
+		System.out.println("Welcome to our service, " + user.getName() + "!");
+		
+		return user;
 	}
 	
 	// this method will grab an existing user and return that
