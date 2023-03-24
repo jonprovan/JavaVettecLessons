@@ -1,5 +1,6 @@
 package com.skillstorm.general;
 
+import java.io.IOException;
 import java.util.Random;
 
 import com.skillstorm.beans.GrandTouring;
@@ -48,7 +49,131 @@ public class WeekFour {
 		
 		//randomization();
 		
-		exceptions();
+		//exceptions();
+		failGracefully();
+	}
+	
+	public static void failGracefully() {
+		// when running your code you want to fail gracefully
+		// your stack trace actually gives potential bad actors important information
+		// about your code
+		// luckily exceptions can be recovered from
+		
+		// you can try-catch statement to handle exceptions
+		// you wrap your risky code inside the try { } and then your error
+		// handling code inside the catch() { } you NEED a catch for every try		
+		
+		//int otherResult = 5 / 0; // only the code inside of a try is protected
+		
+		try {
+			// try to run this
+			int var = 0;
+			int result = 5 / var; // ArithmeticException
+			System.out.println("Math works"); // this will not run if an exception is thrown
+		} catch(ArithmeticException ex) {
+			// if the code above didnt work because of an arithmetic exception run this
+			// need to tell the catch what to look for
+			System.out.println("Someone mathed wrong here");
+		}
+		
+		// scoping applies for a try-catch in the same way it does for an if-else or any
+		// loop we've gone through
+		try {
+			int[] nums = { 2, 4, 6, 1 }; // only exists inside the try
+			nums[5] = 7;
+			System.out.println("updated successfully");
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			// if the code above didnt work because of an ArrayIndexOutOfBoundsException run this
+			//nums[2] = 3; // nums doesnt exist here
+			System.out.println("That was outside the array");
+		}
+
+		// you can look for multiple exceptions
+		try {
+			int val = 0;
+			int[] vals = { 1, 2 };
+			Sport obj = null;
+			
+			//vals[Integer.parseInt((String)obj)] = 3 / val; // NumberFormatException
+			//obj.doWheelie(); // NullPointerException
+			int result = 3 / vals[3]; // ArrayIndexOutOfBoundsException
+			
+		} catch (ArithmeticException ex) {
+			ex.printStackTrace(); // i can use this to have the exception tell me what happened
+			System.out.println("Arithmetic");
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			ex.printStackTrace();
+			
+			// if some exception happens in a catch statement, it still crashes your code
+			//throw new IndexOutOfBoundsException();
+			System.out.println("Array Index");
+		} catch (NullPointerException ex) {
+			ex.printStackTrace();
+			System.out.println("null pointer");
+		} catch (NumberFormatException ex) {
+			ex.printStackTrace();
+			System.out.println("Number format");
+		} catch (Exception ex) {
+			// this is a catch all basically. it needs to be last,
+			// if it is not last it creates unreachable code
+			// the order of the catches matters
+			System.out.println("Catches everything");
+		} 
+		
+		// every exception in Java comes form the Exception class
+		try {
+			int val = 0;
+			int[] vals = { 1, 2 };
+			Sport obj = null;
+			
+			//vals[Integer.parseInt(obj.toString())] = 3 / val; // NumberFormatException
+			//obj.doWheelie(); // NullPointerException
+			int result = 3 / vals[3]; // ArrayIndexOutOfBoundsException
+		} catch(Exception ex) {
+			// i cant get very specific without knowing what the exception is
+			System.out.println("Will always catch an exception");
+		}
+		
+		//moreExceptions();
+		
+		try {
+			moreExceptions2();
+			System.out.println("My code worked!");
+		} catch (IOException ex) {
+			// need to catch an IO exception because that is what I said the method throws
+			System.out.println("My IO Exception: ");
+			ex.printStackTrace();
+		} catch (CloneNotSupportedException ex) {
+			System.out.println("My clone not supported exception: ");
+			ex.printStackTrace();
+		} finally {
+			// you can only have one finally block, and it always runs
+			// any code that needs to happen regardless of if you run successfully or not
+			System.out.println("This runs regardless of what happens");
+		}
+		
+		// all of the above exceptions are runtime exceptions
+		// Java does not know if these occur until your code runs
+		System.out.println("Method finished");
+	}
+	
+	// throws keyword is used to signal other developers that I throw an exception
+	// this creates a checked exception
+	// anything that isnt an error or a runtime exception is checked
+	// can list out multiple exceptions as being thrown by your method
+	public static void moreExceptions2() throws IOException, CloneNotSupportedException {
+		// I can only use the throw keyword with Throwables
+		// Throwable is the parent class of Error and Exception
+		throw new IOException(); //  throw says I want an exception to be thrown
+	}
+	
+	// errors and runtime exceptions are always unchecked
+	public static void moreExceptions() {
+		// the throw keyword is used to throw an exception
+		// even though i wrote this line, Java has no idea it's going to crash
+		// Errors and RuntimeExceptions are unchecked exceptions
+		// Java doesnt look for them and doesnt make sure you know how to handle them
+		throw new IndexOutOfBoundsException(); // RuntimeException
 	}
 	
 	public static void exceptions() {
