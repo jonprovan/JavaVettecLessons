@@ -146,6 +146,9 @@ public class WeekFour {
 		} catch (CloneNotSupportedException ex) {
 			System.out.println("My clone not supported exception: ");
 			ex.printStackTrace();
+		} catch(ImATeapotException ex) {
+			System.out.println("This is a teapot...");
+			ex.printStackTrace();
 		} finally {
 			// you can only have one finally block, and it always runs
 			// any code that needs to happen regardless of if you run successfully or not
@@ -161,10 +164,11 @@ public class WeekFour {
 	// this creates a checked exception
 	// anything that isnt an error or a runtime exception is checked
 	// can list out multiple exceptions as being thrown by your method
-	public static void moreExceptions2() throws IOException, CloneNotSupportedException {
+	public static void moreExceptions2() 
+			throws IOException, CloneNotSupportedException, ImATeapotException {
 		// I can only use the throw keyword with Throwables
 		// Throwable is the parent class of Error and Exception
-		throw new IOException(); //  throw says I want an exception to be thrown
+		throw new ImATeapotException(); //  throw says I want an exception to be thrown
 	}
 	
 	// errors and runtime exceptions are always unchecked

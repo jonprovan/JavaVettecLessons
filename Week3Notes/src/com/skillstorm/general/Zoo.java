@@ -1,5 +1,7 @@
 package com.skillstorm.general;
 
+import java.rmi.server.ServerCloneException;
+
 import com.skillstorm.beans.BaldEagle;
 import com.skillstorm.beans.Bird;
 import com.skillstorm.beans.BlackTip;
@@ -218,97 +220,107 @@ public class Zoo {
 		// cannot sue an interface to create and interface
 		// interfaces are abstract
 		//Shark mark = new Shark();
-		
-		System.out.println("****** Mark *******");
-		//you need something that implements it
-		// HammerHead is a shark, so it works
-		Shark mark = new HammerHead("Mark", 18, 700, 20, 35);
-		
-		// I have access to any of the methods defined in my interface
-		// every Shark will
-		mark.bite();
-		mark.swim(200);
-		mark.hunt();
-		
-		System.out.println("****** Final Form Mark ******");
-		// I do not have access to HammerHead specific things because 
-		// mark's type is Shark, so mark is a reference to a Shark
-		// it only gives you access to what it can gaurantee exists.
-		// it can only guarantee Shark methods based on the information it's given
-		HammerHead actualMark = (HammerHead)mark;
-		
-		actualMark.setName("True Mark");
-		System.out.println(actualMark.getBiteForce());
-		
-		// actualMark and mark refer to the exact same object
-		System.out.println(actualMark);
-		System.out.println(mark);
-		System.out.println(actualMark == mark);
-		
-		actualMark.bite();
-		actualMark.swim(200);
-		actualMark.hunt();
-		mark.bite();
-		mark.swim(200);
-		mark.hunt();
-		
-		System.out.println("***** Eddy ******");
-		Shark eddy = new Goblin("Eddy", 12, 10, 45);
-		
-		eddy.swim(9);
-		eddy.bite();
-		eddy.hunt();
-
-		// the compiler does not pre-check casts, it runs it and finds out if it
-		// works or not during runtime
-		// this cast will fail when it runs because a HammerHead is not a Goblin
-		// but both are sharks
-		//Goblin actualEddy = (Goblin)mark;
-		Goblin actualEddy = (Goblin)eddy;
-		
-		// because Java knows actualEddy is guaranteed to be a Goblin we have
-		// access to Goblin specific methods
-		actualEddy.setName("True Eddy");
-		
-		System.out.println("***** Jimbo ******");
-		Shark jimbo = new BlackTip("Jimbo", 5, 63, 17);
-		
-		jimbo.swim(75);
-		jimbo.bite();
-		jimbo.hunt();
-		
-		BlackTip actualJimbo = (BlackTip)jimbo;
-		
-		actualJimbo.swim(75);
-		actualJimbo.bite();
-		actualJimbo.hunt();
-		
-		Shark[] sharkList = new Shark[3];
-		// I do not need a cast to go from a child class to a parent class
-		// I do need a cast to go from a parent class to a child class
-		sharkList[0] = actualMark;
-		sharkList[1] = actualEddy;
-		sharkList[2] = actualJimbo;
-		
-		
-		System.out.println("****** Shark Bait Hoo HaHa *******");
-		// can use an interface to write my code once and have it work for 
-		// every single Shark that will ever be made, as long as it uses Shark methods
-		sharkBait(sharkList);
-		
-		// this works because a BlackTip shark is a fish
-		Fish petFish = actualJimbo;
-		// cannot do that with HammerHeads or Goblins because they do not implement
-		// fish. 
-		System.out.println(petFish == actualJimbo);
-		System.out.println(actualJimbo == jimbo);
+		try {
+			System.out.println("****** Mark *******");
+			//you need something that implements it
+			// HammerHead is a shark, so it works
+			Shark mark = new HammerHead("Mark", 18, 700, 20, 35);
+			
+			// I have access to any of the methods defined in my interface
+			// every Shark will
+			mark.bite();
+			mark.swim(200);
+			mark.hunt();
+			
+			System.out.println("****** Final Form Mark ******");
+			// I do not have access to HammerHead specific things because 
+			// mark's type is Shark, so mark is a reference to a Shark
+			// it only gives you access to what it can gaurantee exists.
+			// it can only guarantee Shark methods based on the information it's given
+			HammerHead actualMark = (HammerHead)mark;
+			
+			actualMark.setName("True Mark");
+			System.out.println(actualMark.getBiteForce());
+			
+			// actualMark and mark refer to the exact same object
+			System.out.println(actualMark);
+			System.out.println(mark);
+			System.out.println(actualMark == mark);
+			
+			actualMark.bite();
+			actualMark.swim(200);
+			actualMark.hunt();
+			mark.bite();
+			mark.swim(200);
+			mark.hunt();
+			
+			System.out.println("***** Eddy ******");
+			Shark eddy = new Goblin("Eddy", 12, 10, 45);
+			
+			eddy.swim(9);
+			eddy.bite();
+			eddy.hunt();
+	
+			// the compiler does not pre-check casts, it runs it and finds out if it
+			// works or not during runtime
+			// this cast will fail when it runs because a HammerHead is not a Goblin
+			// but both are sharks
+			//Goblin actualEddy = (Goblin)mark;
+			Goblin actualEddy = (Goblin)eddy;
+			
+			// because Java knows actualEddy is guaranteed to be a Goblin we have
+			// access to Goblin specific methods
+			actualEddy.setName("True Eddy");
+			
+			System.out.println("***** Jimbo ******");
+			Shark jimbo = new BlackTip("Jimbo", 5, 63, 17);
+			
+			jimbo.swim(75);
+			jimbo.bite();
+			jimbo.hunt();
+			
+			BlackTip actualJimbo = (BlackTip)jimbo;
+			
+			actualJimbo.swim(75);
+			actualJimbo.bite();
+			actualJimbo.hunt();
+			
+			Shark[] sharkList = new Shark[3];
+			// I do not need a cast to go from a child class to a parent class
+			// I do need a cast to go from a parent class to a child class
+			sharkList[0] = actualMark;
+			sharkList[1] = actualEddy;
+			sharkList[2] = actualJimbo;
+			
+			
+			System.out.println("****** Shark Bait Hoo HaHa *******");
+			// can use an interface to write my code once and have it work for 
+			// every single Shark that will ever be made, as long as it uses Shark methods
+			sharkBait(sharkList);
+			
+			// this works because a BlackTip shark is a fish
+			Fish petFish = actualJimbo;
+			// cannot do that with HammerHeads or Goblins because they do not implement
+			// fish. 
+			System.out.println(petFish == actualJimbo);
+			System.out.println(actualJimbo == jimbo);
+		} catch (ImATeapotException ex) {
+			System.out.println("It's a teapot");
+			ex.printStackTrace();
+		} catch (CloneNotSupportedException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	private void sharkBait(Shark[] sharks) {
 		for (int i = 0; i < sharks.length; i++) {
-			sharks[i].swim(320);
-			System.out.println("There's bait in the water. Hoo HaHa!");
-			sharks[i].hunt();
+			try {
+				sharks[i].swim(320);
+				System.out.println("There's bait in the water. Hoo HaHa!");
+				sharks[i].hunt();
+			} catch (CloneNotSupportedException ex) {
+				ex.printStackTrace(); // never going to run into this
+			}
 		}
 	}
 	

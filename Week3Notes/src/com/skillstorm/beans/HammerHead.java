@@ -1,5 +1,10 @@
 package com.skillstorm.beans;
 
+import java.io.IOException;
+import java.rmi.server.ServerCloneException;
+
+import com.skillstorm.general.ImATeapotException;
+
 // interfaces use the implements keyword
 // can implement as many interfaces as I want, they are just comma separated
 public class HammerHead implements Shark {
@@ -21,22 +26,33 @@ public class HammerHead implements Shark {
 	
 	// i need to implement these 3 methods that are in my interface
 	// or my class will not compile
-	@Override
-	public void swim(double distance) {
+	
+	//I can throw either no exception or an exception that is an CloneNotSupportedException
+	// I can also add in any runtime exception
+	@Override 
+	public void swim(double distance) throws ServerCloneException {
 		System.out.println(name + " is swimming " + ((distance/headSize) * biteForce) 
 							+ " miles at " + speed + " mph.");
 	}
 
+	//I dont need the throws clause when i override something that throws an exception
+	// can't add an uncompatible exceptions in the overriden class
+	// Runtime exceptions are compatible with everything and can be added because they are
+	// unchecked
 	@Override
-	public void bite() {
+	public void bite() throws IndexOutOfBoundsException {
 		System.out.println(name + " bit with the strength of " + biteForce + " N.");
 	}
 
 	@Override
 	public void hunt() {
-		swim((length/headSize) * speed);
-		bite();
-		System.out.println(name + " swims off into the sunset, satisfied.");
+		try {
+			swim((length/headSize) * speed);
+			bite();
+			System.out.println(name + " swims off into the sunset, satisfied.");
+		} catch (ServerCloneException ex) {
+			ex.printStackTrace(); // probably never going to happen here....
+		}
 	}
 
 	// still need to properly encapsulate
