@@ -19,7 +19,119 @@ public class JavaFoundations {
 		
 		//InitTest test = new InitTest();
 		//arrayLists();
-		moreArrayLists();
+		//moreArrayLists();
+		//shortCircuiting();
+		ternaryOperator();
+	}
+	
+	public static void ternaryOperator() {
+		int val;
+		int condition = 6;
+		
+		// if the condition is positive val = 2, else val = 3
+		if (condition % 2 == 0) {
+			val = 2;
+		} else {
+			val = 3;
+		}
+		
+		System.out.println(val);
+		
+		//can do the above with a switch statement
+		val = 0;
+		
+		switch (condition % 2) {
+			case 0:
+				val = 4;
+				break;
+			default: 
+				val = 6;
+				break;
+		}
+		
+		System.out.println(val);
+
+		// ternary operator
+		// condition - is what you're checking (needs to be a boolean)
+		// 		condition is ended by a ?
+		// if true - return the part immediately after the ?. the true ends at the :
+		// if false - return what's after the :
+		val = 0;
+		
+		// is condition % 2 equal to 0?
+		// if yes return 8
+		// if no return 12
+		val = condition % 2 == 0 ? 8 : 12;
+		System.out.println(val);
+		
+		// best used for more straight forward 1-liners
+		System.out.println(condition % 2 == 0 ? true : false);
+		
+		// can nest these. the innermost ? and : are together
+		String result = condition % 2 == 0 
+							? condition % 3 == 0 
+								? condition % 4 == 0 
+									? "Divisible by 4" 
+									: condition % 6 == 0 
+										? "Maybe it's 6" 
+										: "not 6" 
+								: "Not Divisible by 3" 
+							: "Odd number";
+		System.out.println(result);
+		
+		result = condition > 0 && condition < 6 
+					? "Small Number" 
+					: condition <= 0 
+						? "negative" 
+						: "larger number";
+		System.out.println(result);
+		
+		result = condition > 0 && condition < 6 
+					? "Weekday" 
+					: condition <= 0 
+						? "Not a valid day" 
+						: condition > 5 && condition <= 7 
+							? "Weekend" 
+							: "Not a valid day";
+		System.out.println(result);
+	}
+	
+	public static void shortCircuiting() {
+		// an optimization Java has made for processing boolean expressions
+		// Java will only do the evaluations it needs to
+		
+		// A || B:
+		// A == true the whole thing is true
+		// at the point A is true the whole thing is true, so we ignore B
+		
+		// A && B:
+		// A == false the whole thing is false
+		// at the point A is false the whole thing is false, so we ignore B
+		
+		Sedan cyclone = null;
+		int variable = 3;
+		
+		// if you call a method on null your code will crash
+		// cyclone.getMake() will throw a NullPointerException
+		System.out.println(variable == 3 || cyclone.getMake().equals("Cyclone"));
+		
+		// the above is a short-circuit. It sees that variable == 3 and doesnt even look
+		// at the next part, which would throw a NullPointerException
+		
+		// evaluates left to right, the order does matter
+		// always put your null checks first
+		//System.out.println(cyclone.getMake().equals("Cyclone") || variable == 3);
+		
+		// cyclone is null. so it stops looking at the expression right there
+		System.out.println(cyclone != null && cyclone.getMake().equals("Cyclone"));
+		
+		// both of the below throw exceptions, bitwise expressions do not short-circuit
+		// this is still an or, both || and |
+		// this is a bitwise or
+		//System.out.println(variable == 3 | cyclone.getMake().equals("Cyclone"));
+		
+		// this is a bitwise and
+		//System.out.println(cyclone != null & cyclone.getMake().equals("Cyclone"));
 	}
 	
 	public static void moreArrayLists() {
