@@ -22,8 +22,42 @@ public class JavaFoundations {
 		myList.add(1);
 		myList.add(2);
 		myList.add(3);
+		myList.add(4);
+		//myList.add("Car");
 		myList.print();
 		System.out.println("size: " + myList.getSize());
+		
+		System.out.println(myList.get(2));
+		
+		System.out.println("***** Insert Methods *****");
+		myList.insert(2, 5);
+		myList.print();
+		
+		myList.insert(5, 6);
+		myList.print();
+		
+		try {
+			myList.insert(9, 10);
+		} catch(IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
+		}
+		
+		myList.insert(0, 7);
+		myList.print();
+		
+		System.out.println("***** Remove Methods *****");
+		try {
+			myList.remove(20);
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
+		}
+		
+		myList.remove(2);
+		myList.print();
+		
+		System.out.println("***** Set Methods *****");
+		myList.set(4, 9);
+		myList.print();
 	}
 	
 	public static void linkedLists() {

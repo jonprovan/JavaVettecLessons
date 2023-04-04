@@ -44,14 +44,110 @@ public class MyLinkedList<T> { // <> tell Java that this is a Generic
 		}
 	}
 	
+	public T get(int index) {
+		// can't jump to it. have to go through each element
+		
+		if (index >= size || index < 0) {
+			// if the index is greater than the size, it doesnt exist
+			throw new IndexOutOfBoundsException("" + index);
+			// convert the above into a string
+		}
+		
+		Node current = head; // need to start at the beginning
+		
+		for (int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		
+		return current.data;
+	}
+	
+	public void insert(int index, T value) {
+		if (index == size) {
+			// really just inserting something a the end, exactly like my add method does
+			add(value);
+		} else if (index > size || index < 0) {
+			throw new IndexOutOfBoundsException("" + index);
+		} else {
+			if (index == 0) {
+				// adding something to the beginning
+				Node n = new Node(value);
+				n.next = head;
+				head = n;
+				size++;
+			} else {
+				// if im not adding it to the beginning
+				Node n = new Node(value); // my new thing
+				Node current = head;
+				
+				// need to stop before the index I want it at so it adds properly
+				for (int i = 0; i < index-1; i++) {
+					current = current.next;
+				}
+				
+				Node next = current.next;
+				current.next = n;
+				n.next = next;
+				size++;
+			}
+		}
+	}
+	
+	public void set(int index, T value) {
+		if (index >= size || index < 0) {
+			throw new IndexOutOfBoundsException("" + index);
+		} else {
+			Node current = head;
+			
+			for (int i = 0; i < index; i++) {
+				current = current.next;
+			}
+			
+			current.data = value;
+		}
+	}
+	
+	public void remove(int index) {
+		if (index == 0) {
+			// we're removing the first element
+			// our new head is whatever was after head
+			head = head.next;
+			size--;
+		} else if (index >= size || index < 0) {
+			throw new IndexOutOfBoundsException("" + index);
+		} else {
+			Node current = head;
+			
+			for (int i = 0; i < index - 1; i++) {
+				current = current.next;
+			}
+			
+			// the value after, the value after current
+			// ex/ index 1 == current and index 3 == next
+			//     want to remove index 2
+			current.next = current.next.next;
+//			Node newNext = current.next.next;
+//			current.next = newNext;
+			size--;
+		}
+	}
+	
 	public void print() {
 		Node current = head;
 		
+		// print the first element
+		System.out.print("[ " + head.data);
+		current = current.next;
+		
+		// if there are still elements, comma separate them
 		while (current != null) {
 			// null is the end of my linked list
-			System.out.println(current.data);
+			System.out.print(", " + current.data);
 			current = current.next;
 		}
+		
+		// close the output
+		System.out.println(" ]");
 	}
 	
 	// ill keep track of the size
