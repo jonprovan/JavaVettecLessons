@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.skillstorm.beans.MyGeneric;
+import com.skillstorm.beans.MyGeneric2;
 import com.skillstorm.beans.MyLinkedList;
 import com.skillstorm.beans.Sedan;
 import com.skillstorm.beans.Vehicle;
@@ -13,11 +15,54 @@ public class JavaFoundations {
 	public static void main(String[] args) {
 		//staticStuff();
 		//linkedLists();
-		customLinkedList();
+		//customLinkedList();
+		genericClass();
+	}
+	
+	public static void genericClass() {
+		// can hand anything to MyGenericand it works
+		MyGeneric<String> myValue = new MyGeneric<String>("Miles");
+		
+		System.out.println(myValue.getA());
+		
+		MyGeneric<Integer> myValue2 = new MyGeneric<Integer>(10);
+		
+		System.out.println(myValue2.getA());
+		
+		MyGeneric<Float> myValue3 = new MyGeneric<Float>(63.2f);
+		
+		System.out.println(myValue3.getA());
+		
+		ArrayList<String> names = new ArrayList<>();
+		names.add("Jeff");
+		names.add("Blake");
+		
+		MyGeneric<ArrayList<String>> myList = new MyGeneric<ArrayList<String>>(names);
+		
+		System.out.println(myList.getA());
+		
+		// can setup generics that take in multiple values
+		// the types dont matter as long as what i assign to a is always the first type
+		// and what I assign to b is always the second type
+		MyGeneric2<String, Integer> otherValue = new MyGeneric2<String, Integer>("Miles", 12);
+		System.out.println(otherValue.getA());
+		System.out.println(otherValue.getB());
+		
+		MyGeneric2<String, String> otherValue2 = new MyGeneric2<String, String>("Dan", "Pickles");
+		System.out.println(otherValue2.getA());
+		System.out.println(otherValue2.getB());
 	}
 	
 	public static void customLinkedList() {
 		MyLinkedList<Integer> myList = new MyLinkedList<>();
+		// works the same as with Integers
+		MyLinkedList<String> myStrings = new MyLinkedList<>();
+		
+		myStrings.add("Bob");
+		myStrings.add("Joe");
+		myStrings.add("Megan");
+		
+		myStrings.print();
 		
 		myList.add(1);
 		myList.add(2);

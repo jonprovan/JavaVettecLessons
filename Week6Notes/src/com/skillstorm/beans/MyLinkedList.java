@@ -4,7 +4,7 @@ package com.skillstorm.beans;
 // They are a placeholder
 // Generics can be any class, but not a primitive
 public class MyLinkedList<T> { // <> tell Java that this is a Generic
-	// generally denotes by
+	// generally denoted by
 	// T - Type
 	// E - Elements
 	// K - Keys
