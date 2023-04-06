@@ -1,8 +1,12 @@
 package com.skillstorm;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 import com.skillstorm.beans.MyGeneric;
 import com.skillstorm.beans.MyGeneric2;
@@ -16,7 +20,168 @@ public class JavaFoundations {
 		//staticStuff();
 		//linkedLists();
 		//customLinkedList();
-		genericClass();
+		//genericClass();
+		//moreDataStructures();
+		maps();
+	}
+	
+	public static void maps() {
+		// Maps are a data structure that function off key-value pairs
+		// Dictionaries in other languages
+		// Map is an interface just like List, Queue, and Dequeue (Stack)
+		Map<String, String> birthdays = new HashMap<>();
+		
+		// my key is the name, my value is the birthday
+		birthdays.put("Miles", "07/13");
+		birthdays.put("Dan Pickles", "01/12");
+		birthdays.put("Austin", "06/07");
+		
+		// sorts/ finds your keys based on their hashcode
+		System.out.println(birthdays);
+		
+		// must like a list's get, where you search off the index. You can 
+		// search a hashmap by key
+		System.out.println(birthdays.get("Austin"));
+		
+		// can use a loop to print everything in a map's entryset
+		// entrysets implement iterable, maps do not
+		for (Map.Entry<String, String> entry : birthdays.entrySet()) {
+			System.out.printf("Key: %s, Value: %s%n", entry.getKey(), entry.getValue());
+		}
+		
+		// this will return null if nothing is there
+		System.out.println(birthdays.get("Patrick"));
+		System.out.println(birthdays.size());
+		
+		// i can change values in a map
+		birthdays.replace("Dan Pickles", "01/20");
+		System.out.println(birthdays);
+		
+		// does nothing if the key is not present
+		birthdays.replace("Patrick", "05/12");
+		System.out.println(birthdays);
+		
+		// can update values, but not keys
+		birthdays.put("Pan Pickles", "01/12");
+		System.out.println(birthdays);
+		
+		birthdays.remove("Pan Pickles");
+		System.out.println(birthdays);
+		
+		// put overwrites what is there if the key already exists, else it adds it
+		birthdays.put("Miles", "08/18");
+		System.out.println(birthdays);
+		
+		// maps allow duplicates, they just overwrite what was previously there
+		Map<Sedan, Integer> carMileage = new HashMap<>();
+		Sedan car1 = new Sedan();
+		Sedan car2 = new Sedan();
+		Sedan car3 = new Sedan("Black", "Toyota", "Corolla");
+		Sedan car4 = new Sedan("Red", "Honda", "Civic");
+		
+		// if i have a hashcode method then there are 3 cars here, if i dont there are 4
+		carMileage.put(car1, 100000);
+		carMileage.put(car2, 1000);
+		carMileage.put(car3, 124632);
+		carMileage.put(car4, 423190);
+		System.out.println(carMileage);
+		
+		carMileage.put(new Sedan(), 2000);
+		System.out.println(carMileage);
+	}
+	
+	public static void moreDataStructures() {
+		// Stack vs Queue
+		
+		// Similar to a stack of plates
+		// Last In, First Out (LIFO)
+		// Stack is legacy, Java uses the Deque interface
+		// commonly uses a linked list under the hood
+		Deque<String> stack = new LinkedList<>();
+		
+		// you push elements onto a stack
+		stack.push("First");
+		stack.push("Second");
+		stack.push("Third");
+		
+		System.out.println(stack);
+		
+		// if i dont want to print the whole thing
+		// but still want to see what is ontop of my stack
+		System.out.println(stack.peek());
+		
+		// peek does not remove that element
+		System.out.println(stack);
+		
+		// if i want to get the element from the stack
+		String lastElement = stack.pop(); // third
+		System.out.println(lastElement); // removes it from the stack
+		
+		System.out.println(stack);
+		
+		lastElement = stack.pop(); // second
+		System.out.println(lastElement);
+		
+		System.out.println(stack);
+		
+		lastElement = stack.pop(); // first
+		System.out.println(lastElement);
+		
+		System.out.println(stack);
+		
+		stack.push("Another element");
+		
+		System.out.println(stack);
+		
+		stack.pop();
+		
+		// stacks will throw an exception if you pop and there is no element there
+		// NoSuchElementException
+		//stack.pop(); // empty stack here
+		
+		stack.push("Jim");
+		stack.push("Bob");
+		stack.push("Megan");
+		stack.push("Ron");
+		stack.push("Don");
+		stack.push("Dan Pickles");
+		
+		while(stack.peek() != null) { // peek does not remove it
+			int place = stack.size();
+			String name = stack.pop(); // pop removes the element
+			System.out.println(place + ". " + name);
+		}
+		
+		System.out.println("***** Queues *****");
+		// opposite of a stack is a queue, think of a line for a restaurant
+		// First In, First Out (FIFO)
+		// also commonly uses a LinkedList under the hood
+		Queue<String> line = new LinkedList<>();
+		
+		// you push to a stack, not a queue
+		// you offer to a queue
+		line.offer("Dan Pickles");
+		line.offer("Jon");
+		line.offer("Miles");
+		line.offer("Patrick");
+		line.offer("John");
+		line.offer("Erica");
+		
+		System.out.println(line);
+		
+		// stacks use peek to see what the top element is
+		// queues use peek as well
+		System.out.println(line.peek()); // does not remove anything still
+		
+		System.out.println(line);
+		
+		int place = 1;
+		while (line.peek() != null) {
+			// you pop from a stack, but you poll a queue
+			String name = line.poll();
+			System.out.println(place + ". " + name);
+			place++;
+		}
 	}
 	
 	public static void genericClass() {

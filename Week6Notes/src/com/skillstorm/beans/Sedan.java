@@ -1,6 +1,7 @@
 package com.skillstorm.beans;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Sedan extends Vehicle implements Comparable<Sedan> { // replace T with the class name
 
@@ -29,6 +30,18 @@ public class Sedan extends Vehicle implements Comparable<Sedan> { // replace T w
 	@Override
 	public void honk() {
 		System.out.println("Beep Beep");
+	}
+
+	// When you override the equals method, you should also override the hashcode method
+	// hashcode - a unique code that represents an instance of an object
+	// if the equals method says two objects are equal then the hashcode method should
+	// say the same thing
+	@Override
+	public int hashCode() {
+		// they give us a built in way to get a hashcode from our properties
+		// we'll use make and model here because these are the properties we compared
+		// in our equals method
+		return Objects.hash(getMake(), getModel());
 	}
 	
 	// if you want to compare two object for equality
