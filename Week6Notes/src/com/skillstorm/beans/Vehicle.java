@@ -48,6 +48,6 @@ public class Vehicle {
 	
 	@Override
 	public String toString() {
-		return "[Vehicle: " + color + ", " + make + ", " + model + " ]";
+		return "[Vehicle: " + make + ", " + model + " ]";
 	}
 }

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.TreeMap;
 
 import com.skillstorm.beans.MyGeneric;
 import com.skillstorm.beans.MyGeneric2;
@@ -69,25 +70,49 @@ public class JavaFoundations {
 		System.out.println(birthdays);
 		
 		// put overwrites what is there if the key already exists, else it adds it
+		// in the case of duplicate keys it's called a "hashmap collision"
 		birthdays.put("Miles", "08/18");
 		System.out.println(birthdays);
 		
 		// maps allow duplicates, they just overwrite what was previously there
-		Map<Sedan, Integer> carMileage = new HashMap<>();
+		Map<Sedan, Integer> inventory = new HashMap<>();
 		Sedan car1 = new Sedan();
 		Sedan car2 = new Sedan();
 		Sedan car3 = new Sedan("Black", "Toyota", "Corolla");
 		Sedan car4 = new Sedan("Red", "Honda", "Civic");
 		
-		// if i have a hashcode method then there are 3 cars here, if i dont there are 4
-		carMileage.put(car1, 100000);
-		carMileage.put(car2, 1000);
-		carMileage.put(car3, 124632);
-		carMileage.put(car4, 423190);
-		System.out.println(carMileage);
+		inventory.put(car1, 1); // 1 nissan altima
+		inventory.put(car3, 1); // 1 toyota corolla
+		inventory.put(car4, 1); // 1 honda civic
 		
-		carMileage.put(new Sedan(), 2000);
-		System.out.println(carMileage);
+		System.out.println(car1.equals(car2));
+		System.out.println(car1.equals(new Sedan()));
+		System.out.println(car1.hashCode());
+		System.out.println(car2.hashCode());
+		
+		inventory.put(car2, 2); // update nissan altimas to have 2 in stock, not 1
+		// make and model are the key
+		inventory.put(new Sedan("Purple", "Toyota", "Corolla"), 4);
+		System.out.println(inventory);
+		
+		// if i want sorting to happen i can use a TreeMap
+		// Hashmap uses the hash, tree map sorts based on a comparable
+		Map<String, String> sBirthdays = new TreeMap<>();
+		
+		sBirthdays.put("Miles Mixon", "07/13");
+		sBirthdays.put("Dan Pickles", "01/20");
+		sBirthdays.put("Austin Reeves", "06/07");
+		
+		System.out.println(sBirthdays);
+		
+		// HashMaps are unsorted while TreeMaps are sorted. Either based on a comparable or
+		// a comparator
+		Map<Sedan, Integer> sInventory = new TreeMap<>();
+		sInventory.put(car1, 2); // nissan altima
+		sInventory.put(car3, 1); // toyota corolla
+		sInventory.put(car4, 1); // honda civic
+		
+		System.out.println(sInventory);
 	}
 	
 	public static void moreDataStructures() {
