@@ -3,11 +3,15 @@ package com.skillstorm;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import com.skillstorm.beans.MyGeneric;
 import com.skillstorm.beans.MyGeneric2;
@@ -23,7 +27,138 @@ public class JavaFoundations {
 		//customLinkedList();
 		//genericClass();
 		//moreDataStructures();
-		maps();
+		//maps();
+		//sets();
+		multiDimensionalArrays();
+	}
+	
+	public static void multiDimensionalArrays() {
+		int[] lap1 = new int[5]; // normal array
+		int[] lap2 = new int[5];
+		
+		// can do the above for storing lap times in 1 array
+		
+		// this is a 2D array. it is 2 x 5
+		int[][] laps = new int[2][5];
+		/*
+		 * [ 7, 0, 6, 0, 0 ]
+		 * [ 0, 8, 0, 0, 4 ]
+		 */
+		
+		lap1[2] = 6; // with a normal array
+		laps[0][2] = 6; // with a 2D array, change the 2nd index of array 0
+		
+		lap2[1] = 8;
+		laps[1][1] = 8;
+		
+		lap1[0] = 7;
+		laps[0][0] = 7;
+		
+		lap2[4] = 4;
+		laps[1][4] = 4;
+		
+		// for 1 dimensional arrays
+		System.out.print("[ ");
+		for (int i = 0; i < lap1.length; i++) {
+			System.out.print(lap1[i] + ", ");
+		}
+		System.out.println("]");
+		
+		System.out.print("[ ");
+		for (int j = 0; j < lap2.length; j++) {
+			System.out.print(lap2[j] + ", ");
+		}
+		System.out.println("]\n");
+		
+		// for a 2D array, it's a little harder
+		// laps.length = 2
+		// laps[0].length = 5
+		// laps[1].length = 5
+		for (int x = 0; x < laps.length; x++) {
+			// each of my two lengths are the same here
+			System.out.print("[ ");
+			for (int y = 0; y < laps[0].length; y++) {
+				System.out.print(laps[x][y] + ", ");
+			}
+			System.out.println("]");
+		}
+	}
+	
+	public static void sets() {
+		// Sets are a sort of compliment to Maps
+		// Maps allow duplicates
+		// Sets do not allow duplicates
+		// Sets do not allow indexed access
+		
+		Set<String> names = new HashSet<>();
+		names.add("Dan Pickles");
+		names.add("Miles");
+		names.add("Jon");
+		names.add("Erica");
+		names.add("Patrick");
+		names.add("Austin");
+		names.add("Dan Pickles"); // ignores this because it's a duplicate
+		
+		System.out.println(names);
+		System.out.println(names.contains("Dan Pickles"));
+		
+		System.out.println("***** For each *****");
+		// can loop over a hashSet, but cannot access a specific element
+		for (String name : names) {
+			System.out.println(name);
+		}
+		
+		System.out.println("***** Iterator *****");
+		// Iterator, a special class that represents an unchanging set of the values
+		// that I can then loop over
+		Iterator<String> hashSetIterator = names.iterator();
+		// iterators will return null, similar to a LinkedList, so we have to check for that
+		while (hashSetIterator.hasNext()) {
+			// if i can grab the next value without throwing an exception
+			// next() will throw an exception is there is no value to grab
+			String name = hashSetIterator.next(); 
+			System.out.println(name);
+		}
+		
+		// both of the above loops are exactly the same
+		
+		System.out.println("***** Tree Set *****");
+		// a set, but sorted
+		// can use comparable or comparator
+		Set<String> sNames = new TreeSet<>();
+		sNames.add("Dan Pickles");
+		sNames.add("Miles");
+		sNames.add("Jon");
+		sNames.add("Erica");
+		sNames.add("Patrick");
+		sNames.add("Austin");
+		sNames.add("Dan Pickles");
+		
+		System.out.println(sNames);
+		
+		Sedan car1 = new Sedan();
+		Sedan car2 = new Sedan();
+		Sedan car3 = new Sedan("Black", "Toyota", "Corolla");
+		Sedan car4 = new Sedan("Red", "Honda", "Civic");
+		
+		System.out.println("\n***** Inventory with Comparable *****");
+		Set<Sedan> sInventory = new TreeSet<>();
+		sInventory.add(car1); // Blue Nissan Altima
+		sInventory.add(car2); // Blue Nissan Altima
+		sInventory.add(car3); // Black Toyota Corolla
+		sInventory.add(car4); // Red Honda Civic
+		
+		System.out.println(sInventory);
+		
+		System.out.println("\n***** Inventory with Comparator *****");
+		Sedan.SedanColorComparator2 comparator = new Sedan.SedanColorComparator2();
+		Set<Sedan> cInventory = new TreeSet<>(comparator);
+		cInventory.add(car1); // Blue Nissan Altima
+		cInventory.add(car2); // Blue Nissan Altima
+		cInventory.add(car3); // Black Toyota Corolla
+		cInventory.add(car4); // Red Honda Civic
+		
+		System.out.println(cInventory);
 	}
 	
 	public static void maps() {
@@ -105,6 +240,7 @@ public class JavaFoundations {
 		
 		System.out.println(sBirthdays);
 		
+		System.out.println("\n**** Inventory with Comparable****");
 		// HashMaps are unsorted while TreeMaps are sorted. Either based on a comparable or
 		// a comparator
 		Map<Sedan, Integer> sInventory = new TreeMap<>();
@@ -113,6 +249,15 @@ public class JavaFoundations {
 		sInventory.put(car4, 1); // honda civic
 		
 		System.out.println(sInventory);
+		
+		System.out.println("\n**** Inventory with Comparator ****");
+		Sedan.SedanColorComparator2 comparator = new Sedan.SedanColorComparator2();
+		Map<Sedan, Integer> cInventory = new TreeMap<>(comparator);
+		cInventory.put(car1, 2); // blue nissan altima
+		cInventory.put(car3, 1); // black toyota corolla
+		cInventory.put(car4, 1); // red honda civic
+		
+		System.out.println(cInventory);
 	}
 	
 	public static void moreDataStructures() {
