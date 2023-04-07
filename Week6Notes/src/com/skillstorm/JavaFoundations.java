@@ -82,6 +82,154 @@ public class JavaFoundations {
 			}
 			System.out.println("]");
 		}
+		
+		// 3 x 4 array
+		int[][] nums = new int[3][4];
+		/*
+		 * [ 1, 2, 3, 4 ]
+		 * [ 5, 6, 7, 8 ]
+		 * [ 9, 10, 11, 12 ]
+		 */
+		System.out.println();
+		int count = 1; // the number im on
+		// need to loop through all my rows
+		for (int row = 0; row < nums.length; row++) {
+			// need to loop through every column
+			for (int column = 0; column < nums[0].length; column++) {
+				nums[row][column] = count; 
+				count++;
+			}
+		}
+		
+		// to print them out is the same as above
+		for (int row = 0; row < nums.length; row++) {
+			System.out.print("[ ");
+			for (int column = 0; column < nums[0].length; column++) {
+				System.out.print(nums[row][column] + " ");
+			}
+			System.out.println("]");
+		}
+		
+		// jagged arrays
+		// only the first dimension is required for multidimensional arrays
+		int[][] jaggedNums = new int[4][];
+		/*
+		 * []
+		 * []
+		 * []
+		 * []
+		 */
+		
+		// I can manually define different sizes at a later point
+		// jaggedNums is an array of arrays that hold ints
+		jaggedNums[0] = new int[3];
+		jaggedNums[1] = new int[5];
+		jaggedNums[2] = new int[1];
+		jaggedNums[3] = new int[3];
+		/*
+		 * [ 1, 2, 3 ]
+		 * [ 4, 5, 6, 7, 8 ]
+		 * [ 9 ]
+		 * [ 10, 11, 12 ]
+		 */
+		
+		System.out.println();
+		//if i want to assign these have to be a bit more creative
+		count = 1;
+		// still need to iterate through every row
+		for (int row = 0; row < jaggedNums.length; row++) {
+			// but now the number of columns changes every time, potentially
+			// now i need to ask each row for it's length
+			for (int column = 0; column < jaggedNums[row].length; column++) {
+				jaggedNums[row][column] = count;
+				count++;
+			}
+		}
+		
+		// if i want to print them, its the same as above
+		// still need to iterate through every row
+		for (int row = 0; row < jaggedNums.length; row++) {
+			System.out.print("[ ");
+			// but now the number of columns changes every time, potentially
+			// now i need to ask each row for it's length
+			for (int column = 0; column < jaggedNums[row].length; column++) {
+				System.out.print(jaggedNums[row][column] + " ");
+			}
+			System.out.println("]");
+		}
+		
+		// a 3D array, can keep adding dimensions, but it stops being particularly useful
+		// after 3 dimensions (there are only 3 dimensions we know of)
+		// cannot have a blank [] and then a [] with a number in it
+		// this is a 3 x 3 x 2 array
+		int[][][] thirdDimension = new int[3][3][2];
+		
+		// if i want to print a 3D array, I need 3 loops
+		
+		// can use a foreach loop same as with other arrays
+		// loop through each elemnt in our 3 x 4 array nums
+		System.out.println("\n***** Foreach Nums *****");
+		for (int[] row : nums) {
+			// each element in nums is an array of ints
+			System.out.print("[ ");
+			for (int value : row) {
+				// row is itself an array, that holds an int
+				System.out.print(value + " ");
+			}
+			System.out.println("]");
+		}
+		
+		// loop through each element in our jagged array
+		System.out.println("\n***** Foreach Jagged Array *****");
+		for (int[] row : jaggedNums) {
+			System.out.print("[ ");
+			for (int value : row) {
+				System.out.print(value + " ");
+			}
+			System.out.println("]");
+		}
+		
+		// I can define the starting values for an array like this
+		int[] arrayLiteral = { 3, 45, 6, 3 };
+		int[] arrayLiteral2 = new int[] { 3, 45, 6, 3 };
+		
+		// Can do the same with multi-dimensional arrays
+		// this is a 3 x 3 array
+		int[][] arrayLiteral2D = { { 1, 3, 4 }, { 2, 6, 7 }, { 5, 6, 82 } };
+		int[][] arrayLiteral2D2 = new int[][] { { 1, 3, 4 }, { 2, 6, 7 }, { 5, 6, 82 } };
+		
+		// all of these are valid ways to declare an array
+		int array[] = new int[3];
+		int array2[][] = new int[3][];
+		int[] array3[] = new int[3][];
+		
+		System.out.println("\n***** 3D array *****");
+		// 2 x 3 x 2 array
+		int[][][] array3D = { 
+								{ 
+									{1, 2}, 
+									{1, 2}, 
+									{1, 2} 
+								}, 
+								{ 
+									{1, 2}, 
+									{1, 2}, 
+									{1, 2} 
+								} 
+							};
+		
+		// if i were to print it
+		for (int row = 0; row < array3D.length; row++) {
+			System.out.println("[");
+			for (int column = 0; column < array3D[row].length; column++) {
+				System.out.print("    [ ");
+				for (int depth = 0; depth < array3D[row][column].length; depth++) {
+					System.out.print(array3D[row][column][depth] + " ");
+				}
+				System.out.println("]");
+			}
+			System.out.println("]");
+		}
 	}
 	
 	public static void sets() {
