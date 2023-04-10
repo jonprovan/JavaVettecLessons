@@ -14,6 +14,11 @@ public class Sedan extends Vehicle implements Comparable<Sedan> { // replace T w
 		
 		// first line has to be either this() or super(). the this() replaces the super
 		this("Blue", "Nissan", "Altima"); // refers to my constructor on line 20
+		this.setColorV2(Color.BLUE);
+	}
+	
+	public Sedan(Color color, String make, String model) {
+		super(color, make, model);
 	}
 	
 	// Java always uses the super() keyword in your constructors
@@ -41,7 +46,7 @@ public class Sedan extends Vehicle implements Comparable<Sedan> { // replace T w
 		// they give us a built in way to get a hashcode from our properties
 		// we'll use make and model here because these are the properties we compared
 		// in our equals method
-		return Objects.hash(getMake(), getModel());
+		return Objects.hash(getMake(), getModel(), getColor());
 	}
 	
 	// if you want to compare two object for equality
@@ -57,7 +62,8 @@ public class Sedan extends Vehicle implements Comparable<Sedan> { // replace T w
 		
 		Sedan other = (Sedan)obj;
 		return this.getMake() == other.getMake() && 
-				this.getModel() == other.getModel();
+				this.getModel() == other.getModel() && 
+				this.getColor() == other.getColor();
 	}
 	
 	// now if i  want to be able to order object (say one is > or < another object)

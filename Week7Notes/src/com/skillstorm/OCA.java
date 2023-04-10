@@ -5,11 +5,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.skillstorm.beans.Sedan;
+import com.skillstorm.beans.Vehicle.Color;
 
 public class OCA {
 
 	public static void main(String[] args) {
-		multiDimensionalLists();
+		//multiDimensionalLists();
+		enumTypes();
+	}
+	
+	public static void enumTypes() {
+		// enums are their own type, similar to how boolean, int, etc are their own types
+		// they also function very simialrly to classes though most do not use them as
+		// a class
+		Sedan car1 = new Sedan(Color.BLACK, "Toyota", "Camry");
+		
+		System.out.println(car1);
+		
+		// purple is not a value we defines, cannot change to it
+		//car1.setColorV2(Color.PURPLE);
+		//System.out.println(Color.valueOf("PURPLE"));
+		//System.out.println(Color.valueOf("Blue")); // spelling does matter
+		System.out.println(Color.valueOf("BLUE"));
 	}
 	
 	public static void multiDimensionalLists() {
@@ -66,6 +83,7 @@ public class OCA {
 		
 		System.out.println(nissanInventory);
 		
+		System.out.println("\n***** Add to Inventory *****");
 		// to add in a new list of cars, for a new type of vehicle
 		ArrayList<Sedan> sentras = new ArrayList<>();
 		sentras.add(new Sedan("Orange", "Nissan", "Sentra"));
@@ -80,6 +98,7 @@ public class OCA {
 		
 		System.out.println(nissanInventory);
 		
+		System.out.println("\n***** Update Model Name *****");
 		// I want to update the model to be "Altima v2"
 		System.out.println(nissanInventory.get("Altima"));
 		
@@ -91,5 +110,46 @@ public class OCA {
 		}
 		
 		System.out.println(nissanInventory.get("Altima"));
+		
+		System.out.println("\n***** Update Colors *****");
+		System.out.println(nissanInventory);
+		// we want to update the colors in our inventory
+		// Blue -> Sea Stone
+		// Red -> Fiery Crimson
+		// Orange -> Deep Autumn
+		// White -> Pearl Egg Shell
+		// Green -> Tropical Emerald
+		// Maps are not iterable but Sets are, a foreach loop needs an iterable
+		// Maps have an "entry set" which is a set of each key-value pair
+		for (Map.Entry<String, ArrayList<Sedan>> entry : nissanInventory.entrySet()) {
+			// the value for each entry is an arraylist that holds sedans
+			for (Sedan car : entry.getValue()) {
+				String color = car.getColor(); // so i only need to ask for this once
+				
+				// to lower case so that i dont need to worry about the case
+				switch (color.toLowerCase()) { 
+					case "blue":
+						car.setColor("Sea Stone");
+						break;
+					case "red":
+						car.setColor("Fiery Crimson");
+						break;
+					case "orange":
+						car.setColor("Deep Autumn");
+						break;
+					case "white":
+						car.setColor("Pearl Egg Shell");
+						break;
+					case "green":
+						car.setColor("Tropical Emerald");
+						break;
+					case "black":
+						car.setColor("Obsidian");
+						break;
+				}
+			}
+		}
+		
+		System.out.println(nissanInventory);
 	}
 }
