@@ -4,14 +4,45 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.skillstorm.beans.PickupTruck;
 import com.skillstorm.beans.Sedan;
+import com.skillstorm.beans.Truck;
 import com.skillstorm.beans.Vehicle.Color;
 
 public class OCA {
 
 	public static void main(String[] args) {
 		//multiDimensionalLists();
-		enumTypes();
+		//enumTypes();
+		//test1Review();
+		
+		A o1 = new OCA().new C();
+		B o2 = (B) o1;
+		System.out.println(o1.m1()); // methods look at the physical object
+		System.out.println(o2.i); // fields look at the reference type
+		
+		interfaces();
+	}
+	
+	public static void interfaces() {
+		PickupTruck truck1 = new PickupTruck();
+		
+		truck1.tow("boat");
+		truck1.tow("sedan", 4.5);
+		
+		Truck.haul(5, "boat");
+		
+	}
+	
+	class A { int i = 10; int m1() { return i; } }
+	class B extends A { int i = 20; int m1() { return i; } }
+	class C extends B { int i = 30; int m1() { return i; } }
+	
+	public static void test1Review() {
+		String str = "123".intern();
+		long m = Long.valueOf(str);
+		
+		
 	}
 	
 	public static void enumTypes() {
