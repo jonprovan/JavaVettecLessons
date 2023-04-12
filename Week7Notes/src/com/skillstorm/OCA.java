@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.skillstorm.beans.PickupTruck;
+import com.skillstorm.beans.Recursion;
 import com.skillstorm.beans.Sedan;
+import com.skillstorm.beans.Sorting;
 import com.skillstorm.beans.Truck;
 import com.skillstorm.beans.Vehicle.Color;
 
@@ -16,12 +18,77 @@ public class OCA {
 		//enumTypes();
 		//test1Review();
 		
-		A o1 = new OCA().new C();
-		B o2 = (B) o1;
-		System.out.println(o1.m1()); // methods look at the physical object
-		System.out.println(o2.i); // fields look at the reference type
+//		A o1 = new OCA().new C();
+//		B o2 = (B) o1;
+//		System.out.println(o1.m1()); // methods look at the physical object
+//		System.out.println(o2.i); // fields look at the reference type
 		
-		interfaces();
+		//interfaces();
+		//recursionExamples();
+		sorting();
+	}
+	
+	public static void sorting() {
+		int[] nums = { 12, 3, 7, 2, 20 };
+		
+		Sorting mySort = new Sorting();
+		
+		System.out.println("***** Bubble Sort *****");
+		mySort.print(nums);
+		mySort.bubbleSort(nums);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println();
+		nums = new int[]{ 7, 12, 22, 43, 1, 16, 2, 45, 62, 3, 29, 77, 32 };
+		mySort.print(nums);
+		mySort.bubbleSort(nums);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println("\n\n***** Insertion Sort *****");
+		nums = new int[]{ 12, 3, 7, 2, 20 };
+		mySort.print(nums);
+		mySort.insertionSort(nums);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println();
+		nums = new int[]{ 7, 12, 22, 43, 1, 16, 2, 45, 62, 3, 29, 77, 32 };
+		mySort.print(nums);
+		mySort.insertionSort(nums);
+		System.out.print("Final: ");
+		mySort.print(nums);
+	}
+	
+	public static void recursionExamples() {
+		Recursion recursive = new Recursion();
+		
+		//recursive.recurse(); // stack over flow
+		
+		System.out.println("***** Recursive *****");
+		System.out.println(recursive.sum(20));
+		System.out.println(recursive.sum(50));
+		System.out.println(recursive.sum(77));
+		
+		// print first 10 numbers of sequence
+		for (int i = 0; i < 50; i++) {
+			System.out.print(recursive.fibonacci(i) + " ");
+		}
+		
+		System.out.println();
+		System.out.println("\n***** Iterative *****");
+		
+		System.out.println(recursive.iterativeSum(20));
+		System.out.println(recursive.iterativeSum(50));
+		System.out.println(recursive.iterativeSum(77));
+		
+		// print first 10 numbers of sequence
+		for (int i = 0; i < 50; i++) {
+			System.out.print(recursive.iterativeFibonacci(i) + " ");
+		}
+		
+		System.out.println();
 	}
 	
 	public static void interfaces() {
