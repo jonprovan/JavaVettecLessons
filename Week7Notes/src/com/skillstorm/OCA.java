@@ -59,6 +59,20 @@ public class OCA {
 		mySort.insertionSort(nums);
 		System.out.print("Final: ");
 		mySort.print(nums);
+		
+		System.out.println("\n\n***** Quick Sort *****");
+		nums = new int[]{ 12, 3, 7, 2, 20 };
+		mySort.print(nums);
+		mySort.quicksort(nums, 0, nums.length - 1);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println();
+		nums = new int[]{ 7, 12, 22, 43, 1, 16, 2, 45, 62, 3, 29, 77, 32 };
+		mySort.print(nums);
+		mySort.quicksort(nums, 0, nums.length - 1);
+		System.out.print("Final: ");
+		mySort.print(nums);
 	}
 	
 	public static void recursionExamples() {

@@ -2,6 +2,50 @@ package com.skillstorm.beans;
 
 public class Sorting {
 
+	// repetitive operation, so i made it a method
+	private void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	// need a method for finding our partition
+	// partition is where the sorting happens, it puts all of the low values on one side and 
+	// the high values on the other
+	private int partition(int[] arr, int low, int high) {
+		// we use the last index as a pivot, and sort based on that pivot
+		int pivot = arr[high];
+		int i = low - 1; // swap marker
+		
+		System.out.println("Pivot: " + pivot + ", Low: " + arr[low]);
+		
+		for (int j = low; j <= high - 1; j++) { // j is our current index
+			// if the current value is less than the pivot
+			if (arr[j] < pivot) {
+				i++;
+				swap(arr, i, j);
+			}
+			print(arr);
+		}
+		// swap our pivot and whatever our swap marker is
+		swap(arr, i + 1, high);
+		print(arr);
+		return i + 1;
+	}
+	
+	//need a method for the actual quicksort
+	public void quicksort(int[] arr, int low, int high) {
+		// want to loop through this as long as our low index is < our high index
+		if (low < high) {
+			// partition is going to up all our low values on one side and high values on the other
+			int partitionIndex = partition(arr, low, high);
+			
+			// splits the array in half at the partition
+			quicksort(arr, low, partitionIndex - 1);
+			quicksort(arr, partitionIndex + 1, high);
+		}
+	}
+	
 	public void insertionSort(int[] arr) {
 		int length = arr.length;
 		// you search a value and everything below that value
