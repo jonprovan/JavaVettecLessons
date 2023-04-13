@@ -36,6 +36,8 @@ public class Sorting {
 	//need a method for the actual quicksort
 	public void quicksort(int[] arr, int low, int high) {
 		// want to loop through this as long as our low index is < our high index
+		// when the high and low values are the same thing the length is 1, so we stop
+		// this is our base case
 		if (low < high) {
 			// partition is going to up all our low values on one side and high values on the other
 			int partitionIndex = partition(arr, low, high);
