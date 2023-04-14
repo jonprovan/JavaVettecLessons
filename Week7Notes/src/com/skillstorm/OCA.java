@@ -1,8 +1,18 @@
 package com.skillstorm;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 import com.skillstorm.beans.PickupTruck;
 import com.skillstorm.beans.Recursion;
@@ -12,7 +22,7 @@ import com.skillstorm.beans.Truck;
 import com.skillstorm.beans.Vehicle.Color;
 
 public class OCA {
-
+	
 	public static void main(String[] args) {
 		//multiDimensionalLists();
 		//enumTypes();
@@ -25,7 +35,125 @@ public class OCA {
 		
 		//interfaces();
 		//recursionExamples();
-		sorting();
+		//sorting();
+		//dates();
+		lambdas();
+	}
+	
+	public static void lambdas() {
+		// uses what is called a lambda,
+		// lambda is an anonymous method denoted by -> 
+		List<String> names = Arrays.asList("Tim", "Jim", "Joe", "Dan", "Sam", "Ron");
+		
+		// what type does it take in?
+		// lambdas can take in 0 or more parameters, and then execute some code
+		// predicates use lambda syntax, but they must return a boolean
+		Predicate<List<String>> danPresent = strs -> strs.contains("Miles");
+		
+		// for lambdas I can include any amount of code, but if its a one liner I dont
+		// need curly braces
+		Predicate<List<String>> danPresent2 = strs -> { 
+			System.out.println("Method 2!");
+			return strs.contains("Dan"); 
+		};
+			
+		// you use the test() method to kick off a predicate
+		System.out.println(danPresent.test(names));
+		System.out.println(danPresent2.test(names));
+		
+		// if i have no arguments I can just give it ()
+		// I can use a Supplier to run some function and return some value
+		// need to tell it that value
+		// randomNumber returns a Double
+		Supplier<Double> randomNumber = () -> Math.random();
+		
+		System.out.println(randomNumber.get()); // get returns a value
+		System.out.println(randomNumber.get()); 
+		System.out.println(randomNumber.get()); 
+	}
+	
+	/* Line 47 is equivalent to
+	 * public boolean _(List<String> strs) {
+	 * 		return strs.contains("Dan");
+	 * }
+	 * 
+	 * Line 68 is equivalent to
+	 * public Double _() {
+	 * 		return Math.random();
+	 * }
+	 */
+	
+	public static void dates() {
+		// in Java, and most languages Dates and Time are their own data type
+		// Java has a Date data type but most of it is deprecated in favor of LocalDate
+		
+		// Dates are immutable
+		Date today = new Date(); // what this does is get the current time
+		
+		System.out.println(today);
+		System.out.println(today.getTime()); // based off 1970, so not the most useful
+		
+		System.out.println();
+		System.out.println("******** Local Date *******");
+		// preferred is LocalDate
+		// no constructor that we can access for LocalDate
+		//LocalDate localToday = new LocalDate();
+		LocalDate localToday = LocalDate.now(); // this makes a new local date
+		System.out.println(localToday); 
+		
+		System.out.println(localToday.getDayOfMonth());
+		System.out.println(localToday.isLeapYear());
+		System.out.println(localToday.getDayOfWeek());
+		
+		// same as Strings
+		LocalDate twoDays = localToday.plusDays(2); // need to save the value or i cant reference it
+		
+		System.out.println(localToday); // Dates are immutable
+		System.out.println(twoDays);
+		System.out.println(twoDays.minusMonths(4));
+		System.out.println(twoDays);
+		
+		// Date and DateTime are slightly different
+		// one includes the time and one doesnt
+		// LocalDate has no time
+		
+		System.out.println();
+		System.out.println("******** Local Date Time *******");
+		// no public constructor for this too
+		LocalDateTime todayTime = LocalDateTime.now();
+		System.out.println(todayTime); // right of the T is the time, left is the date
+		
+		LocalDateTime twoWeeks = todayTime.plusWeeks(2);
+		System.out.println(twoWeeks);
+		
+		// if you want to change how you date prints, you use a DateTimeFormatter
+		DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a");
+		System.out.println(todayTime.format(myFormat));
+		System.out.println(twoWeeks.format(myFormat));
+		
+		DateTimeFormatter myFormat2 = DateTimeFormatter.ofPattern("hh:mm a MM/dd/yyyy");
+		System.out.println(todayTime.format(myFormat2));
+		System.out.println(twoWeeks.format(myFormat2));
+		
+		// cannot do this
+		// no really way to add dates together
+		//System.out.println(twoWeeks - todayTime);
+		System.out.println(twoWeeks.isAfter(todayTime));
+		
+		// periods represent a length of time in days, months, years
+		System.out.println(Period.between(localToday, twoDays));
+		System.out.println(Period.between(localToday.minusYears(1), twoDays.plusMonths(2)));
+		
+		Duration duration1 = Duration.ZERO;
+		duration1 = duration1.plusDays(40);
+		
+		Duration duration2 = Duration.ZERO;
+		duration2 = duration1.plusDays(4);
+		duration2 = duration2.plusHours(4);
+		
+		System.out.println(duration1);
+		System.out.println(duration2);
+		System.out.println(Duration.between(todayTime.minusYears(1), twoWeeks.plusMonths(2)));
 	}
 	
 	public static void sorting() {
@@ -71,6 +199,20 @@ public class OCA {
 		nums = new int[]{ 7, 12, 22, 43, 1, 16, 2, 45, 62, 3, 29, 77, 32 };
 		mySort.print(nums);
 		mySort.quicksort(nums, 0, nums.length - 1);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println("\n\n***** Merge Sort *****");
+		nums = new int[]{ 12, 3, 7, 2, 20 };
+		mySort.print(nums);
+		mySort.mergeSort(nums, 0, nums.length - 1);
+		System.out.print("Final: ");
+		mySort.print(nums);
+		
+		System.out.println();
+		nums = new int[]{ 7, 12, 22, 43, 1, 16, 2, 45, 62, 3, 29, 77, 32 };
+		mySort.print(nums);
+		mySort.mergeSort(nums, 0, nums.length - 1);
 		System.out.print("Final: ");
 		mySort.print(nums);
 	}

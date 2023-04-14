@@ -2,6 +2,88 @@ package com.skillstorm.beans;
 
 public class Sorting {
 
+	private void merge(int[] arr, int left, int mid, int right) {
+		// need to find the size for both of our arrays that we want to merge
+		int leftSize = mid - left + 1;
+		int rightSize = right - mid;
+		
+		// create out new arrays
+		int[] leftArray = new int[leftSize];
+		int[] rightArray = new int[rightSize];
+		
+		// copy our data over
+		for (int i = 0; i < leftSize; i++) {
+			// data for the left array
+			// need to move past our leftmost index as we progress
+			// left + i [when i == 0] == left-most index
+			leftArray[i] = arr[left + i];
+		}
+		
+		for (int j = 0; j < rightSize; j++) {
+			// data for the right array
+			// right side starts from 1 past the mid point
+			rightArray[j] = arr[mid + 1 + j];
+		}
+		
+		System.out.print("Left -> ");
+		print(leftArray);
+		System.out.print("Right -> ");
+		print(rightArray);
+		
+		// now we merge them together
+		int l = 0, r = 0; // initial indexes of both
+		
+		// index where we want to start adding these in our original array
+		int oIndex = left; 
+		
+		while (l < leftSize && r < rightSize) {
+			// add the values in
+			if (leftArray[l] <= rightArray[r]) {
+				// if our left array value is smaller, or equal then insert it
+				arr[oIndex] = leftArray[l];
+				l++;
+			} else {
+				arr[oIndex] = rightArray[r];
+				r++;
+			}
+			oIndex++;
+		}
+		
+		// if there is anything left in either array
+		while (l < leftSize) {
+			arr[oIndex] = leftArray[l];
+			l++;
+			oIndex++;
+		}
+		
+		while (r < rightSize) {
+			arr[oIndex] = rightArray[r];
+			r++;
+			oIndex++;
+		}
+		
+		System.out.print("Merged -> ");
+		print(arr); // the entire array wont change, but the pieces we rearranged will
+	}
+	
+	// the sorting piece, this will break my array up
+	public void mergeSort(int[] arr, int left, int right) {
+		// left-most index, right-most index
+		// and the array
+		if (left < right) { // my base case
+			//if left is not less than right then length is not 1
+			// find our mid point index
+			int mid = (left + (right - 1)) / 2;
+			
+			// break up those two halves further
+			mergeSort(arr, left, mid); // first half
+			mergeSort(arr, mid + 1, right); // our second half
+			
+			// once they are just one element in size
+			merge(arr, left, mid, right);
+		}
+	}
+	
 	// repetitive operation, so i made it a method
 	private void swap(int[] arr, int i, int j) {
 		int temp = arr[i];
@@ -103,6 +185,6 @@ public class Sorting {
 		for (int val : arr) {
 			System.out.print(val + " ");
 		}
-		System.out.println(" ]");
+		System.out.println("]");
 	}
 }
