@@ -120,12 +120,12 @@ public class OCA {
 		System.out.println(betterAction.action("Dan Pickles", 1, 34.6));
 	}
 	
-	/* Line 47 is equivalent to
+	/* Line 62 is equivalent to
 	 * public boolean _(List<String> strs) {
 	 * 		return strs.contains("Dan");
 	 * }
 	 * 
-	 * Line 68 is equivalent to
+	 * Line 79 is equivalent to
 	 * public Double _() {
 	 * 		return Math.random();
 	 * }
