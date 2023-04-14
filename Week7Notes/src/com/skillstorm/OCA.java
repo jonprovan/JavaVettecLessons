@@ -11,9 +11,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
+import com.skillstorm.beans.BetterInterface;
+import com.skillstorm.beans.MyInterface;
 import com.skillstorm.beans.PickupTruck;
 import com.skillstorm.beans.Recursion;
 import com.skillstorm.beans.Sedan;
@@ -40,6 +44,13 @@ public class OCA {
 		lambdas();
 	}
 	
+	// OOP is a programming paradigm where we have Classes/ Objects that maintain state and
+	// behavior as our data, this has what we call "side effects"
+	
+	// functional programming is a paradigm where you build your programs with expressions
+	// and functions with no side effects
+	
+	// Predicates, Suppliers, Function, Consumer are all Functional Interfaces
 	public static void lambdas() {
 		// uses what is called a lambda,
 		// lambda is an anonymous method denoted by -> 
@@ -70,6 +81,43 @@ public class OCA {
 		System.out.println(randomNumber.get()); // get returns a value
 		System.out.println(randomNumber.get()); 
 		System.out.println(randomNumber.get()); 
+		
+		// it takes in a value and does not return anything
+		// does something with that value
+		Consumer<String> printName = str -> System.out.println(str);
+		
+		for(String name : names) {
+			printName.accept(name);
+		}
+		
+		// takes in a value and returns a value
+		// only takes in 2 values
+		// first input is the parameter type
+		// second input is the return
+		Function<String, String> func = first -> first.concat(" Pickles");
+		
+		for (String name : names) {
+			System.out.println(func.apply(name));
+		}
+		
+		// if I have one abstract method that needs to be implemented, I can implement
+		// it on the fly
+		MyInterface myAction = () -> System.out.println("Doing the action!!!");
+		myAction.action();
+		
+		MyInterface myAction2 = () -> System.out.println("Doing the action????");
+		myAction2.action();
+		
+		// lambdas can take in multiple values
+		// return types are also fine
+		BetterInterface betterAction = (name, i, d) -> {
+//			System.out.print(name + " ");
+//			System.out.print(i + " ");
+//			System.out.print(d);
+			return name + " " + i + " " + d;
+		};
+		
+		System.out.println(betterAction.action("Dan Pickles", 1, 34.6));
 	}
 	
 	/* Line 47 is equivalent to
