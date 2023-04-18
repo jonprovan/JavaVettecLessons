@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MyFileReader {
 
@@ -22,6 +24,7 @@ public class MyFileReader {
 	// 	 	file. Absolute paths always work no matter where you are in your file system
 	private final String txtFile = "C:\\Skillstorm\\JavaVettecLessons\\Week8Notes\\src\\MyAwesomeFile.txt";
 	private final String txtFile2 = "C:\\Skillstorm\\JavaVettecLessons\\Week8Notes\\src\\MyAwesomeFile2.txt";
+	private final String csvFile = "C:\\Skillstorm\\JavaVettecLessons\\Week8Notes\\src\\MyCSV.csv";
 	
 	public void readFile() {
 		// what I want to do is just read the file and display the text to the user
@@ -137,7 +140,7 @@ public class MyFileReader {
 		// BufferedWriter creates the file if it doesnt exist, and overwrites it if it does
 		// by default it overwrites, but if i set append to be true, then it doesnt
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(txtFile2, true))) {
-			// if the file does not xist, this creates it and writes to it
+			// if the file does not exist, this creates it and writes to it
 			bw.write("My New Text for my new file\n");
 			bw.newLine();
 			bw.write("Some more text for good measure");
@@ -155,4 +158,50 @@ public class MyFileReader {
 	
 	// what if i want to read from excel/ any CSV
 	// what if i want to create a CSV?
+	// CSV = Comma Separated Values
+	public List<Person> readCSV() {
+		List<Person> people = new LinkedList<>();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+			String line;
+			
+			// if there is a header row of some sort
+			line = br.readLine(); // this is the header row, the first thing in the file
+			
+			while ((line = br.readLine()) != null) {
+				// CSV is a comma separated value file
+				// I know the delimiters (the comma) and I know what order the data is in
+				// because I have the file infront of me
+				String[] vals = line.split(",");
+				
+				// first thing is the name
+				// second thing is the age
+				// third thing is the hair color
+				// every time
+				Person record = new Person(vals[0].trim(), Integer.parseInt(vals[1].trim()), 
+						vals[2].trim());
+				
+				people.add(record);
+			}
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		
+		return people;
+	}
+	
+	public void writeCSV(List<Person> people, String path) {
+		File file = new File(path); 
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+			for(Person p : people) {
+				bw.write(p.getName() + "," + p.getAge() + "," + p.getHairColor());
+				bw.newLine();
+			}
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
