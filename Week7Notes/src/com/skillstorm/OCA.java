@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -118,6 +119,14 @@ public class OCA {
 		};
 		
 		System.out.println(betterAction.action("Dan Pickles", 1, 34.6));
+		
+		method(a -> System.out.println(a));
+		
+		Consumer<Integer> myConsumer = a -> System.out.println(a);
+	}
+	
+	public static void method(Consumer<Integer> test) {
+		
 	}
 	
 	/* Line 62 is equivalent to
