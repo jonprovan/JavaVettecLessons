@@ -15,16 +15,43 @@ class Sub extends Super {
 	static {
 		System.out.println("In sub");
 	}
+	
+	class SubSub {
+		
+	}
 }
 
 public class Program {
-
+	
+	static int[] x = new int[0];
+	
+	// static initializer blocks that throw an exception wrap it in an 
+	// ExceptionInInitializerError, but in a non static block it throws the actual
+	// exception
+//	static {
+//		x[0] = 10;
+//	}
+	
 	public static void main(String[] args) {
+		//Program test = new Program();
+		//Sub.SubSub test = new Sub().new SubSub();
 		//fileIO();		
 		//testStuff();
-		threading();
+		//threading();
 		
-		System.out.println("Program is done");
+		//System.out.println("Program is done");
+		
+		int i = 0; 
+		
+		i++; // 1
+		System.out.println(i); // prints 1
+		System.out.println(i++); // prints 1
+		System.out.println(i); // prints 2
+		
+		++i; // 3
+		System.out.println(i); // prints 3
+		System.out.println(++i); // prints 4
+		System.out.println(i); // prints 4
 	}
 	
 	public static void threading() {
