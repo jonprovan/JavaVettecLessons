@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.skillstorm.beans.BankAccount;
+import com.skillstorm.beans.BankAccount2;
+import com.skillstorm.beans.LongRunningThread;
 import com.skillstorm.beans.MyCounter;
 import com.skillstorm.beans.MyCounter2;
 import com.skillstorm.beans.NumHolder;
@@ -23,16 +25,16 @@ public class Program {
 	public static void main(String[] args) {
 		//factorialAssignment();
 		//threads();
-		//threadSafety();
-		bankAccounts();
+		threadSafety();
+		//bankAccounts();
 		
 		System.out.println("Main method finished");
 	}
 	
 	public static void bankAccounts() {
-		BankAccount act1 = new BankAccount(100);
-		BankAccount act2 = new BankAccount(100);
-		BankAccount act3 = new BankAccount(100);
+		BankAccount2 act1 = new BankAccount2(100);
+		BankAccount2 act2 = new BankAccount2(100);
+		BankAccount2 act3 = new BankAccount2(100);
 		
 		Person p1 = new Person("Dan Pickles", act1);
 		Person p2 = new Person("John Doe", act2); // joint account
@@ -64,10 +66,10 @@ public class Program {
 			for (int i = 0; i < 3; i++) {
 				// for random, its out random * (high - low) + low
 				double val = Math.random() * (50.50 - 20.50) + 20.50;
-				p.add(val);
+				p.add2(val);
 				Thread.sleep(3000);
 				val = Math.random() * (50.50 - 20.50) + 20.50;
-				p.withdraw(val);
+				p.withdraw2(val);
 			}
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
@@ -126,6 +128,43 @@ public class Program {
 		}
 		
 		System.out.println("X: " + num.x);
+		
+		/*
+		 * Threads give some useful methods
+		 * 
+		 * sleep(): enters a timed waiting
+		 * wait(): enters a waiting state
+		 * notify(): returns a single waiting thread to runnable
+		 * nofityAll(): returns all waiting threads to runnable
+		 * interrupt(): tells one thread to stop what it's doing
+		 */
+		
+		Thread longThread = new Thread(() -> {
+			try {
+				// thread runs some long task
+				Thread.sleep(1200000000);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+		});
+		//LongRunningThread longThread = new LongRunningThread();
+		
+		longThread.start();
+		longThread.interrupt();
+//		while (true) {
+//			if (longThread.getValue() == 3) {
+//				longThread.interrupt();
+//				break;
+//			}
+//		}
+		
+		try {
+			longThread.join();
+		} catch (InterruptedException ex) {
+			System.out.println("Join interrupted");
+		}
+		
+		System.out.println("Back to the main thread");
 	}
 	
 	public static void threads() {
