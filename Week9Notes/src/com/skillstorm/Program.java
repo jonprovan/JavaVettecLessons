@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.skillstorm.beans.BankAccount;
 import com.skillstorm.beans.BankAccount2;
-import com.skillstorm.beans.LongRunningThread;
 import com.skillstorm.beans.MyCounter;
 import com.skillstorm.beans.MyCounter2;
 import com.skillstorm.beans.NumHolder;
@@ -147,16 +146,10 @@ public class Program {
 				ex.printStackTrace();
 			}
 		});
-		//LongRunningThread longThread = new LongRunningThread();
 		
 		longThread.start();
+
 		longThread.interrupt();
-//		while (true) {
-//			if (longThread.getValue() == 3) {
-//				longThread.interrupt();
-//				break;
-//			}
-//		}
 		
 		try {
 			longThread.join();
