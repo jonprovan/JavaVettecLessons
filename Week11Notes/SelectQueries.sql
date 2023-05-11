@@ -114,4 +114,52 @@ SELECT * FROM track WHERE Composer = 'Green day' OR Composer = 'pearl jam';
 SELECT * FROM track WHERE Composer = "Green Day" OR Composer = "Pearl Jam";
 # SQL will match the string characters exactly, not case sensitive, but spelling matters
 
+SELECT InvoiceDate, CustomerId, BillingAddress FROM invoice;
+
+SELECT * FROM invoice WHERE CustomerId = 47;
+
+# Select statements retrieve, but never change, data
+# No matter how many statements you run, or what select statement you run, the table is never changed
+SELECT * FROM invoice WHERE total > 4.00;
+
+# You can use an order by clause to re-order the data that is returned
+# Order by can use two more keywords and those are ASC and DESC
+# ASC - Ascending order
+# DESC - Descending order
+SELECT * FROM invoice WHERE total > 4.00 ORDER BY total DESC;
+
+SELECT * FROM invoice WHERE BillingCountry = 'USA' ORDER BY BillingState; 
+
+# Can order by multiple things, the leftmost takes the most precedence
+SELECT * FROM invoice WHERE BillingCountry = 'USA' AND Total > 3.00 ORDER BY BillingState, Total; 
+
+# Orders by the BillingState, then BillingCity, then Total
+SELECT * 
+FROM invoice 
+WHERE BillingCountry = 'USA' AND Total > 3.00 
+ORDER BY BillingState, BillingCity, Total; 
+
+# Can use wild cards to select in the case of being unsure of spelling
+# Or to pattern match
+# two main wildcards you use to match strings
+# 	% means any number of characters, the placement does matter
+#   _ mean any one character, the placement does matter
+# To search/ pattern match on Strings you use the LIKE keyword
+SELECT * FROM track WHERE Composer LIKE '%Steven Tyler%';
+# The above says select every column from track where the composer has 'Steven Tyler' in it
+# '%Word%' means i want to find Word with any number of characters before or after it
+
+# Grab every column from track where composer has 'Joe Perry' somewhere in the name
+SELECT * FROM track WHERE Composer LIKE '%Joe Perry%';
+
+#Grab every column from track where composer starts with the letter A
+SELECT * FROM track WHERE Composer LIKE 'A%' ORDER BY Composer;
+
+# Grab every column from track where the second character of composer is C
+SELECT * FROM track WHERE Composer LIKE '_C%' ORDER BY Composer DESC;
+
+SELECT Name, AlbumId, Composer from Track;
+SELECT AlbumId, Name,  Composer from Track;
+
+
 
