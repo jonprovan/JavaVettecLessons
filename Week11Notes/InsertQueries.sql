@@ -135,3 +135,15 @@ VALUES
     (5, 'Shaggy', 'Rogers', 'Brown', '1969-07-10', 'B+', 'English', 5),
     (6, 'Jonathan', 'Provan', 'Brown', '1985-09-20', 'A-', 'English', 2),
     (7, 'Sabine', 'Wren', 'Purple', '4135-10-21', 'O+', 'Spanish', 6);
+
+INSERT INTO movies 
+	(Title, ReleaseYear, Genre, Rating, GrossProfit, Cost, Runtime, ReviewScore)
+VALUES ('47 Ronin', 2013, 'Action', 'PG-13', 151800000.00, 225000000.00, 118, 6.2);
+
+INSERT INTO SamuraiBattles
+VALUES 
+	(1, 2), (1, 5), (2, 1),(1, 1), (2, 3), (4, 5),
+    (4, 4), (3, 1), (5, 5), (6, 5), (7, 3), (8, 2),
+    (9, 1), (7, 4), (8, 1), (9, 5), (9, 4), (9, 3),
+    (6, 2), (2, 2);
+

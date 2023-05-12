@@ -161,5 +161,11 @@ SELECT * FROM track WHERE Composer LIKE '_C%' ORDER BY Composer DESC;
 SELECT Name, AlbumId, Composer from Track;
 SELECT AlbumId, Name,  Composer from Track;
 
+SELECT * FROM movies;
 
+# the = sign is looking for an exact match -> any title that is e% exactly
+# The like is used with pattern matching to make the _ and % wildcards
+SELECT * FROM movies WHERE Title LIKE '_e%';
+
+SELECT * FROM samurai WHERE SamuraiId >= 3 AND SamuraiId <= 6;
 
