@@ -10,6 +10,8 @@ VALUES
     ('BY7WN9P9', 'Boat', 'Mobile', 1990, 'Invisible', 2, 'Invisible', 80000.00, 100, 1),
     ('BNED6435W', 'Lincoln', 'Futura', 1955, 'Black', 2, 'Bat',	250000.00, 200, 3);
 
+SELECT * FROM vehicles;
+
 # How would we use related tables/ data
 
 # In order to grab related information you use a JOIN
@@ -24,3 +26,27 @@ SELECT * FROM people LEFT JOIN vehicles ON people.PersonId = vehicles.OwnerId;
 
 # In a LEFT JOIN you get everything from the left table, and if there is no match in the
 # right table you get null
+
+# The same statement as above, but with a different ordering of columns
+SELECT 
+	First, Last, HairColor, Birthday, BloodType, FirstLanguage, Job, PersonId, 
+    OwnerId, VIN, Make, Model, Year, Color, Doors, Trim, Price, TopSpeed
+FROM people LEFT JOIN vehicles
+ON PersonId = OwnerId;
+
+# Same as above, but with less columns being returned
+SELECT
+	PersonId, First, Last, Make, Model, Year, Color
+FROM people LEFT JOIN vehicles
+ON PersonId = OwnerId;
+
+# Grab every person and their job information
+SELECT * FROM people LEFT JOIN positions ON Job = JobId;
+
+-- RIGHT JOIN
+# Grabs everything in the right table and any matches on the left
+# Same as with left joins, if there are no matches, it returns null
+SELECT * FROM people RIGHT JOIN vehicles ON PersonId = OwnerId;
+
+SELECT * FROM vehicles RIGHT JOIN people on PersonId = OwnerId;
+

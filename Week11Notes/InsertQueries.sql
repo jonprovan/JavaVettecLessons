@@ -115,7 +115,7 @@ VALUES
     ('Norway', 'Oslo', 'Norway', 4650.00, 'Air Canada', 'Business Plus', 'Skiing', 'Norwegian', '2023-03-01', '2023-03-10'),
     ('Jakarta', 'Jakarta', 'Indonesia', 7634.00, 'Frontier', 'Economy Plus', 'Jungles, Ruins', 'Indonesian', '2023-06-03', '2023-06-06');
 
-# Since the other columns in this tbale are nullable, I do not need to insert them
+# Since the other columns in this table are nullable, I do not need to insert them
 INSERT INTO positions
 	(JobId, Title)
 VALUES
