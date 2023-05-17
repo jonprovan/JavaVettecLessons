@@ -10,6 +10,8 @@
                 2. No Partial Dependencies - No columns are determined by only one part of the 
 											 primary key
         - 3rd Normal Form (3NF):
+				1. 2NF
+                2. No Transitive Dependencies - No columns dependent on a non-key value
 */
 
 # Add data into languages, attractions, destinationlanguages, and locationattractions
