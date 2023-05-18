@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Skillstorm</groupId>
+  <artifactId>MavenNotes</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- This is an xml file, it is very similar to html -->
+  <!-- 
+  	this is a comment  
+  -->
+  
+  <!-- Project Coordinates : what identifies our project
+  	   1. GroupId - your organization
+  	   2. ArtifactId - your project name
+  	   3. Version - the version number of the project (major.minor.incremental)
+   -->
+   <!-- The pom.xml is your configuration file for Maven and your project
+   		It tells your code what dependencies it needs and which versions of those
+   		dependencies it needs
+   		
+   		Maven is focused on accomplishing a few main tasks:
+   			- Managing your project dependencies
+   			- Provides build automation 
+   				- It uses this file to do that (pom.xml is Maven's configuration file)
+   				- the pom.xml also represents your entire project (Project Object Model)
+   		
+   		Maven will check for dependencies in 3 places. in order they are:
+   			1. Local Repository - your computer (Default location: <user>/.m2/repository)
+   			2. Private Remote Repository (If one exists)
+   			3. Public Remote Repository (Maven Central: https://mvnrepository.com/)
+   				- Anything it grabs in any of these steps it saves in the local repository
+   				
+   		Maven follows a build life cycle. The life cycle uses goals and stages:
+ 		
+ 		The stages are more of phases. They are the individual steps you want to run.
+ 		It runs these in order, but i can tell it where I would like it to stop
+ 			1. Validate - validates that it's a proper project
+ 			2. Compile - compiles the project
+ 			3. Test - runs your unit tests
+ 			4. Package - creates your JAR file
+ 			5. Verify - runs your integration tests
+ 			6. Install - installs the package locally
+ 			7. Deploy - copy the package to a remote repository
+ 			
+ 		Goals are bound to these stages and represent which of these stages we would like to run
+ 		They are specific tasks
+ 			- maven build
+ 			- maven package
+ 			- maven install
+ 			- etc
+ 		they run any stages that lead up to that goal
+ 		
+ 		By default your Maven projects are running Java 5, but we are running Java 8. To change this
+ 		you can either use the project properties, or you use the pom.xml
+ 		
+ 		Need to tell Maven to re-grab dependencies whenever you change the pom.xml
+   	-->
+   	<properties>
+   		<maven.compiler.source>1.8</maven.compiler.source>
+   		<maven.compiler.target>1.8</maven.compiler.target>
+   	</properties>
+   	
+  
+</project>
