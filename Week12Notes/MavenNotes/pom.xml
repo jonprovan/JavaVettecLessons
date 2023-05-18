@@ -60,5 +60,16 @@
    		<maven.compiler.target>1.8</maven.compiler.target>
    	</properties>
    	
+   	<!-- all of your dependencies from mvn central go inside of these dependencies tags -->
+   	<dependencies>
+   		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.13.1</version>
+		    <scope>test</scope>
+		</dependency>
+   		
+   	</dependencies>
   
 </project>
