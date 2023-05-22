@@ -98,12 +98,17 @@ public class Movie {
 	}
 	
 	// check if there is time to watch the movie
-	
+	public boolean isTime(int minutes) {
+		return this.runtime <= minutes;
+	}
 	
 	// compare genre
-	
+	public boolean isGenre(String genre) {
+		return this.genre.toLowerCase().contains(genre.toLowerCase());
+	}
 	
 	// compare review scores
-	
-	
+	public boolean compareReviews(Movie other) {
+		return this.score > other.getScore();
+	}
 }
