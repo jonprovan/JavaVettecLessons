@@ -17,6 +17,7 @@ public class AlbumService {
 	private AlbumRepository repo;
 	
 	// we can write extensions of (or simple duplications of) repository methods
+	// as it stands, this one has no additional functionality over the repo method
 	public Iterable<Album> getAll() {
 		return repo.findAll();
 	}

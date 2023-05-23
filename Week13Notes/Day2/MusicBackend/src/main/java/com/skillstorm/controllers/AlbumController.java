@@ -12,9 +12,11 @@ import com.skillstorm.services.AlbumService;
 @RestController
 // what URL gets us to this controller?
 @RequestMapping("/album")
+// which request sources are allowed? * = all
 @CrossOrigin(origins = "*")
 public class AlbumController {
 	
+	// this means make this resource automatically available wherever it's needed
 	@Autowired
 	private AlbumService service;
 	
