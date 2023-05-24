@@ -82,6 +82,7 @@ Create packages for different types of file (optional but recommended)
 - right-click on the src/main/java folder, then New > Package
 - type the reverse-domain name and click Finish
 
+*** check GitHub models for how the below classes look in practice ***
 
 Create a model for your data
 - a Java class in your models package, right-click on the package, then New > Class
@@ -89,16 +90,35 @@ Create a model for your data
 - structure mimics the corresponding record in your database
 - create it as a regular Java class
 - then annotate it to "map" it to the database record
-- check GitHub models for how this looks in practice
 
 Create a repository for that model
 - a Java interface in your repositories package, right-click on the package, then New > Interface
 - make it extend CrudRepository
 - for the types, use <Model, Integer> (the model you just created)
+- give it the annotation @Repository before the interface declaration
 
 Create a service (optional) for that repository
 
 Create a controller for that service/repository
+- a Java class in your controllers package, right-click on the package, then New > Class
+- need the annotations for RestController, RequestMapping, CrossOrigin before the class declaration
+- Autowire in your repo or service using the Autowired annotation
+- create your methods and map them (GetMapping, PostMapping, etc.) to the URLs the user will enter
+
+RESTART YOUR SPRING BOOT SERVER if you want to see any of these changes!
+Test your endpoint(s) to see if you're getting the proper results (Postman, browser, etc.)
 
 
-Test your endpoint(s) to see if you're getting the proper results
+
+
+
+
+
+
+
+
+
+
+
+
+
