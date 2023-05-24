@@ -1,0 +1,104 @@
+SPRING BOOT SETUP GUIDE
+
+Create a Spring project
+- in the IDE
+	- File > New > Spring Starter Project
+	- update all fields in the dialog box
+	- give it a name
+	- update the location where it will live on your system
+	- Type: Maven, Java Version: 8, Packaging: Jar, Language: Java
+	- Group is your company, Artifact is your project name
+	- ignore Version
+	- Description is optional
+	- package is up to you
+
+	- click Next, then include your dependencies
+	- definitely need MySQL Driver, Spring Data JPA, Spring Web (can add others now or later)
+
+	- click Finish and check that everything showed up!
+
+- or using Spring Initializr online (http://start.spring.io)
+	- same settings as above
+	- click Preview to look at what you're going to get
+	- or click Generate to create the project and download it
+	- extract the ZIP and move the project folder wherever you want
+	- in Eclipse, File > Open Projects From File System...
+	- select the folder where the project lives and click Finish
+
+
+Maintain any additional dependencies
+- add them to the pom.xml file
+- make sure you add the <dependency></dependency> tag INSIDE the <dependencies></dependencies> tag
+
+
+Update the Maven compiler version
+- add it to the pom.xml file
+- your <properties></properties> tag should look like this:
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+Update your Maven project
+- right-click on the pom.xml file, choose Maven > Update Project...
+- make sure yours is checked and click OK
+
+
+Set up your application.properties (src/main/resources/application.properties)
+- database URL, username, password, SQL Driver, etc.
+- it should look something like this (UPDATE FIELDS TO MATCH YOUR PROJECT!!):
+
+# this tells our app how to treat the database structure, "none" means it won't change it
+spring.jpa.hibernate.ddl-auto=none
+
+# this is your datasource, i.e., where your database lives and how we're connecting to it
+spring.datasource.url=jdbc:mysql://localhost:3306/schemaname
+
+# this is your MySQLWorkbench username for this database
+spring.datasource.username=yourmysqlusername
+
+# this is your MySQLWorkbench password for this username
+spring.datasource.password=yourmysqlpassword
+
+# this is telling the system which driver to use for the datasource
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+
+
+Check to see if everything runs clean at this point
+- open the Boot Dashboard with the green hexagon (look in the toolbar, to the left of the regular "Run" arrow)
+- open up "local" in the Dashboard
+- right-click on your new server in the Dashboard and select (Re)start
+- check for errors in the console
+
+
+Create packages for different types of file (optional but recommended)
+- models
+- repositories
+- services (also optional)
+- controllers
+- right-click on the src/main/java folder, then New > Package
+- type the reverse-domain name and click Finish
+
+
+Create a model for your data
+- a Java class in your models package, right-click on the package, then New > Class
+- NAME SHOULD BE EXACTLY THE SAME AS YOUR DATABASE TABLE!!
+- structure mimics the corresponding record in your database
+- create it as a regular Java class
+- then annotate it to "map" it to the database record
+- check GitHub models for how this looks in practice
+
+Create a repository for that model
+- a Java interface in your repositories package, right-click on the package, then New > Interface
+- make it extend CrudRepository
+- for the types, use <Model, Integer> (the model you just created)
+
+Create a service (optional) for that repository
+
+Create a controller for that service/repository
+
+
+Test your endpoint(s) to see if you're getting the proper results
