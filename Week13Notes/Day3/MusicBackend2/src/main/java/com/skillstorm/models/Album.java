@@ -1,5 +1,7 @@
 package com.skillstorm.models;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -106,6 +108,20 @@ public class Album {
 	public String toString() {
 		return "Album [albumId=" + albumId + ", title=" + title + ", artist=" + artist + ", genre=" + genre + ", label="
 				+ label + ", trackCount=" + trackCount + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Album other = (Album) obj;
+		return albumId == other.albumId && Objects.equals(artist, other.artist) && Objects.equals(genre, other.genre)
+				&& Objects.equals(label, other.label) && Objects.equals(title, other.title)
+				&& trackCount == other.trackCount;
 	}
 
 }

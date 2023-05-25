@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,23 +75,63 @@ public class AlbumController {
 	
 	
 	// this is an endpoint for POST requests to, in our case, http://localhost:8080/album 
+//	@PostMapping
+//	// you can add HTTP status codes to inform your user what happened (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+//	@ResponseStatus(code = HttpStatus.CREATED)
+//	public Album addAlbum(@RequestBody Album album) {
+//		return repo.save(album);
+//	}
+	
 	@PostMapping
-	// you can add HTTP status codes to inform your user what happened (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Album addAlbum(@RequestBody Album album) {
-		return repo.save(album);
+	public ResponseEntity<String> addAlbum(@RequestBody Album album) {
+		if (repo.existsById(album.getAlbumId())) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + album.getAlbumId() + " already exists!");
+		} else {
+			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + repo.save(album).getAlbumId() + " has been inserted.");
+		}
 	}
 	
 	
 	// an endpoint for deleting a specific album via its ID
 	// same PathVariable system as our getAlbumById method
+//	@DeleteMapping("/{id}")
+//	// the deleteById repo method returns void, so we use a 204 (No Content) status and don't need a return type
+//	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+//	public void deleteAlbum(@PathVariable int id) {
+//		repo.deleteById(id);
+//	}
+	
+	// bad practice to do it this way -- you don't want your user to just delete records by typing in a URL
 	@DeleteMapping("/{id}")
-	// the deleteById repo method returns void, so we use a 204 (No Content) status and don't need a return type
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteAlbum(@PathVariable int id) {
-		repo.deleteById(id);
+	// a ResponseEntity is a way to build an HttpReponse where we can assign different statuses and content for different results
+	// the type of the RE is whatever we want to put in the body
+	public ResponseEntity<String> deleteAlbumByPathId(@PathVariable int id) {
+		// checking if the record with the given id exists in the database
+		if (repo.existsById(id)) {
+			// if so, delete the record
+			repo.deleteById(id);
+			// and build out a RE with the correct status and body
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Album with id of " + id + " was successfully deleted.");
+		} else {
+			// otherwise, build a different one
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id of " + id + " does not exist!");
+		}
 	}
 	
+	// this deletes an object sent in the request body
+	@DeleteMapping
+	// returning REs because we have different possible results; taking in the Album from the body
+	public ResponseEntity<String> deleteAlbumByBodyContent(@RequestBody Album album) {
+		// checking that the record with the given id exists AND that it's fully equal to the sent album
+		// .equals() method overridden in Album model!!
+		if (repo.findById(album.getAlbumId()).isPresent() &&
+				album.equals(repo.findById(album.getAlbumId()).get())) {
+			repo.delete(album);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Album sent was successfully deleted.");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album sent does not exist!");
+		}
+	}
 	
 	
 	
