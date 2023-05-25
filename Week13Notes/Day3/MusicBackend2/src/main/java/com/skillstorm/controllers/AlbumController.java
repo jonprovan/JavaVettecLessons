@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,10 +86,55 @@ public class AlbumController {
 	
 	@PostMapping
 	public ResponseEntity<String> addAlbum(@RequestBody Album album) {
+		// if the record with that id already exists, don't overwrite it
 		if (repo.existsById(album.getAlbumId())) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + album.getAlbumId() + " already exists!");
+		// if it doesn't, add a new one
 		} else {
 			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + repo.save(album).getAlbumId() + " has been inserted.");
+		}
+	}
+	
+	
+	// this is an endpoint for updating an existing record
+	@PutMapping("/{id}")
+	public ResponseEntity<String> updateAlbum(@PathVariable int id,
+											  @RequestParam(name = "title", required = false) String title,
+											  @RequestParam(name = "artist", required = false) String artist,
+											  @RequestParam(name = "genre", required = false) String genre,
+											  @RequestParam(name = "label", required = false) String label,
+											  @RequestParam(name = "trackCount", required = false) String trackCount) {
+		
+		if(repo.findById(id).isPresent()) {
+			
+			// save current record to a temp object
+			Album temp = repo.findById(id).get();
+			
+			// check for null and insert RequestParams into the temp object
+			if(title != null) {
+				temp.setTitle(title);
+			}
+			
+			if(artist != null) {
+				temp.setArtist(artist);
+			}
+			
+			if(genre != null) {
+				temp.setGenre(genre);
+			}
+			
+			if(label != null) {
+				temp.setLabel(label);
+			}
+			
+			if(trackCount != null) {
+				temp.setTrackCount(Integer.valueOf(trackCount));
+			}
+			// return the correct RE while saving the updated record
+			return ResponseEntity.status(HttpStatus.OK).body("Album with id " + repo.save(temp).getAlbumId() + " has been updated.");
+			
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + id + " does not exist!");
 		}
 	}
 	
