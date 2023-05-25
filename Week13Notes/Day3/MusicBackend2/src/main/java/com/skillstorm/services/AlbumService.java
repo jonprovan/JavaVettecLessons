@@ -1,0 +1,26 @@
+package com.skillstorm.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.skillstorm.models.Album;
+import com.skillstorm.repositories.AlbumRepository;
+
+// this is a service class for pre-processing data before the actual repo requests
+
+@Service
+public class AlbumService {
+	
+	@Autowired
+	private AlbumRepository repo;
+	
+	public Album artistCheck(Album album) {
+		
+		if (album.getArtist().length() > 45) {
+			album.setArtist(album.getArtist().substring(0, 42) + "...");
+		}
+		
+		return repo.save(album);
+	}
+
+}

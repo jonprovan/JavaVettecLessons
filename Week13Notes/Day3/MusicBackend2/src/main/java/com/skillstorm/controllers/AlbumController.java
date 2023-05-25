@@ -1,5 +1,6 @@
 package com.skillstorm.controllers;
 
+import java.util.LinkedList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Album;
 import com.skillstorm.repositories.AlbumRepository;
+import com.skillstorm.services.AlbumService;
 
 // this class is the front line for communication into and out of your API
 // HTTP requests come in from the front end, HTTP Responses are sent back to the front end
@@ -34,6 +36,9 @@ public class AlbumController {
 	// this injects our corresponding repo wherever we need it, can be private because we're only using it here
 	@Autowired
 	private AlbumRepository repo;
+	
+	@Autowired
+	private AlbumService serv;
 	
 	// this says if I receive a GET request with no additional suffix, use this method
 	// this is an endpoint for GET requests to, in our case, http://localhost:8080/album
@@ -91,7 +96,28 @@ public class AlbumController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + album.getAlbumId() + " already exists!");
 		// if it doesn't, add a new one
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + repo.save(album).getAlbumId() + " has been inserted.");
+			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + serv.artistCheck(album).getAlbumId() + " has been inserted.");
+		}
+	}
+	
+	// this is for adding multiple albums at once
+	// must have a unique URL for each request, regardless of possible parameters/path variables
+	@PostMapping("/multiple")
+	public ResponseEntity<LinkedList[]> addMultipleAlbums(@RequestBody Album[] albums) {
+		LinkedList[] temp = {new LinkedList<Integer>(), new LinkedList<Integer>()};
+		
+		if (albums == null || albums.length == 0) {
+			return ResponseEntity.status(400).body(null);
+		} else {
+			
+			for (Album album : albums) {
+				if (repo.findById(album.getAlbumId()).isPresent()) {
+					temp[1].add(album.getAlbumId());
+				} else {
+					temp[0].add(repo.save(album).getAlbumId());
+				}
+			}
+		return ResponseEntity.status(200).body(temp);
 		}
 	}
 	
