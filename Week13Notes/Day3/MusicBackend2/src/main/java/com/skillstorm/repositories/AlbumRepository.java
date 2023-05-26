@@ -26,8 +26,8 @@ public interface AlbumRepository extends CrudRepository<Album, Integer> {
 	// declare your method; this is an interface, so we can't include implementation
 	public Iterable<Album> findByTitleSearchString(String searchString);
 	
-	@Query(value = "SELECT * FROM album WHERE artist LIKE %?1%", nativeQuery = true)
-	public Iterable<Album> findByArtistSearchString(String searchString);
+//	@Query(value = "SELECT * FROM album WHERE artist LIKE %?1%", nativeQuery = true)
+//	public Iterable<Album> findByArtistSearchString(String searchString);
 	
 	
 	

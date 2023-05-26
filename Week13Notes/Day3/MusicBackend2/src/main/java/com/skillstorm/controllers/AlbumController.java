@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.Album;
+import com.skillstorm.models.Artist;
 import com.skillstorm.repositories.AlbumRepository;
 import com.skillstorm.services.AlbumService;
 
@@ -48,8 +49,8 @@ public class AlbumController {
 		// we take in optional parameters, then use them to run our custom search methods from our repo
 		if (titleSearchString != null) {
 			return repo.findByTitleSearchString(titleSearchString);
-		} else if (artistSearchString != null) {
-			return repo.findByArtistSearchString(artistSearchString);
+//		} else if (artistSearchString != null) {
+//			return repo.findByArtistSearchString(artistSearchString);
 		} else {
 			return repo.findAll();
 		}
@@ -104,7 +105,7 @@ public class AlbumController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + album.getAlbumId() + " already exists!");
 		// if it doesn't, add a new one
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + serv.artistCheck(album).getAlbumId() + " has been inserted.");
+			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + repo.save(album).getAlbumId() + " has been inserted.");
 		}
 	}
 	
@@ -150,7 +151,9 @@ public class AlbumController {
 			}
 			
 			if(artist != null) {
-				temp.setArtist(artist);
+				Artist tempArtist = new Artist();
+				tempArtist.setArtistId(Integer.valueOf(artist));
+				temp.setArtist(tempArtist);
 			}
 			
 			if(genre != null) {

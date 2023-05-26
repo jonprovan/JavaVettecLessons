@@ -2,11 +2,14 @@ package com.skillstorm.models;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 // we need properties for each field in the database table, regular Java naming conventions
@@ -32,8 +35,15 @@ public class Album {
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "artist")
-	private String artist;
+	// we need this to establish a one-to-one relationship with the Artist for this Album
+	// @OneToOne(cascade = CascadeType.ALL) // this is where you'd set up cascading behavior, e.g., deleting the album also deletes the artist
+	// by default, no cascading is allowed -- No Action
+	@OneToOne
+	@JoinColumn(name = "artist_id") // this specifies which column in the Artist the foreign key links to
+	private Artist artist;
+	
+//	@Column(name = "artist")
+//	private String artist;
 	
 	@Column(name = "genre")
 	private String genre;
@@ -46,7 +56,7 @@ public class Album {
 	
 	public Album() {}
 
-	public Album(int albumId, String title, String artist, String genre, String label, int trackCount) {
+	public Album(int albumId, String title, Artist artist, String genre, String label, int trackCount) {
 		super();
 		this.albumId = albumId;
 		this.title = title;
@@ -72,11 +82,11 @@ public class Album {
 		this.title = title;
 	}
 
-	public String getArtist() {
+	public Artist getArtist() {
 		return artist;
 	}
 
-	public void setArtist(String artist) {
+	public void setArtist(Artist artist) {
 		this.artist = artist;
 	}
 

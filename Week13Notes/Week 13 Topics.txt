@@ -1,0 +1,65 @@
+WEEK 13 TOPICS
+
+ALL THESE WILL BE ON YOUR TEST!! WHEE!!
+
+Spring Framework - the abstracted Java framework for creating servers
+
+Spring Boot - specifically the part of Spring that deals with launching servers
+
+Spring Beans - an object created within Spring, contained in an IoC container, that can be injected/used elsewhere
+
+Inversion of Control (IoC) - beans retain control over themselves and are injected as needed
+
+Dependency Injection - we tell Spring which software/beans we need, they get injected as needed (pom.xml and via Autowired)
+
+Spring Initializr - the tool we use to create Spring projects, either in the IDE or at start.spring.io
+
+application.properties File - contains global key-value pairs, typically used to store database connection information
+
+JPA - Java Persistence API, a set of tools for mapping/maintaining relationships between Java objects and DB records
+
+Object Relational Mapping - the mapping of data members to database fields
+
+Model Layer - Java classes that represent database entities, and the specific mapping therein
+Repository Layer - interfaces that contain standard, abstracted methods connecting a model to its database table
+	- can also include custom JPQL (Java Persistence Query Language) queries
+Service Layer - an injectable bean where you can write alternate/extended/extra methods before hitting your repository
+Controller Layer - the entryway/exit point for HTTP requests, it maps them to various methods and returns results
+
+@RestController - designates a class as a RESTful controller and wraps all method returns in an HTTPResponseBody
+@RequestMapping("/url") - all incoming requests with this suffix will utilize this controller
+@GetMapping - designates a method as one that will run for a GET request
+@PostMapping - designates a method as one that will run for a POST request
+@PutMapping - designates a method as one that will run for a PUT request
+@DeleteMapping - designates a method as one that will run for a DELETE request
+
+Entity Mappings - mapping individual model classes to specific database tables
+Entity Annotations - Entity, Table, Id, Column, JoinColumn, GeneratedValue, OneToOne [designate how variables interact]
+OneToOne - states that this field corresponds to one in another Entity, one record on each side
+
+@Autowired - the resource under this annotation gets injected into the class as needed, no setup necessary
+
+HTTP - HyperText Transfer Protocol = how requests get sent over the internet
+HTTP Request and Response - the user sends a request (URL, headers, body, etc.) and receives a response (headers, body)
+HTTP Methods - GET, POST, PUT, DELETE (READ, CREATE, UPDATE, DELETE)
+HTTP Statuses - these indicate the result of a request; they are part of the response
+	- https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+	100s = Informational, 200s = Success, 300s = Redirect, 400s = Client Error, 500s = Server Error
+
+Idempotency and Safety - each DB operation should result in the same DB state afterward, no matter how many times it's executed
+	- this assumes the underlying database hasn't changed since the previous operation
+
+
+REST - REpresentational State Transfer; a RESTful API is "stateless" and independent from/ignorant of any other servers/clients
+
+JSON - JavaScript Object Notation, a common way of outlining objects to be sent between systems
+
+Postman - software for sending HTTP requests and viewing the responses
+
+
+
+
+
+
+
+
