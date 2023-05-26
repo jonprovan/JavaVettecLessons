@@ -43,8 +43,16 @@ public class AlbumController {
 	// this says if I receive a GET request with no additional suffix, use this method
 	// this is an endpoint for GET requests to, in our case, http://localhost:8080/album
 	@GetMapping
-	public Iterable<Album> getAllAlbums() {
-		return repo.findAll();
+	public Iterable<Album> getAllAlbums(@RequestParam(name = "titleSearch", required = false) String titleSearchString,
+										@RequestParam(name = "artistSearch", required = false) String artistSearchString) {
+		// we take in optional parameters, then use them to run our custom search methods from our repo
+		if (titleSearchString != null) {
+			return repo.findByTitleSearchString(titleSearchString);
+		} else if (artistSearchString != null) {
+			return repo.findByArtistSearchString(artistSearchString);
+		} else {
+			return repo.findAll();
+		}
 	}
 	
 	// this method is an endpoint for getting a specific Album via its ID
