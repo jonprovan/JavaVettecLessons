@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML TAGS</title>
+</head>
+
+<body>
+
+    <!-- everything in HTML is treated as a box -->
+
+    <!-- a tag indicates the content of whatever is in it -->
+
+    <!-- some tags have preset formatting (that you can override),
+         some are just generic "container" tags -->
+
+    <!-- 
+        WITH FORMATTING:
+        h1-h6 -- heading
+        p -- paragraph
+        ul/ol -- unordered (bulleted) list/ordered (numbered) list
+        table -- for laying out tables
+
+        em -- italics (same as old i tag, em stands for emphasis)
+        strong -- bold (same as old b tag)
+        sub/sup -- subtext/supertext
+
+
+        a -- anchor (link) -- see links-and-images.html for these two
+        img -- image
+    -->
+
+    <!-- 
+        WITHOUT FORMATTING:
+
+        Generic:
+        div -- generic block tag, just a container, spans the whole page
+
+        span -- generic inline tag
+
+        Semantic:
+        -- do exactly the same thing as a div tag, but provide more meaning
+        -- use these when you can to make code more readable
+        nav -- navigation bar or area
+        header -- the header section at the top of your page (NOT HEAD TAG!)
+        footer -- footer section at the bottom of your page
+        aside -- generally a sidebar or something you want highlighted
+        section -- any general section, might include several elements
+        article -- some larger group of text, maybe it's a blog post
+        main -- usually a container around all the content in an area
+     -->
+
+     <!-- tags like h1, p, div, etc. are BLOCK tags
+            they take up the entire width of the page
+            AND they force whatever tag is next onto the next line -->
+
+    <!-- tags like em, strong, span, etc. are INLINE tags
+            they only cover what they surround, not the entire page
+            and the don't force anything to go anywhere -->
+
+    <!-- whitespace in HTML is treated differently:
+            anything AFTER the first space is ignored,
+            and line breaks are considered space -->
+
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+
+    <p>This is a paragraph. <strong>This is a paragraph.</strong> This is a paragraph. This is a paragraph. <em>This is a paragraph.</em> This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph. This is a paragraph.</p>
+
+    <!-- br is a manual line break -->
+    <!-- use it for paragraph formatting, for example, NOT for spacing -->
+    <p>1, 2, 3, 4, 5,<br>6, 7, 8, 9, 10</p>
+
+    
+    <!-- a bulleted (unordered) list -->
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+    </ul>
+
+    <!-- a numbered (ordered) list -->
+    <ol>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+    </ol>
+
+    <!-- if you want multiple tags of the same type = p*3 -->
+    <!-- if you want to nest shortcuts = section*2>p*3 -->
+
+
+</body>
+
+</html>
