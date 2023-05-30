@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables</title>
+</head>
+<body>
+
+    <!-- a table is a grid-based way of diplaying relational data in HTML -->
+
+    <!-- one of the advantages of tables is that the rows and colums resize based on the content -->
+
+    <!-- 
+        generally, a table is composed of a head, body and foot
+
+        associated tags:
+
+        table -- the table itself
+        thead -- the table header
+        tbody -- the table body
+        tfoot -- the table footer
+        tr -- table row
+        th -- table header data cell
+        td -- table data (a regular data cell)
+    -->
+
+    <!-- 
+        keep track of your th/td numbers to make sure they match
+        HTML will just shuffle things around as it sees fit if one's missing
+        and will tack on cells the ends of rows, etc.
+
+        can be a problem, especially with empty cell data coming from a DB
+    -->
+
+    <h1>TABLES</h1>
+
+    <h2>My Glorious Poochie Table</h2>
+
+    <!-- the table itself -->
+
+    <!-- DO NOT USE THIS METHOD FOR STYLING!! -->
+
+    <table style="border-collapse: collapse;">
+
+        <!-- the table header section -->
+        <thead>
+            <!-- a single table row -->
+            <tr style="text-align: left;">
+                <!-- a table header data cell -->
+                <th style="padding-right: 30px; border-bottom: 1px solid black;">NAME</th>
+                <th style="border-bottom: 1px solid black;">BREED</th>
+                <th style="padding-right: 30px; border-bottom: 1px solid black;">MALE/FEMALE</th>
+                <th style="border-bottom: 1px solid black;">COAT COLOR</th>
+            </tr>
+        </thead>
+
+        <!-- the table body -->
+        <tbody>
+
+            <!-- three rows, each with four cells -->
+            <tr style="background-color: lightgray;">
+                <td>Floofers</td>
+                <td style="padding-right: 30px;">Belgian Malinois</td>
+                <td>F</td>
+                <td>Brown</td>
+            </tr>
+            <tr>
+                <td>Doggos</td>
+                <td>Cane Corso</td>
+                <td>M</td>
+                <td>Clifford Red</td>
+            </tr>
+            <tr style="background-color: lightgray;">
+                <td>Puppers</td>
+                <td>Great Dane</td>
+                <td>F</td>
+                <td>Gold</td>
+            </tr>
+            <tr>
+                <td>Goodbois</td>
+                <td>Pitbull</td>
+                <td>M</td>
+                <td>Blanched Almond</td>
+            </tr>
+            <tr style="background-color: lightgray;">
+                <td>Chonkers</td>
+                <td>Boxer</td>
+                <td>F</td>
+                <td>Purple</td>
+            </tr>
+
+        </tbody>
+
+        <!-- the table footer section -->
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+
+    </table>
+    
+</body>
+</html>
