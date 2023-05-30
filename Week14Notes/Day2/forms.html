@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+
+    <!-- forms are ways of collecting user data -->
+    <!-- they can look like a standard form but can be smaller/more subtle -->
+    <!-- a search bar is a great example of a simple form -->
+
+    <h1>FORMS</h1>
+
+    <!-- all forms go inside the form tag, generally have these two attributes -->
+    <!-- method is the HTTP method the form will use
+         action is the URL the form will hit -->
+
+    <!-- this action URL will let us see what data our form is posting -->
+    <form method="POST" action="https://www.w3schools.com/action_page.php">
+
+        <!-- in general, fields collecting user input go in INPUT tags -->
+
+        <!-- div so each input is on its own line -->
+        <div>
+            <!-- label tag for each input, "for" attribute matches the input id -->
+            <label for="first-name">First Name: </label>
+            <!-- standard text input, the name is the key for the value we send -->
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name..." />
+        </div>
+
+        <div>
+            <label for="last-name">Last Name: </label>
+            <input type="text" id="last-name" name="last-name" />
+        </div>
+
+        <!-- number type for accepting an integer, step is the increment on click -->
+        <div>
+            <label for="age">Age: </label>
+            <input type="number" id="age" name="age" min="0" max="125" step="1" />
+        </div>
+
+        <!-- date type gives you a date picker -->
+        <div>
+            <label for="birthday">Birthday: </label>
+            <input type="date" id="birthday" name="birthday" />
+        </div>
+
+        <div>
+            <label for="favorite-color">Favorite Color: </label>
+            <input type="color" id="favorite-color" name="favorite-color" />
+        </div>
+
+        <br><br>
+
+        <!-- checkbox type submits the value attribute only if checked -->
+        <div>
+            <input type="checkbox"
+                   id="hawaiian-pizza-lover" 
+                   name="hawaiian-pizza-lover"
+                   value="yes" />
+            <label for="hawaiian-pizza-lover"> Hawaiian Pizza Lover?</label>
+        </div>
+
+        <div>
+            <input type="checkbox"
+                   id="night-person" 
+                   name="night-person"
+                   value="yes" />
+            <label for="night-person"> Night Person?</label>
+        </div>
+
+        <br><br>
+
+        <!-- radio buttons allow you to force the user to select only one -->
+        <!-- radio buttons in a group MUST have the same name attribute -->
+
+        <div>
+            <input type="radio" id="rock" name="rps-outcome" value="rock">
+            <label for="rock"> Rock?</label>
+        </div>
+        <div>
+            <input type="radio" id="paper" name="rps-outcome" value="paper">
+            <label for="paper"> Paper?</label>
+        </div>
+        <div>
+            <input type="radio" id="scissors" name="rps-outcome" value="scissors">
+            <label for="scissors"> Scissors?</label>
+        </div>
+
+        <br><br>
+
+        <!-- a select is a dropdown with several predetermined options -->
+        <div>
+            <label for="favorite-band-or-team">Favorite Band Or Team</label>
+            <br>
+            <!-- the select tag houses the name attribute/key for the whole thing -->
+            <select name="favorite-band-or-team" id="favorite-band-or-team">
+                <!-- each option tag holds a value AND text that goes in the dropdown on the page -->
+                <option value="The 1975">The 1975</option>
+                <!-- add the selected attribute to force one to be chosen first
+                     otherwise, the first one in the list will be -->
+                <option value="Hanson" selected="yes">Hanson</option>
+                <option value="Toto">Toto</option>
+                <option value="A Tribe Called Quest">A Tribe Called Quest</option>
+                <option value="Gorillaz">Gorillaz</option>
+                <option value="Philadelphia Eagles">Philadelphia Eagles</option>
+                <option value="Golden State Warrior">Golden State Warrior</option>
+                <option value="Denver Nuggets">Denver Nuggets</option>
+                <option value="Miami Heat">Miami Heat</option>
+                <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+            </select>
+        </div>
+
+        <br><br>
+
+        <!-- button type reset will clear your form to the defaults and submit nothing -->
+        <button type="reset">RESET THE FORM</button>
+
+        <!-- this is a button tag; type="submit" says it's the button
+             that submits this particular form -->
+        <button type="submit">SUBMIT MY FORM</button>
+
+    </form>
+    
+</body>
+
+</html>
