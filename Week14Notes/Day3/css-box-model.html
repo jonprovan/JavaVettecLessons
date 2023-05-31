@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+
+    <style>
+        /*
+            you can set values for ALL elements by creating a rule for *
+        */
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        h1 {
+            padding-bottom: 40px;
+        }
+
+        /*
+            for padding/margin
+            one arg = all sides
+            two args = top/bottom, left/right
+            three args = top, left/right, bottom
+            four args = top, right, bottom, left (clockwise starting at top)
+
+            for these AND border, you can set values individually for each side
+            e.g., border-right, padding-top, etc.
+        */
+        div {
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            background-color: aquamarine;
+            padding: 50px;
+            border: solid 10px red;
+            margin: 50px;
+            /* for rounded corners */
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>CSS BOX MODEL</h1>
+
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero reiciendis tenetur dolore perspiciatis quis quisquam autem adipisci vitae sint sequi dicta, quae animi. Consectetur asperiores error aperiam fugit voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero reiciendis tenetur dolore perspiciatis quis quisquam autem adipisci vitae sint sequi dicta, quae animi. Consectetur asperiores error aperiam fugit voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero reiciendis tenetur dolore perspiciatis quis quisquam autem adipisci vitae sint sequi dicta, quae animi. Consectetur asperiores error aperiam fugit voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+    <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores libero reiciendis tenetur dolore perspiciatis quis quisquam autem adipisci vitae sint sequi dicta, quae animi. Consectetur asperiores error aperiam fugit voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+    
+</body>
+</html>

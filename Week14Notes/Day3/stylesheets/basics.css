@@ -1,0 +1,89 @@
+/* this is a CSS comment
+    ...and it can be multi-line */
+
+/* this file is an external stylesheet, full of rules
+   that apply to all pages that link to it */
+
+/* a selector can apply to ALL tags of that type
+   just use the tag name itself */
+
+p {
+    font-size: 14px;
+    font-style: italic;
+    text-indent: 20px;
+}
+
+/* a CSS class can be applied to any tag to which we attach it
+   use whatever name you want, preceded by a . */
+
+/* can be applied to ANY type of tag */
+
+.big-paragraph {
+    font-size: 25px;
+}
+
+.purple {
+    color: rgb(179, 42, 179);
+}
+
+/* we can style an individual tag using its ID
+   call the ID what you want, then precede it with a # */
+
+#tiny-paragraph {
+    font-size: 10px;
+}
+
+/* 
+    ORDER OF PRECEDENCE
+
+    inline style attribute > id style > class style > tag style
+
+    If there's a conflict within same-type selectors,
+    the latest one (farthest down) in the CSS file takes precedence
+*/
+
+/* this applies to all p tags ANYWHERE within a section tag */
+section p {
+    font-style: normal;
+}
+
+/* order matters, left to right, p within article within section */
+/* you can mix and match, e.g., .class #id tag #id .class, etc. */
+section article p {
+    background-color: rgb(156, 203, 245);
+}
+
+/* use > to say that only p tags which are direct children of section tags get styled */
+section > p {
+    background-color: blanchedalmond;
+}
+
+/* using pseudo-selectors to narrow down the p we want to turn darkkhaki */
+section article:last-child p:first-child {
+    background-color: darkkhaki;
+}
+
+h2 {
+    margin-bottom: 300px;
+}
+
+a {
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(156, 98, 57);
+}
+
+/* changes the look of a link when the user hovers over it */
+a:hover {
+    color: cadetblue;
+    text-decoration: underline;
+    transition: .5s;
+}
+
+/* changes the look when a user has already visited the link
+   returns to normal if they clear their cache/history */
+
+/* a:visited {
+    color: darkred;
+} */
+

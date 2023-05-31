@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics</title>
+
+    <!-- this style tag contains rules that apply to this entire page -->
+    <!-- <style>
+
+        /* this is a CSS rule
+           a rule has a selector (what it applies to)
+           and a series of key-value pairs for properties */
+
+        /* in this case, p is the selector, then curly braces surrouding the key-value pairs
+           key : value; */
+        p {
+            font-size: 20px;
+            text-decoration: underline;
+        }
+
+    </style> -->
+
+    <!-- this links to an external stylesheet -->
+    <!-- same rules about relative linking apply -->
+    <link rel="stylesheet" href="stylesheets/basics.css">
+</head>
+
+<body>
+
+    <!-- 
+        you can style things in three ways:
+
+        Inline = inside the actual tag (OKAY)
+        With a style tag in your head tag = applies to everything on the page (BETTER)
+        In an external style sheet = applies to any page to which we link it (BEST)
+    -->
+
+    <!-- styling the h1 tag inline -->
+    <!-- only applies to that specific tag, the style attribute contains key-value pairs for properties -->
+    <h1 style="color: red; font-style: italic;">CSS BASICS</h1>
+    <!-- inline styles above do not apply to this h1 -->
+    <!-- <h1>TEST</h1> -->
+
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur excepturi dignissimos vel nam necessitatibus ad iusto beatae qui! Quisquam doloribus quo voluptatibus ea rem voluptates hic temporibus dolor reprehenderit quam!</p>
+
+    <!-- this p tag is styled with CSS classes -->
+    <!-- you can apply multiple classes, just separate them with a space -->
+    <p class="big-paragraph purple">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nesciunt quia, magnam sit iusto culpa! Reprehenderit culpa quae debitis amet. Fuga aperiam temporibus asperiores distinctio vitae reprehenderit debitis nulla unde.</p>
+
+    <p id="tiny-paragraph" class="purple">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quasi, magni nihil esse pariatur recusandae commodi voluptatibus voluptatum, temporibus maiores tempore quisquam? Enim magni dolore similique blanditiis? Voluptatem, itaque iusto!</p>
+
+    <section>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda obcaecati ducimus provident veritatis aliquid sit, dolorum animi perspiciatis sapiente ratione neque! Fuga labore commodi excepturi dolores distinctio quasi dignissimos ea.</p>
+    </section>
+
+    <section>
+        <article>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae fuga libero aut odio delectus aperiam tempora ipsa accusantium voluptas blanditiis quibusdam recusandae necessitatibus asperiores a amet, quas numquam nulla officia!</p>
+        </article>
+        <article>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nobis commodi mollitia minus amet hic vitae possimus totam ullam necessitatibus. Tenetur sit repellendus consequatur amet iure nostrum obcaecati, facilis nam.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, ad dignissimos voluptas perspiciatis iusto libero. Illum impedit officiis consequatur ut aperiam quae, cum officia qui quia ullam aliquam libero.</p>
+        </article>
+    </section>
+
+    <h2>
+        <a href="target.html">LINK TO TARGET</a>
+    </h2>
+    
+</body>
+
+</html>
