@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts</title>
+
+    <!-- this script tag contains local functions we can use in this file -->
+    <!-- could also load in an external .js file -->
+    <script type="text/javascript">
+
+        // can call to this function from the HTML on some sort of event
+        function replace() {
+            // this is getting the p tag with this ID
+            // and replacing its contents with the results of the other function
+            document.getElementById('replace').innerHTML = generateString();
+        }
+
+        // the first function is calling to this function, just like in Java
+        // this function returns a String
+        function generateString() {
+            return "It worked!";
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h1>SCRIPTS</h1>
+
+    <!-- this id gets called to by the replace() function -->
+    <p id="replace">This is the paragraph whose text will be replaced when we click the button below.</p>
+
+    <!-- this button is "listening" for a click -->
+    <!-- when it "hears" one, it runs the replace() function -->
+    <button onclick="replace()">CLICK ME!</button>
+    
+</body>
+
+</html>

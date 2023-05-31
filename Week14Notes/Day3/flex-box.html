@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box</title>
+
+    <style>
+
+        * {
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* display: flex designates this container as a flexbox */
+        .flexbox {
+            display: flex;
+            flex-direction: row;
+            /* also have column, row-reverse and column-reverse */
+            justify-content: space-around;
+            /* flex-wrap: wrap; */
+        }
+
+        div {
+            text-align: center;
+            padding: 3em 0px;
+            width: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>FLEX BOX</h1>
+
+    <!-- a flex box is literally a flexible box -->
+    <!-- you can control the order/direction the elements are displayed -->
+
+    <!-- if you have a single element you want to resize,
+         just use % sizing to automatically adjust it to the size of
+         the containing element -->
+
+    <main class="flexbox">
+
+        <div class="red">1</div>
+        <div class="orange">2</div>
+        <div class="yellow">3</div>
+        <!-- <div class="red">3.5</div> -->
+        <!-- when you dynamically insert elements, they're automatically
+             incorporated into the order, spacing, etc. -->
+        <div class="green">4</div>
+        <div class="blue">5</div>
+        <div class="red">6</div>
+        <div class="orange">7</div>
+        <div class="yellow">8</div>
+
+    </main>
+    
+</body>
+
+</html>

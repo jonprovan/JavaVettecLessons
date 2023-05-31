@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+
+    <style>
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        div {
+            padding: 1em;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .violet {
+            background-color: violet;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .black {
+            background-color: black;
+            color: white;
+        }
+
+        .blanched-almond {
+            background-color: blanchedalmond;
+        }
+
+        .grid {
+            /* vh/vw sizes something relative to 
+               the browser view's height and width */
+            height: 100vh; /* 100% of the browser's view height */
+            display: grid;
+            /* 
+                this sets up the number and size of the columns
+                the number of args = the number of columns
+                the value of each is the column's size
+                can be percentages or fixed widths
+            */
+            /* grid-template-columns: 25% 25% 50%; */
+
+            /* think of fr (fractions) like mixing a drink, 
+               1 part this, 2 parts that, etc.  */
+            grid-template-columns: 1.5fr 1.5fr .5fr;
+            
+            grid-template-rows: .5fr 1fr 2.5fr .5fr .5fr 1fr .25fr;
+
+            /* if you have too many elements to fit in the currently-outlined grid,
+               they'll bump off the bottom and just be sized by whatever
+               content they contain */
+        }
+
+        .full {
+            grid-column: span 3;
+        }
+
+        .wide {
+            grid-column: span 2;
+        }
+
+        .sidebar {
+            grid-row: span 3;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- <h1>GRID</h1> -->
+
+    <!-- a CSS grid is a two-dimensional (rows AND columns) flexible layout -->
+    <!-- you can specify the number of rows/columns
+         their relative (or absolute) sizes
+         and how many cells in each direction a particular element occupies -->
+
+    <main class="grid">
+
+        <div class="red full">1</div>
+        <div class="orange wide">2</div>
+        <div class="yellow sidebar">3</div>
+        <div class="green">4</div>
+        <div class="blue">5</div>
+        <div class="violet wide">6</div>
+        <div class="gray full">7</div>
+        <div class="black full">8</div>
+        <div class="blanched-almond full">9</div>
+
+    </main>
+    
+</body>
+
+</html>

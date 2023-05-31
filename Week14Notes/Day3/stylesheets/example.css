@@ -11,12 +11,24 @@ header {
     font-weight: bold;
     padding: 15px;
     background-image: url("https://miro.medium.com/v2/resize:fit:828/format:webp/1*Iz4mA5OocyWB59yjx-nPEw.jpeg");
+    background-size: 100%;
+    /* background-repeat: no-repeat; */
+    background-position: 0px -120px;
+    color: white;
 }
 
 nav {
     text-align: center;
     background-color: rgb(227, 227, 227);
 }
+
+/* 
+    font sizes are okay in pixels, also specific box sizes, etc.
+    BUT things like padding and margin generally are better with relative sizing
+
+    padding: .5em -- 50% of the current/local font size
+    margin: 1.2 rem -- 120% of the root font size
+*/
 
 nav a {
     display: inline-block;
@@ -42,7 +54,7 @@ h1 {
 }
 
 main img {
-    width: 200px;
+    width: 300px;
     float: right;
     margin-left: 20px;
     margin-bottom: 20px;
