@@ -1,5 +1,8 @@
 // VARIABLES IN JS
 
+// functions are fully "hoisted," meaning no matter whey're they're declared, you can call them
+hoistingTest();
+
 /**
  * variables in JS are not typed; they can hold any type of value and be reassigned any type of value
  * 
@@ -80,3 +83,40 @@ const myArray = [ 1, 2, 3 ];
 myArray.push(4);
 console.log(myArray);
 console.log(myArray[2]);
+
+
+// you CAN declare let/const variables with the same name at different scopes; they maintain their own values
+
+let str = 'Outside scope'
+
+console.log(str);
+
+function scopeTest(str = 'Function Scope') {
+    
+    console.log(str);
+
+    if (true) {
+        let str = 'Block scope';
+        console.log(str);
+    }
+
+    console.log(str);
+}
+
+scopeTest();
+
+console.log(str);
+
+
+
+
+
+
+
+
+// we called this function all the way at the top
+function hoistingTest() {
+    console.log('Test successful!');
+}
+
+hoistingTest();
