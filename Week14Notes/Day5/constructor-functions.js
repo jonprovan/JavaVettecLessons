@@ -36,3 +36,12 @@ console.log(typeof myCoffee);
 console.log(myCoffee);
 myCoffee.history('Wendy');
 
+// this instance is distinct from the first
+let myOtherCoffee = new GreatCoffee('Cheap', 'Light', 'Colombia');
+
+console.log(myOtherCoffee);
+
+myOtherCoffee.beanType = 'Really Cheap';
+
+console.log(myCoffee);
+console.log(myOtherCoffee);
