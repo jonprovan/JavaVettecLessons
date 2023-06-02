@@ -126,3 +126,13 @@ function caffeineAmount(amount) {
 }
 
 console.log(caffeineAmount());
+
+
+// THE NULLISH COALESCING OPERATOR -- ??
+// this assesses the value on the left; if it's not null or undefined, it passes through; otherwise, we take the one on the right
+
+// 0 is falsy, but not null or undefined, so it goes through
+let sample = 0 ?? 'Other';
+
+console.log(sample);
+
