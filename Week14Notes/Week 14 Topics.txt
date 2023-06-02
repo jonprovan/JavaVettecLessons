@@ -1,0 +1,44 @@
+WEEK 14 TOPICS
+
+HTML
+Head vs. Body Tag
+Block vs. Inline Tags
+h1-h6
+Attributes -- for tags, like id, class, etc.
+Unordered and Ordered Lists (ul, ol, li)
+Tables (table, thead, tbody, tfoot, tr, th, td)
+Forms -- method, action
+Input Types -- text, number, date, color, checkbox, radio, etc.
+Select and Options
+Buttons
+
+
+CSS
+CSS Selectors (know the difference between a selector and a rule)
+element/tag, class, id
+Box Model
+Content
+Padding
+Border
+Margin
+Absolute vs. Relative Sizing -- %, em, rem, vh, vw
+Responsive Design -- how does your site respond to being displayed on different screen sizes/aspect ratios?
+Pseudo Classes/Selectors
+Flexbox/Grid
+
+
+JavaScript
+Script Tags
+Data Types
+Variable Declaration -- var, let, const
+Functions -- including function "overloading" (NOT higher-order functions yet)
+Arrays/Objects
+Booleans in general
+Loops
+Document Object Model -- the digital representation of your webpage, a tree of all the objects (elements/tags) on the page
+Events -- clicking on a button, loading an element, putting your mouse over a box, etc.
+Event Listeners -- "listening" for one of the above events to occur, at which point, we execute some action
+Asynchronous JavaScript -- the event loop
+setTimeout
+setInterval
+clearInterval
