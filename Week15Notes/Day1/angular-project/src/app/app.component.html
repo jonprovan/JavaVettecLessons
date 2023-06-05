@@ -1,0 +1,32 @@
+<!-- here's how we use a component directly -->
+<!-- the tag name is the same as the selector value from that   
+     component's .ts file -->
+<app-header></app-header>
+
+<!-- <p>Test paragraph.</p> -->
+
+<!-- instead of href, we use routerLink to use our router paths -->
+<p>
+    <!-- when I click this, it accesses the "home" path
+         which loads the HomeComponent into my router-outlet -->
+    <a routerLink="home">GO HOME</a>
+</p>
+
+<p>
+    <!-- same thing for the target path/TargetComponent -->
+    <a routerLink="target">GO TO TARGET</a>
+</p>
+
+<p>
+    <a routerLink="heroes">VIEW MY HEROES</a>
+</p>
+
+
+
+<!-- this is where any component we navigate to will be loaded -->
+<router-outlet></router-outlet>
+
+<!-- <p>Test paragraph 2...</p> -->
+
+<app-footer></app-footer>
+

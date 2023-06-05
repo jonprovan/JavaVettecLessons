@@ -1,0 +1,9 @@
+/* this CSS applies ONLY to the app-header component */
+
+header {
+    background-color: lightgray;
+    font-size: 30px;
+    text-align: center;
+    padding: 1em;
+    cursor: pointer;
+}

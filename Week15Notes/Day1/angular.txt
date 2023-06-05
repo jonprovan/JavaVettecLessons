@@ -1,0 +1,53 @@
+ANGULAR FRAMEWORK
+
+- developed by Google
+- docs = https://angular.io/
+
+- SPA (Single Page Application) framework, using HTML, CSS, JS (TS)
+
+- utilizes components, consisting of the above
+
+- Angular CLI installation -- npm install -g @angular/cli
+
+- all Angular commands start with ng (A-ng-ular)
+
+- to create a new Angular project, use ng new <project name>
+
+    - this will create a folder in the current directory called whatever your project name just was, containing all the project files
+    - once you create this folder, you must navigate to within the folder to run further commands for that project
+    - if you install a project in an existing Git repository, it will become part of that repository
+        - if you don't, it will create its own repository
+
+- when asked about routing, say yes
+- when asked about CSS style, pick CSS (not another option)
+- if asked about autocomplete, say yes
+- if asked about sending data, say no
+
+
+- if you need to update your dependencies, including if you need to include them after downloading someone's GitHub repo
+    - use npm i (or npm install)
+
+- your package.json file keeps track of all your software dependencies
+- also includes shorthand for commands to run/build/serve/etc. the project
+
+- to start up your server -- ng serve
+    - ng serve --open    - opens a window with your site in it
+    - ng serve --live-reload    - forces a live reload of your site whenever you make changes
+
+
+- to create a new component -- ng g component <name>
+    - creates a folder with the component
+        - .html
+        - .css
+        - .ts (your TypeScript)
+        - .spec.ts (for testing)
+    - it also imports the new component into app.module.ts for use globally
+
+GENERAL STARTING ORDER
+- create your app
+- navigate to the folder in your console
+- serve it up
+- generate one or more components
+- place some/all in your app.component.html
+- create routes for any to which you want to navigate
+- link them together with routerLink

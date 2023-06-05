@@ -1,0 +1,14 @@
+article {
+    width: 250px;
+    display: inline-block;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    margin: 0px 12px 12px 0px;
+    padding: 12px;
+    color: white;
+}
+
+h2, h3 {
+    padding-bottom: 6px;
+    margin: 0px;
+}
