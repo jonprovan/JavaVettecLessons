@@ -2,4 +2,17 @@
     
     <h1>View All Albums</h1>
 
+    <!-- ng-container is a style-free container
+         it can be displayed conditionally
+         or in a loop as many times as you need -->
+
+    <ng-container *ngFor="let album of localAlbums"> 
+
+        <!-- using property binding to pass data to a child component -->
+        <!-- square brackets indicate property binding -->
+        <app-album [album]="album"></app-album>
+
+    </ng-container>
+
+
 </main>
