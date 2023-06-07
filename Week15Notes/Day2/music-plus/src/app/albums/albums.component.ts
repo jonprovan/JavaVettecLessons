@@ -42,4 +42,30 @@ export class AlbumsComponent {
 
   }
 
+  getAllAlbums() {
+    this.localAlbums = [];
+    this.backendService.getAllAlbums().subscribe(data => {
+      for (let album of data.body) {
+        this.localAlbums.push(new Album(album.albumId,
+                                        album.title,
+                                        new Artist(album.artist.artistId,
+                                                   album.artist.name,
+                                                   album.artist.type,
+                                                   album.artist.founded),
+                                        album.genre,
+                                        album.label,
+                                        album.trackCount));
+      }
+    });
+  }
+
+  // to delete an individual album
+  // supposed to refresh the page with the updated list
+  // TODO: debug the refresh
+  deleteAlbum(album: Album): void {
+    this.backendService.deleteAlbumById(album).subscribe();
+    this.getAllAlbums();
+  }
+    
+  
 }

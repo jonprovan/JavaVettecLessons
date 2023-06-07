@@ -6,8 +6,9 @@
 
 import { Injectable } from '@angular/core';
 // must import HTTP functionality here in the service
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable, ObservedValueOf } from 'rxjs';
+import { Album } from '../models/album';
 
 // the @Injectable decorator enables this to be injected wherever
 // we need it, much like the beans in Spring Boot with @Autowired
@@ -35,6 +36,12 @@ export class BackendService {
   getAllArtists(): Observable<HttpResponse<any>> {
     return this.http.get<any>('http://localhost:8080/artist',
                               { observe: 'response' });
+  }
+
+  // deleting an album
+  deleteAlbumById(album: Album): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`http://localhost:8080/album/${album.albumId}`, 
+                                 { observe: 'response' });
   }
 
 }

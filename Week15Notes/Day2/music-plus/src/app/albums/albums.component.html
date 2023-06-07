@@ -10,7 +10,10 @@
 
         <!-- using property binding to pass data to a child component -->
         <!-- square brackets indicate property binding -->
-        <app-album [album]="album"></app-album>
+        <!-- $event grabs the contents of the output event -->
+        <app-album [album]="album" 
+                   (deleteAlbumEvent)="deleteAlbum($event)" >
+        </app-album>
 
     </ng-container>
 
