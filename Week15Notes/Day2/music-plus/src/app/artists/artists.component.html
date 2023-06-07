@@ -1,0 +1,50 @@
+<main>
+    <h1>View All Artists</h1>
+
+    <!-- *ngIf displays an element if a condition is true -->
+    <!-- if the array is empty, display this -->
+    <h3 *ngIf="!localArtists.length" style="color: red;">No artists in the database!</h3>
+
+    <!-- if the array has content, display this -->
+    <table *ngIf="localArtists.length">
+
+        <thead>
+            <tr>
+                <th>Artist ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Founded</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!-- for each artist in our local array
+                 create a row in our table
+                 the cells in the row contain the fields from
+                 that particular Artist object -->
+            <!-- can use let i = index to access where we are in the loop -->
+            <ng-container *ngFor="let artist of localArtists; let i = index;">
+                <!-- we also have access to odd/even (let e = even, e.g.)
+                     and can use those instead of index -->
+
+                <!-- ngClass allows us to bind CSS selectors dynamically -->
+                <!-- syntax of props within object -- 
+                          class name in quotes : condition -->
+                <tr [ngClass]="{
+                    'oddRow': i % 2 === 1,
+                    'evenRow': i % 2 === 0
+                }">
+                    <td>{{ artist.artistId }}</td>
+                    <td>{{ artist.name }}</td>
+                    <td>{{ artist.type }}</td>
+                    <td>{{ artist.founded }}</td>
+                </tr>
+
+            </ng-container>
+
+        </tbody>
+
+    </table>
+
+</main>

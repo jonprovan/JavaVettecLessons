@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
+import { ArtistsComponent } from './artists/artists.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AlbumComponent } from './album/album.component';
     FooterComponent,
     NavComponent,
     AlbumsComponent,
-    AlbumComponent
+    AlbumComponent,
+    ArtistsComponent
   ],
   imports: [
     BrowserModule,

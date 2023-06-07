@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlbumsComponent } from './albums/albums.component';
+import { ArtistsComponent } from './artists/artists.component';
 
 // to load different components into router-outlet
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
     path: '',
     // what component to load
     component: AlbumsComponent
+  },
+  {
+    path: 'artists',
+    component: ArtistsComponent
   }
 ];
 

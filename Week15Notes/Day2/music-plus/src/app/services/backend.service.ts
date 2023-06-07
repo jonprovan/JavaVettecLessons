@@ -30,4 +30,11 @@ export class BackendService {
     // takes two params: the URL of the endpoint
     //                   what portion of the response we want to observe
   }
+
+  // getting all artists from the DB
+  getAllArtists(): Observable<HttpResponse<any>> {
+    return this.http.get<any>('http://localhost:8080/artist',
+                              { observe: 'response' });
+  }
+
 }

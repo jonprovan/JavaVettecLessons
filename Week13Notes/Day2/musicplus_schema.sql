@@ -35,6 +35,5 @@ INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('La Mejor
 INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('Mothership', 3, 'Classic Rock', 'Atlantic Records', 24);
 INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('Cancion Animal', 4, 'Alternative Rock', 'Sony Music', 10);
 
-delete from album where album_id > 11;
 
 
