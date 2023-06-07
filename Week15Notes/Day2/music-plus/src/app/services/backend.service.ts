@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, ObservedValueOf } from 'rxjs';
 import { Album } from '../models/album';
+import { Artist } from '../models/artist';
 
 // the @Injectable decorator enables this to be injected wherever
 // we need it, much like the beans in Spring Boot with @Autowired
@@ -42,6 +43,17 @@ export class BackendService {
   deleteAlbumById(album: Album): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`http://localhost:8080/album/${album.albumId}`, 
                                  { observe: 'response' });
+  }
+
+  // adding an artist
+  addNewArtist(artist: Artist): Observable<HttpResponse<any>> {
+    // three args = URL, body, options
+    // TODO: figure out why the Artist object must be deconstructed
+    console.log(artist);
+    return this.http.post<any>('http://localhost:8080/artist', { artistId: artist.artistId,
+                                                                 name: artist.name,
+                                                                 type: artist.type,
+                                                                 founded: artist.founded }, { observe: 'response' });
   }
 
 }

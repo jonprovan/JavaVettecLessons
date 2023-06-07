@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // this imports functionality for making HTTP requests
 import { HttpClientModule } from '@angular/common/http';
+// this imports advanced form functionality
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,8 +27,10 @@ import { ArtistsComponent } from './artists/artists.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // must include it here also
-    HttpClientModule
+    // must include these here also
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

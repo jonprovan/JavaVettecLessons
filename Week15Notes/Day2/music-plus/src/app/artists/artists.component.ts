@@ -12,7 +12,9 @@ export class ArtistsComponent {
   // to store a local copy of the DB information
   localArtists: any = [];
 
-  tempVariable: number = 1;
+  formName: string = '';
+  formType: string = '';
+  formFounded: string = '';
 
   constructor(private backendService: BackendService) {
     backendService.getAllArtists().subscribe(data => {
@@ -28,6 +30,13 @@ export class ArtistsComponent {
       console.log(this.localArtists);
 
     });
+  }
+
+  // this calls to the service to add a new artist to the database
+  addNewArtist() {
+    this.backendService
+        .addNewArtist(new Artist(0, this.formName, this.formType, Number(this.formFounded)))
+        .subscribe();
   }
 
 }
