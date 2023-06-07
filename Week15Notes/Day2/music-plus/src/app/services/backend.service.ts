@@ -39,10 +39,16 @@ export class BackendService {
                               { observe: 'response' });
   }
 
-  // deleting an album
+  // deleting an album using its ID
   deleteAlbumById(album: Album): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`http://localhost:8080/album/${album.albumId}`, 
                                  { observe: 'response' });
+  }
+
+  // deleting an album in the request body
+  deleteAlbumInBody(album: Album): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(`http://localhost:8080/album/`, 
+                                 { observe: 'response', body: album });
   }
 
   // adding an artist
@@ -50,10 +56,7 @@ export class BackendService {
     // three args = URL, body, options
     // TODO: figure out why the Artist object must be deconstructed
     console.log(artist);
-    return this.http.post<any>('http://localhost:8080/artist', { artistId: artist.artistId,
-                                                                 name: artist.name,
-                                                                 type: artist.type,
-                                                                 founded: artist.founded }, { observe: 'response' });
+    return this.http.post<any>('http://localhost:8080/artist', artist, { observe: 'response' });
   }
 
 }

@@ -15,7 +15,13 @@ export class AlbumsComponent {
 
   constructor(private backendService: BackendService) {
 
-    backendService.getAllAlbums().subscribe(data => {
+    this.getAllAlbums();
+
+  }
+
+  getAllAlbums(): void {
+    this.localAlbums = [];
+    this.backendService.getAllAlbums().subscribe(data => {
       // to see what we're getting back
       // data.body contains the array of items we're looking for
       console.log(data.body);
@@ -39,31 +45,13 @@ export class AlbumsComponent {
       console.log(this.localAlbums);
 
     });
-
-  }
-
-  getAllAlbums() {
-    this.localAlbums = [];
-    this.backendService.getAllAlbums().subscribe(data => {
-      for (let album of data.body) {
-        this.localAlbums.push(new Album(album.albumId,
-                                        album.title,
-                                        new Artist(album.artist.artistId,
-                                                   album.artist.name,
-                                                   album.artist.type,
-                                                   album.artist.founded),
-                                        album.genre,
-                                        album.label,
-                                        album.trackCount));
-      }
-    });
   }
 
   // to delete an individual album
   // supposed to refresh the page with the updated list
   // TODO: debug the refresh
   deleteAlbum(album: Album): void {
-    this.backendService.deleteAlbumById(album).subscribe();
+    this.backendService.deleteAlbumInBody(album).subscribe();
     this.getAllAlbums();
   }
     
