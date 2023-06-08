@@ -3,6 +3,10 @@ table {
     border-collapse: collapse;
 }
 
+tbody tr {
+    cursor: pointer;
+}
+
 th, td {
     padding: 6px 50px 6px 6px;
 }

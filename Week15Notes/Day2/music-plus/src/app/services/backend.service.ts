@@ -8,6 +8,8 @@ import { Injectable } from '@angular/core';
 // must import HTTP functionality here in the service
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+// importing the environment object for use here
+import { environment } from 'src/environments/environment';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
 
@@ -18,6 +20,9 @@ import { Artist } from '../models/artist';
 })
 export class BackendService {
 
+  // taking the URL out of the environment and putting it into a variable
+  url: string = environment.backendURL;
+
   // this injects the HttpClient functionality wherever we need it
   constructor(private http: HttpClient) { }
 
@@ -27,7 +32,7 @@ export class BackendService {
   // anything "subscribing" to the Observable will update its view
   // if anything inside the object changes
   getAllAlbums(): Observable<HttpResponse<any>> {
-    return this.http.get<any>('http://localhost:8080/album',
+    return this.http.get<any>(this.url + 'album',
                               { observe: 'response' });
     // takes two params: the URL of the endpoint
     //                   what portion of the response we want to observe
@@ -35,19 +40,19 @@ export class BackendService {
 
   // getting all artists from the DB
   getAllArtists(): Observable<HttpResponse<any>> {
-    return this.http.get<any>('http://localhost:8080/artist',
+    return this.http.get<any>(this.url + 'artist',
                               { observe: 'response' });
   }
 
   // deleting an album using its ID
   deleteAlbumById(album: Album): Observable<HttpResponse<any>> {
-    return this.http.delete<any>(`http://localhost:8080/album/${album.albumId}`, 
+    return this.http.delete<any>(`${this.url}album/${album.albumId}`, 
                                  { observe: 'response' });
   }
 
   // deleting an album in the request body
   deleteAlbumInBody(album: Album): Observable<HttpResponse<any>> {
-    return this.http.delete<any>(`http://localhost:8080/album/`, 
+    return this.http.delete<any>(this.url + 'album', 
                                  { observe: 'response', body: album });
   }
 
@@ -56,7 +61,7 @@ export class BackendService {
     // three args = URL, body, options
     // TODO: figure out why the Artist object must be deconstructed
     console.log(artist);
-    return this.http.post<any>('http://localhost:8080/artist', artist, { observe: 'response' });
+    return this.http.post<any>(this.url + 'artist', artist, { observe: 'response' });
   }
 
 }

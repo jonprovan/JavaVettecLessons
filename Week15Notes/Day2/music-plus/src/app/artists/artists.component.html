@@ -2,10 +2,11 @@
     <h1>View All Artists</h1>
 
 
-    <!-- we're going to use a reactive form
-         this allows data transfer to TS variables
-         it also allows a lot of control over values/validation -->
-    <form>
+    <!-- we're going to use a template-driven form
+         this allows data transfer to TS variables -->
+
+    <!-- this form displays if chosenArtistId == 0 -->
+    <form *ngIf="!chosenArtistId">
 
         <h2>Add New Artist</h2>
 
@@ -28,6 +29,29 @@
         <!-- Name: {{ formName }}<br>
         Type: {{ formType }}<br>
         Founded: {{ formFounded }} -->
+        
+    </form>
+
+    <!-- this form displays if chosenArtistId has a non-zero value -->
+    <form *ngIf="chosenArtistId">
+
+        <h2>Update Artist — Artist ID: {{ chosenArtistId }}</h2>
+
+        <label for="name">Artist Name</label>
+        <!-- [(ngModel)] two-way binds the value in this field to a variable -->
+        <!-- we must have a matching name property -->
+        <input type="text" id="name" name="formName" [(ngModel)]="formName">
+
+        <label for="type">Artist Type</label>
+        <input type="text" id="type" name="formType" [(ngModel)]="formType">
+
+        <label for="founded">Founded In</label>
+        <input type="number" id="founded" name="formFounded" [(ngModel)]="formFounded" min="0" max="2023">
+
+        <!-- this button calls the method from our .ts file
+             we do not need to pass in data, because we already have it in our TS file -->
+        <button (click)="updateArtist()">UPDATE</button>
+        <button (click)="deleteArtist()">DELETE</button>
         
     </form>
 
@@ -65,7 +89,7 @@
                 <tr [ngClass]="{
                     'oddRow': i % 2 === 1,
                     'evenRow': i % 2 === 0
-                }">
+                }" (click)="chooseArtist(artist)">
                     <td>{{ artist.artistId }}</td>
                     <td>{{ artist.name }}</td>
                     <td>{{ artist.type }}</td>

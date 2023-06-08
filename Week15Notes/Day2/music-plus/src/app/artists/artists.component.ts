@@ -12,6 +12,7 @@ export class ArtistsComponent {
   // to store a local copy of the DB information
   localArtists: any = [];
 
+  chosenArtistId: number = 0;
   formName: string = '';
   formType: string = '';
   formFounded: string = '';
@@ -37,6 +38,30 @@ export class ArtistsComponent {
     this.backendService
         .addNewArtist(new Artist(0, this.formName, this.formType, Number(this.formFounded)))
         .subscribe(() => this.getAllArtists());
+    this.formName = '';
+    this.formType = '';
+    this.formFounded = '';
+  }
+
+  updateArtist(): void {
+    this.chosenArtistId = 0;
+    this.formName = '';
+    this.formType = '';
+    this.formFounded = '';
+  }
+
+  deleteArtist(): void {
+    this.chosenArtistId = 0;
+    this.formName = '';
+    this.formType = '';
+    this.formFounded = '';
+  }
+
+  chooseArtist(artist: Artist): void {
+    this.chosenArtistId = artist.artistId;
+    this.formName = artist.name;
+    this.formType = artist.type;
+    this.formFounded = String(artist.founded);
   }
 
 }
