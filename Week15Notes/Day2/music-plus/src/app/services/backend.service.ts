@@ -39,7 +39,7 @@ export class BackendService {
   }
 
   // getting all artists from the DB
-  getAllArtists(): Observable<HttpResponse<any>> {
+  getAllArtists(): Observable<any> {
     return this.http.get<any>(this.url + 'artist',
                               { observe: 'response' });
   }
@@ -59,9 +59,19 @@ export class BackendService {
   // adding an artist
   addNewArtist(artist: Artist): Observable<HttpResponse<any>> {
     // three args = URL, body, options
-    // TODO: figure out why the Artist object must be deconstructed
-    console.log(artist);
     return this.http.post<any>(this.url + 'artist', artist, { observe: 'response' });
+  }
+
+  // deleting an artist in the request body
+  deleteArtistInBody(artist: Artist): Observable<HttpResponse<any>> {
+    return this.http.delete<any>(this.url + 'artist', 
+                                 { observe: 'response', body: artist });
+  }
+
+  // updating an artist
+  updateArtist(artist: Artist): Observable<HttpResponse<any>> {
+    // three args = URL, body, options
+    return this.http.put<any>(this.url + 'artist', artist, { observe: 'response' });
   }
 
 }

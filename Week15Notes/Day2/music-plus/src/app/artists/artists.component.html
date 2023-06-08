@@ -51,7 +51,8 @@
         <!-- this button calls the method from our .ts file
              we do not need to pass in data, because we already have it in our TS file -->
         <button (click)="updateArtist()">UPDATE</button>
-        <button (click)="deleteArtist()">DELETE</button>
+        <!-- binding the disabled property to the canDelete variable -->
+        <button (click)="deleteArtist()" [disabled]="!canDelete">DELETE</button>
         
     </form>
 

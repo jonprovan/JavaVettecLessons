@@ -18,7 +18,7 @@ export class AlbumComponent {
 
   // use the @Input decorator to set up the input type
   // syntax = @Input() variableName: variableType = initialValue;
-  @Input() album: Album = new Album(0, '', new Artist(0, '', '', 0), '', '', 0);
+  @Input() album: Album = new Album(0, '', new Artist(0, '', '', 0), '', '', 0, '');
 
   deleteAlbum(): void {
     this.deleteAlbumEvent.emit(this.album);

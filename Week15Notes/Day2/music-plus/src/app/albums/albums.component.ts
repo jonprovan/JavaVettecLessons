@@ -39,7 +39,8 @@ export class AlbumsComponent {
                                                    album.artist.founded),
                                         album.genre,
                                         album.label,
-                                        album.trackCount));
+                                        album.trackCount,
+                                        album.imageUrl));
       }
 
       // to see what we're actually storing in our local array

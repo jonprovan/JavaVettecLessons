@@ -1,5 +1,9 @@
 <article>
 
+    <!-- whenever you use property binding,
+         what's inside the quotes is JS/TS -->
+    <img [src]="album.imageUrl" [alt]="album.artist.name + ': ' + album.title">
+
     <h2>{{ album.title }}</h2>
     <!-- <h3>Album ID: {{ album.albumId }}</h3> -->
     <p>{{ album.artist.name }}</p>

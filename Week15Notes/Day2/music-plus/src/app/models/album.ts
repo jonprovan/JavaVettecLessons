@@ -9,19 +9,22 @@ export class Album {
     genre: string = '';
     label: string = '';
     trackCount: number = 0;
+    imageUrl: string = '';
 
     constructor(albumId: number,
                 title: string,
                 artist: Artist,
                 genre: string,
                 label: string,
-                trackCount: number) {
+                trackCount: number,
+                imageUrl: string) {
         this.albumId = albumId;
         this.title = title;
         this.artist = artist;
         this.genre = genre;
         this.label = label;
         this.trackCount = trackCount;
+        this.imageUrl = imageUrl;
     }
 
     // get albumId(): number {

@@ -138,7 +138,8 @@ public class AlbumController {
 											  @RequestParam(name = "artist", required = false) String artist,
 											  @RequestParam(name = "genre", required = false) String genre,
 											  @RequestParam(name = "label", required = false) String label,
-											  @RequestParam(name = "trackCount", required = false) String trackCount) {
+											  @RequestParam(name = "trackCount", required = false) String trackCount,
+											  @RequestParam(name = "imageUrl", required = false) String imageUrl) {
 		
 		if(repo.findById(id).isPresent()) {
 			
@@ -166,6 +167,10 @@ public class AlbumController {
 			
 			if(trackCount != null) {
 				temp.setTrackCount(Integer.valueOf(trackCount));
+			}
+			
+			if(imageUrl != null) {
+				temp.setImageUrl(imageUrl);
 			}
 			// return the correct RE while saving the updated record
 			return ResponseEntity.status(HttpStatus.OK).body("Album with id " + repo.save(temp).getAlbumId() + " has been updated.");

@@ -54,9 +54,12 @@ public class Album {
 	@Column(name = "track_count")
 	private int trackCount;
 	
+	@Column(name = "image_url")
+	private String imageUrl;
+	
 	public Album() {}
 
-	public Album(int albumId, String title, Artist artist, String genre, String label, int trackCount) {
+	public Album(int albumId, String title, Artist artist, String genre, String label, int trackCount, String imageUrl) {
 		super();
 		this.albumId = albumId;
 		this.title = title;
@@ -64,6 +67,7 @@ public class Album {
 		this.genre = genre;
 		this.label = label;
 		this.trackCount = trackCount;
+		this.imageUrl = imageUrl;
 	}
 
 	public int getAlbumId() {
@@ -113,11 +117,19 @@ public class Album {
 	public void setTrackCount(int trackCount) {
 		this.trackCount = trackCount;
 	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	@Override
 	public String toString() {
 		return "Album [albumId=" + albumId + ", title=" + title + ", artist=" + artist + ", genre=" + genre + ", label="
-				+ label + ", trackCount=" + trackCount + "]";
+				+ label + ", trackCount=" + trackCount + ", imageUrl=" + imageUrl + "]";
 	}
 
 	@Override
@@ -131,7 +143,7 @@ public class Album {
 		Album other = (Album) obj;
 		return albumId == other.albumId && Objects.equals(artist, other.artist) && Objects.equals(genre, other.genre)
 				&& Objects.equals(label, other.label) && Objects.equals(title, other.title)
-				&& trackCount == other.trackCount;
+				&& trackCount == other.trackCount && Objects.equals(imageUrl, other.imageUrl);
 	}
 
 }
