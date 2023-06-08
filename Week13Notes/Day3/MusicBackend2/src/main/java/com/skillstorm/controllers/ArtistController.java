@@ -28,13 +28,13 @@ public class ArtistController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> addArtist(@RequestBody Artist artist) {
+	public ResponseEntity<Artist> addArtist(@RequestBody Artist artist) {
 		// if the record with that id already exists, don't overwrite it
 		if (repo.existsById(artist.getArtistId())) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Artist with id " + artist.getArtistId() + " already exists!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(artist);
 		// if it doesn't, add a new one
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Artist with id " + repo.save(artist).getArtistId() + " has been inserted.");
+			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(artist));
 		}
 	}
 

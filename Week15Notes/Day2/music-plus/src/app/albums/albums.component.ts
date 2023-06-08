@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BackendService } from '../services/backend.service';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-albums',
@@ -51,8 +52,7 @@ export class AlbumsComponent {
   // supposed to refresh the page with the updated list
   // TODO: debug the refresh
   deleteAlbum(album: Album): void {
-    this.backendService.deleteAlbumInBody(album).subscribe();
-    this.getAllAlbums();
+    this.backendService.deleteAlbumInBody(album).subscribe(() => this.getAllAlbums());
   }
     
   

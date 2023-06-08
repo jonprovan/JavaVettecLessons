@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 // must import HTTP functionality here in the service
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, ObservedValueOf } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
 

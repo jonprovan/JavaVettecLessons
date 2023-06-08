@@ -17,26 +17,26 @@ export class ArtistsComponent {
   formFounded: string = '';
 
   constructor(private backendService: BackendService) {
-    backendService.getAllArtists().subscribe(data => {
-      console.log(data.body);
+    this.getAllArtists();
+  }
 
+  getAllArtists(): void {
+    this.localArtists = [];
+    this.backendService.getAllArtists().subscribe(data => {
       for (let artist of data.body) {
         this.localArtists.push(new Artist(artist.artistId,
                                           artist.name,
                                           artist.type,
                                           artist.founded));
       }
-
-      console.log(this.localArtists);
-
     });
   }
 
   // this calls to the service to add a new artist to the database
-  addNewArtist() {
+  addNewArtist(): void {
     this.backendService
         .addNewArtist(new Artist(0, this.formName, this.formType, Number(this.formFounded)))
-        .subscribe();
+        .subscribe(() => this.getAllArtists());
   }
 
 }

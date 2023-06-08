@@ -205,15 +205,15 @@ public class AlbumController {
 	// this deletes an object sent in the request body
 	@DeleteMapping
 	// returning REs because we have different possible results; taking in the Album from the body
-	public ResponseEntity<String> deleteAlbumByBodyContent(@RequestBody Album album) {
+	public ResponseEntity<Object> deleteAlbumByBodyContent(@RequestBody Album album) {
 		// checking that the record with the given id exists AND that it's fully equal to the sent album
 		// .equals() method overridden in Album model!!
 		if (repo.findById(album.getAlbumId()).isPresent() &&
 				album.equals(repo.findById(album.getAlbumId()).get())) {
 			repo.delete(album);
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body("Album sent was successfully deleted.");
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(album);
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album sent does not exist!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(album);
 		}
 	}
 	

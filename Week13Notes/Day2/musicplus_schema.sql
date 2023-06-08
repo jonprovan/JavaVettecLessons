@@ -1,4 +1,4 @@
-CREATE SCHEMA `musicplus` ;
+CREATE SCHEMA `musicplus`;
 
 CREATE TABLE `musicplus`.`artist` (
   `artist_id` INT NOT NULL AUTO_INCREMENT,
@@ -21,9 +21,6 @@ CREATE TABLE `musicplus`.`album` (
     REFERENCES `musicplus`.`artist` (`artist_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-    
-SELECT * FROM artist;
-SELECT * FROM album;
 
 INSERT INTO artist(name, type, founded) VALUES('Toto', 'Quartet', 1979);
 INSERT INTO artist(name, type, founded) VALUES('Banda MS', 'Nineteensome', 2003);
@@ -34,6 +31,4 @@ INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('Toto', 1
 INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('La Mejor Version de Mi', 2, 'Banda', 'Lizos Music', 19);
 INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('Mothership', 3, 'Classic Rock', 'Atlantic Records', 24);
 INSERT INTO album(title, artist_id, genre, label, track_count) VALUES ('Cancion Animal', 4, 'Alternative Rock', 'Sony Music', 10);
-
-
 
