@@ -1,0 +1,32 @@
+WEEK 15 QUIZ TOPICS
+
+JavaScript:
+
+Higher-Order Functions -- forEach, map, filter, reduce and closures
+Classes
+Object Destructuring -- spread, rest, pulling out props/array values as variables
+
+ 
+Angular:
+
+TypeScript
+Fields, Constructors & Functions
+Type Annotations
+package.json
+node_modules
+tsconfig.json
+Environments
+Angular CLI
+Modules, Components, Services
+Dependency Injection
+Decorators
+*ngFor, ngIf, ngClass
+Property Binding -- passing data to child component, also loading values from .ts file into properties
+Event Binding -- running functions when events occur, passing data from child to parent component via event listeners
+Two-Way Binding & ngModel
+Reactive Forms
+Form Validation
+Promises -- in general, at a conceptual level
+Observables
+HttpClient
+Client Side Routing, Navigation & router-outlet -- app-routing.module.ts, parameters in the route, general routing to the outlet
