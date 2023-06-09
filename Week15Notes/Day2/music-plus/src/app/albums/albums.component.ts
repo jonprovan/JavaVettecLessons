@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { BackendService } from '../services/backend.service';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
-import { OnInit } from '@angular/core';
+// this imports the elements we need for reactive forms
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-albums',
@@ -14,11 +15,57 @@ export class AlbumsComponent {
   // creating a place to hold our downloaded album data
   localAlbums: any = [];
 
-  constructor(private backendService: BackendService) {
+  // injecting our backend service
+  // also injecting the FormBuilder for our reactive form group
+  constructor(private backendService: BackendService,
+              private fb: FormBuilder) {
 
     this.getAllAlbums();
 
   }
+
+  // creating a form group for our reactive form
+
+  addForm = this.fb.group(
+    {
+      title: ['', Validators.compose([Validators.required,
+                                      Validators.minLength(1),
+                                      Validators.maxLength(60)])],
+      artist: [''],
+      genre: ['', Validators.compose([Validators.required,
+                                      Validators.minLength(2),
+                                      Validators.maxLength(45)])],
+      label: ['', Validators.compose([Validators.required,
+                                      Validators.minLength(1),
+                                      Validators.maxLength(45)])],
+      trackCount: ['', Validators.compose([Validators.required,
+                                           Validators.min(1),
+                                           Validators.max(50)])],
+      imageUrl: ['', Validators.compose([Validators.required,
+                                         Validators.minLength(1),
+                                         Validators.maxLength(500)])],
+    }
+  );
+
+  get title() {
+    return this.addForm.get('title');
+  }
+
+  get genre() {
+    return this.addForm.get('genre');
+  }
+  get label() {
+    return this.addForm.get('label');
+  }
+
+  get trackCount() {
+    return this.addForm.get('trackCount');
+  }
+
+  get imageUrl() {
+    return this.addForm.get('imageUrl');
+  }
+
 
   getAllAlbums(): void {
     this.localAlbums = [];

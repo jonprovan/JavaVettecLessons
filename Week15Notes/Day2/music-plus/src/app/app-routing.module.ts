@@ -19,13 +19,19 @@ const routes: Routes = [
     path: 'artists',
     component: ArtistsComponent
   },
-  {
-    path: 'details',
-    component: AlbumDetailsComponent
-  },
+  // {
+  //   path: 'details',
+  //   component: AlbumDetailsComponent
+  // },
   {
     path: 'album/details/:id',
     component: AlbumDetailsComponent
+  },
+  // this is a default route that will load our AlbumsComponent if someone navigates
+  // to a bogus URL at the root level
+  {
+    path: '**',
+    component: AlbumsComponent
   }
 ];
 

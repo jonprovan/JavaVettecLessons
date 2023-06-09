@@ -33,3 +33,5 @@ INSERT INTO album(title, artist_id, genre, label, track_count, image_url) VALUES
 INSERT INTO album(title, artist_id, genre, label, track_count, image_url) VALUES ('Mothership', 3, 'Classic Rock', 'Atlantic Records', 24, 'https://m.media-amazon.com/images/I/91T2ml6rovL._SX522_.jpg');
 INSERT INTO album(title, artist_id, genre, label, track_count, image_url) VALUES ('Cancion Animal', 4, 'Alternative Rock', 'Sony Music', 10, 'https://m.media-amazon.com/images/I/51rMXhdKw1L.jpg');
 
+select * from album;
+select * from artist;

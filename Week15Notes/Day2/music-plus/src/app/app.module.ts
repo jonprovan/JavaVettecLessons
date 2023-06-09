@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // this imports functionality for making HTTP requests
 import { HttpClientModule } from '@angular/common/http';
 // this imports advanced form functionality
+// FormsModule for ngModel template forms; ReactiveFormsModule for reactive forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
