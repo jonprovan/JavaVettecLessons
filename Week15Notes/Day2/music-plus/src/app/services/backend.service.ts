@@ -60,6 +60,11 @@ export class BackendService {
                               { observe: 'response' });
   }
 
+  // posting a new album
+  addAlbumInBody(album: Album): Observable<HttpResponse<any>> {
+    return this.http.post<any>(this.url + 'album', album, { observe: 'response' });
+  }
+
 
 
 

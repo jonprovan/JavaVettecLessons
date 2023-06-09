@@ -99,13 +99,13 @@ public class AlbumController {
 //	}
 	
 	@PostMapping
-	public ResponseEntity<String> addAlbum(@RequestBody Album album) {
+	public ResponseEntity<Album> addAlbum(@RequestBody Album album) {
 		// if the record with that id already exists, don't overwrite it
 		if (repo.existsById(album.getAlbumId())) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + album.getAlbumId() + " already exists!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(album);
 		// if it doesn't, add a new one
 		} else {
-			return ResponseEntity.status(HttpStatus.CREATED).body("Album with id " + repo.save(album).getAlbumId() + " has been inserted.");
+			return ResponseEntity.status(HttpStatus.CREATED).body(repo.save(album));
 		}
 	}
 	

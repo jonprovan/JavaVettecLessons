@@ -10,10 +10,25 @@
 
         <label for="title">Title</label>
         <input type="text" id="title" name="title" formControlName="title">
+        <!-- this p only displays if there are errors in title
+             AND either I clicked into/out of the field (touched)
+             OR I changed the field (dirty) -->
+        <p *ngIf="title!.invalid && (title!.touched || title!.dirty)">
+            <!-- this span only displays if I'm violating the 'required' Validator -->
+            <span *ngIf="title!.errors?.['required']">Album title is required!</span>
+            <!-- same thing, but for 'maxlength' -->
+            <span *ngIf="title!.errors?.['maxlength']">Album title must be 60 characters or less!</span>
+        </p>
 
         <label for="artist">Artist</label>
         <select name="artist" id="artist" name="artist" formControlName="artist">
-            <option value="TestValue">Test Option</option>
+
+                <option value="">Select an artist...</option>
+
+            <ng-container *ngFor="let artist of localArtists">
+                <option [value]="artist.artistId">{{ artist.name }}</option>
+            </ng-container>
+
         </select>
 
         <label for="genre">Genre</label>
@@ -28,7 +43,7 @@
         <label for="imageUrl">Image URL</label>
         <input type="text" id="imageUrl" name="imageUrl" formControlName="imageUrl">
 
-        <button [disabled]="addForm.invalid">ADD NEW ALBUM</button>
+        <button [disabled]="addForm.invalid" (click)="addAlbum()">ADD NEW ALBUM</button>
     </form>
 
     <!-- ng-container is a style-free container

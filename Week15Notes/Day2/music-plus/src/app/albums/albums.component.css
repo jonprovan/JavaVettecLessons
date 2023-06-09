@@ -28,6 +28,7 @@ input {
 select {
     padding: 6px;
     margin-bottom: 10px;
+    width: 316px;
 }
 
 form > button {
@@ -36,4 +37,10 @@ form > button {
     padding: 10px 50px;
     font-weight: bold;
 
+}
+
+p {
+    margin: 0px 0px 10px 0px;
+    color: red;
+    font-style: italic;
 }
