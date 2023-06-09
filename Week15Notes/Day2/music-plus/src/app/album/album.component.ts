@@ -2,6 +2,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Album } from '../models/album';
 import { Artist } from '../models/artist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-album',
@@ -9,6 +10,9 @@ import { Artist } from '../models/artist';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent {
+
+  // injecting a Router so we can navigate using custom routes
+  constructor(private router: Router) {}
 
   // this creates an EventEmitter
   // it can be called whatever you want
@@ -22,6 +26,12 @@ export class AlbumComponent {
 
   deleteAlbum(): void {
     this.deleteAlbumEvent.emit(this.album);
+  }
+
+  // this uses the router to take us to the proper URL, 
+  // loading in the albumID to get its details
+  getAlbumDetails() {
+    this.router.navigate(['album/details/' + this.album.albumId]);
   }
 
 }

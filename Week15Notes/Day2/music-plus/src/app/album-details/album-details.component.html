@@ -1,0 +1,15 @@
+<main>
+    <h1>View Album Details</h1>
+
+    <img [src]="localAlbum.imageUrl" [alt]="localAlbum.title + ' by ' + localAlbum.artist.name">
+
+    <h2>{{ localAlbum.title }}</h2>
+    <h3>{{ localAlbum.artist.name }} (<span>{{ localAlbum.artist.type }}, founded in {{ localAlbum.artist.founded }}</span>)</h3>
+
+    <ul>
+        <li>Genre: {{ localAlbum.genre }}</li>
+        <li>Record Label: {{ localAlbum.label }}</li>
+        <li>Number of Tracks: {{ localAlbum.trackCount }}</li>
+    </ul>
+    
+</main>

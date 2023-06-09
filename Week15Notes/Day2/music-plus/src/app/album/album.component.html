@@ -10,11 +10,12 @@
     <ul>
         <li>Genre: {{ album.genre }}</li>
         <li>Label: {{ album.label }}</li>
-        <li>Track Count: {{ album.trackCount }}</li>
+        <!-- <li>Track Count: {{ album.trackCount }}</li> -->
     </ul>
 
     <!-- this button, when clicked, deletes this album -->
     <!-- (click) binds the click event to the function in quotes -->
     <button (click)="deleteAlbum()">DELETE ALBUM</button>
+    <button (click)="getAlbumDetails()">GET ALBUM DETAILS</button>
 
 </article>

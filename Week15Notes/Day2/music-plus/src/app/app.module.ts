@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumComponent } from './album/album.component';
 import { ArtistsComponent } from './artists/artists.component';
+import { AlbumDetailsComponent } from './album-details/album-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ArtistsComponent } from './artists/artists.component';
     NavComponent,
     AlbumsComponent,
     AlbumComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,

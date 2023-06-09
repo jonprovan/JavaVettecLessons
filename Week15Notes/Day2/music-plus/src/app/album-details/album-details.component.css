@@ -1,0 +1,8 @@
+h2 {
+    font-style: italic;
+}
+
+h3 > span {
+    font-style: italic;
+    text-transform: lowercase;
+}

@@ -26,6 +26,9 @@ export class BackendService {
   // this injects the HttpClient functionality wherever we need it
   constructor(private http: HttpClient) { }
 
+
+  // ALBUM METHODS
+
   // this function makes a get request for all albums
   // it returns an Observable of the HttpResponse
   // an Observable is a watchable object
@@ -38,12 +41,6 @@ export class BackendService {
     //                   what portion of the response we want to observe
   }
 
-  // getting all artists from the DB
-  getAllArtists(): Observable<any> {
-    return this.http.get<any>(this.url + 'artist',
-                              { observe: 'response' });
-  }
-
   // deleting an album using its ID
   deleteAlbumById(album: Album): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.url}album/${album.albumId}`, 
@@ -54,6 +51,24 @@ export class BackendService {
   deleteAlbumInBody(album: Album): Observable<HttpResponse<any>> {
     return this.http.delete<any>(this.url + 'album', 
                                  { observe: 'response', body: album });
+  }
+
+  // getting a single album via id
+  // GET to http://localhost:8080/album/id is the endpoint
+  getAlbumById(albumId: number): Observable<HttpResponse<any>> {
+    return this.http.get<any>(this.url + 'album/' + albumId,
+                              { observe: 'response' });
+  }
+
+
+
+
+  // ARTIST METHODS
+
+  // getting all artists from the DB
+  getAllArtists(): Observable<any> {
+    return this.http.get<any>(this.url + 'artist',
+                              { observe: 'response' });
   }
 
   // adding an artist

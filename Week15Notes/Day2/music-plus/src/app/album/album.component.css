@@ -27,3 +27,8 @@ p {
 ul {
     margin-bottom: 10px;
 }
+
+button {
+    padding: 6px;
+    margin-right: 10px;
+}
