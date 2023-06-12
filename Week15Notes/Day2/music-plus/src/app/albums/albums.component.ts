@@ -150,7 +150,12 @@ export class AlbumsComponent {
                                                         this.genre?.value!,
                                                         this.label?.value!,
                                                         Number(this.trackCount?.value!),
-                                                        this.imageUrl?.value!));
+                                                        this.imageUrl?.value!))
+                        .subscribe(() => {
+                          this.getAllAlbums();
+                          this.addForm.reset();
+                          this.chosenAlbumId = 0;
+                        });
   }
 
   // to post a new album

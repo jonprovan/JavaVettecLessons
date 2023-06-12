@@ -83,8 +83,7 @@ export class BackendService {
     return this.http.post<any>(this.url + 'album', album, { observe: 'response' });
   }
 
-  updateAlbumWithParams(album: Album): void {
-    console.log(album);
+  updateAlbumWithParams(album: Album): Observable<HttpResponse<any>> {
 
     // creating an object to hold our HTTP request parameters
     let parameters = new HttpParams().set('title', album.title)
@@ -94,8 +93,8 @@ export class BackendService {
                                      .set('trackCount', album.trackCount)
                                      .set('imageUrl', album.imageUrl);
 
-    this.http.put<any>(this.url + 'album/' + album.albumId, {}, { observe: 'response',
-                                                                  params: parameters }).subscribe(data => console.log(data));
+    return this.http.put<any>(this.url + 'album/' + album.albumId, {}, { observe: 'response',
+                                                                  params: parameters });
   }
 
 
