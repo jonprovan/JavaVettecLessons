@@ -1,5 +1,13 @@
 <header>
 
+    <div>
+        {{ localUser }}
+        <form>
+            <input type="text" name="fieldName" [(ngModel)]="fieldName">
+            <button (click)="changeName()">Change Name</button>
+        </form>
+    </div>
+
     My Music-Plus Frontend
 
     <app-nav></app-nav>

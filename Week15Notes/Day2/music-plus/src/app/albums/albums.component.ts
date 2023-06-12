@@ -74,7 +74,7 @@ export class AlbumsComponent {
     this.backendService.getAllAlbums().subscribe(data => {
       // to see what we're getting back
       // data.body contains the array of items we're looking for
-      console.log(data.body);
+      // console.log(data.body);
 
       // enhanced for loop to access each item
       // for each iteration, we create a new Album with those props
@@ -93,7 +93,7 @@ export class AlbumsComponent {
       }
 
       // to see what we're actually storing in our local array
-      console.log(this.localAlbums);
+      // console.log(this.localAlbums);
 
     });
   }
@@ -122,6 +122,37 @@ export class AlbumsComponent {
     this.backendService.deleteAlbumInBody(album).subscribe(() => this.getAllAlbums());
   }
 
+  chosenAlbumId: number = 0;
+
+  chooseAlbum(album: Album): void {
+    this.chosenAlbumId = album.albumId;
+
+    this.addForm.setValue({
+      title: album.title,
+      artist: String(album.artist.artistId),
+      genre: album.genre,
+      label: album.label,
+      trackCount: String(album.trackCount),
+      imageUrl: album.imageUrl
+    })
+
+  }
+
+  cancelUpdate(): void {
+    this.addForm.reset();
+    this.chosenAlbumId = 0;
+  }
+
+  updateAlbum(): void {
+    this.backendService.updateAlbumWithParams(new Album(this.chosenAlbumId,
+                                                        this.title?.value!,
+                                                        new Artist(Number(this.artist?.value!), '', '', 0),
+                                                        this.genre?.value!,
+                                                        this.label?.value!,
+                                                        Number(this.trackCount?.value!),
+                                                        this.imageUrl?.value!));
+  }
+
   // to post a new album
   addAlbum(): void {
     this.backendService.addAlbumInBody(new Album(0,
@@ -131,7 +162,8 @@ export class AlbumsComponent {
                                                  this.label?.value!,
                                                  Number(this.trackCount?.value!),
                                                  this.imageUrl?.value!))
-                       .subscribe(() => this.getAllAlbums());
+                       .subscribe(() => { this.getAllAlbums();
+                                          this.addForm.reset(); });
   }
     
   

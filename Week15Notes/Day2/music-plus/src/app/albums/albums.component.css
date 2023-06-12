@@ -31,12 +31,12 @@ select {
     width: 316px;
 }
 
-form > button {
-    display: block;
+form > div > button {
+    display: inline-block;
     margin-top: 20px;
     padding: 10px 50px;
     font-weight: bold;
-
+    margin-right: 10px;
 }
 
 p {

@@ -6,8 +6,8 @@
 
 import { Injectable } from '@angular/core';
 // must import HTTP functionality here in the service
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, subscribeOn } from 'rxjs';
 // importing the environment object for use here
 import { environment } from 'src/environments/environment';
 import { Album } from '../models/album';
@@ -19,6 +19,24 @@ import { Artist } from '../models/artist';
   providedIn: 'root'
 })
 export class BackendService {
+  // this doesn't work to update values in dependent components
+  // because it doesn't let those components know
+  // it has changed value
+  // user: string = "Genevieve McDaniels";
+
+  // this creates a BehaviorSubject of type string with an initial value in the ()
+  // this has the ability to take on a new state
+  // and indicate that it has done so
+  private rawUser = new BehaviorSubject<string>('Genevieve McDaniels');
+
+  // this turns the above into an observable to which we can subscribe
+  user = this.rawUser.asObservable();
+
+  // this method changes the state of the BehaviorSubject
+  // which causes its Observable to update subscribers with the new value
+  changeName(name: string): void {
+    this.rawUser.next(name);
+  }
 
   // taking the URL out of the environment and putting it into a variable
   url: string = environment.backendURL;
@@ -63,6 +81,21 @@ export class BackendService {
   // posting a new album
   addAlbumInBody(album: Album): Observable<HttpResponse<any>> {
     return this.http.post<any>(this.url + 'album', album, { observe: 'response' });
+  }
+
+  updateAlbumWithParams(album: Album): void {
+    console.log(album);
+
+    // creating an object to hold our HTTP request parameters
+    let parameters = new HttpParams().set('title', album.title)
+                                     .set('artist', album.artist.artistId)
+                                     .set('genre', album.genre)
+                                     .set('label', album.label)
+                                     .set('trackCount', album.trackCount)
+                                     .set('imageUrl', album.imageUrl);
+
+    this.http.put<any>(this.url + 'album/' + album.albumId, {}, { observe: 'response',
+                                                                  params: parameters }).subscribe(data => console.log(data));
   }
 
 

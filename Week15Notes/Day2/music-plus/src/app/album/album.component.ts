@@ -19,6 +19,7 @@ export class AlbumComponent {
   // the type is whatever data you want to pass to the parent
   // the @Output() decorator indicates we're sending this upward
   @Output() deleteAlbumEvent = new EventEmitter<Album>();
+  @Output() updateAlbumEvent = new EventEmitter<Album>();
 
   // use the @Input decorator to set up the input type
   // syntax = @Input() variableName: variableType = initialValue;
@@ -26,6 +27,10 @@ export class AlbumComponent {
 
   deleteAlbum(): void {
     this.deleteAlbumEvent.emit(this.album);
+  }
+
+  updateAlbum(): void {
+    this.updateAlbumEvent.emit(this.album);
   }
 
   // this uses the router to take us to the proper URL, 

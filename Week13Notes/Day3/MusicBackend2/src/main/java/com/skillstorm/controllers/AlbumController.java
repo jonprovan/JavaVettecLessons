@@ -133,7 +133,7 @@ public class AlbumController {
 	
 	// this is an endpoint for updating an existing record
 	@PutMapping("/{id}")
-	public ResponseEntity<String> updateAlbum(@PathVariable int id,
+	public ResponseEntity<Album> updateAlbum(@PathVariable int id,
 											  @RequestParam(name = "title", required = false) String title,
 											  @RequestParam(name = "artist", required = false) String artist,
 											  @RequestParam(name = "genre", required = false) String genre,
@@ -173,10 +173,10 @@ public class AlbumController {
 				temp.setImageUrl(imageUrl);
 			}
 			// return the correct RE while saving the updated record
-			return ResponseEntity.status(HttpStatus.OK).body("Album with id " + repo.save(temp).getAlbumId() + " has been updated.");
+			return ResponseEntity.status(HttpStatus.OK).body(repo.save(temp));
 			
 		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Album with id " + id + " does not exist!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
 	}
 	
